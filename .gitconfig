@@ -1,0 +1,27 @@
+[include]
+	path = .gitconfig_user
+
+[alias]
+	s = status -s
+	l = log --pretty=oneline --abbrev-commit
+	pom = push origin master
+	co = checkout
+	b = branch
+
+[color]
+	ui = true
+
+[credential]
+	helper = osxkeychain
+
+[push]
+	default = matching
+
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+
+[core]
+	autocrlf = input
+	excludesfile = /Users/Nuno/.gitignore_global

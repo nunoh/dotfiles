@@ -1,0 +1,16 @@
+{
+	"color_scheme": "Packages/User/Monokai Soda.tmTheme",
+	"ensure_newline_at_eof_on_save": true,
+	"ignored_packages":
+	[
+		"Vintage",
+		"Git"
+	],
+	"soda_classic_tabs": true,
+	"soda_folder_icons": true,
+	"tab_size": 4,
+	"theme": "Soda Dark.sublime-theme",
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": "false",
+	"file_exclude_patterns": ["*.sublime-workspace"]
+}

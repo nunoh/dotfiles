@@ -1,0 +1,5 @@
+alias work="cd ~/Development/workspace"
+alias pp="cd ~/Development/workspace/PORTOphone"
+alias ppandroid="cd ~/Development/of_v0.8.4_android_release/examples/android/PORTOphone"
+alias h="cd"
+alias dots="cd ~/.dotfiles"
