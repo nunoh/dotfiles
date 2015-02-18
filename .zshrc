@@ -1,4 +1,3 @@
-# dotfiles to source everytime
 source ~/.dotfiles/.aliases
 source ~/.dotfiles/.exports
 source ~/.dotfiles/.functions
@@ -13,6 +12,6 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="edvardm"
 # ZSH_THEME="cypher"
 
-plugins=(git colored-man)
+plugins=(git hub colored-man)
 
 source $ZSH/oh-my-zsh.sh

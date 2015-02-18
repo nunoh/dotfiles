@@ -3,7 +3,8 @@
 
 [alias]
 	s = status -s
-	l = log --pretty=oneline --abbrev-commit
+	# l = log --pretty=oneline --abbrev-commit
+	l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	pom = push origin master
 	co = checkout
 	b = branch
@@ -25,3 +26,4 @@
 [core]
 	autocrlf = input
 	excludesfile = /Users/Nuno/.gitignore_global
+	editor = subl -n -w
