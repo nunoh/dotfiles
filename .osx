@@ -1,0 +1,2 @@
+# not sure if this actually worked
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
