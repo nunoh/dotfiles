@@ -15,3 +15,5 @@ ZSH_THEME="robbyrussell"
 plugins=(git hub colored-man)
 
 source $ZSH/oh-my-zsh.sh
+
+setopt combining_chars
