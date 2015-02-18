@@ -56,3 +56,5 @@ extract () {
    echo "'$1' is not a valid file to extract"
  fi
 }
+
+function manflag () { man $1 | less -p "^ +$2" }
