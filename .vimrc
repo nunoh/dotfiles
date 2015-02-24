@@ -19,7 +19,8 @@ filetype plugin indent on    " required
 " }}}
 
 " COLORS {{{ 
-colorscheme solarized
+" colorscheme solarized
+colorscheme monokai
 set background=dark
 syntax enable 
 " }}}
