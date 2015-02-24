@@ -1,5 +1,23 @@
 " vim:foldmethod=marker:foldlevel=0
 
+" PLUGINS {{{
+set nocompatible	" be iMproved, required
+filetype off		" required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+	Plugin 'gmarik/Vundle.vim' " required
+	Plugin 'itchyny/lightline.vim'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'HTML-AutoCloseTag'
+	Plugin 'mattn/emmet-vim'
+	Plugin 'kien/ctrlp.vim'
+	Plugin 'rstacruz/sparkup'
+call vundle#end()
+
+filetype plugin indent on    " required
+" }}}
+
 " COLORS {{{ 
 colorscheme solarized
 set background=dark
