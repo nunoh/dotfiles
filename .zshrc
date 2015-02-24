@@ -17,3 +17,5 @@ plugins=(git hub autojump colored-man brew)
 source $ZSH/oh-my-zsh.sh
 
 setopt combining_chars
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
