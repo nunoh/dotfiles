@@ -28,15 +28,17 @@ syntax enable
 " SPACES AND TABS {{{ 
 set tabstop=4		" number of visual spaces per tab"
 set softtabstop=4	" number of spaces in tab when editing"
+set smarttab		" indent to correct location with tab"
 " }}}
 
 " UI {{{ 
 set number 		" show line numbers"
 set showcmd 		" show command in bottom bar"
-set cursorline		" hightlight current line"
+" set cursorline		" hightlight current line"
 filetype indent on 	" load filetype-specific indent files"
 set wildmenu 		" visual autocomplete for command menu"	
 set showmatch		" hightlight matching [{()}]"
+set laststatus=2	" show status line always
 " }}}
 
 " SEARCH {{{ 
@@ -49,8 +51,16 @@ set foldenable 		" enable folding"
 set foldmethod=indent	" fold based on indent level"
 " }}}
 
+" MISC {{{
 autocmd Filetype gitcommit setlocal spell textwidth=72
 set mouse=a
+set modelines=1
+set visualbell
+set autoindent
+set nowrap " lines of code will not wrap to the next line
+set encoding=utf8
+" }}}
 
-" PLUGINS "
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" REMAPPINGS {{{
+map <Space> :
+" }}}
