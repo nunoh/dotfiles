@@ -12,7 +12,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="edvardm"
 # ZSH_THEME="cypher"
 
-plugins=(git hub autojump colored-man brew)
+plugins=(git hub autojump colored-man brew brew-cask osx)
 
 source $ZSH/oh-my-zsh.sh
 
