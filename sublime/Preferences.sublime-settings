@@ -1,16 +1,11 @@
 {
-	"color_scheme": "Packages/User/Monokai Soda.tmTheme",
-	"ensure_newline_at_eof_on_save": true,
+	"bold_folder_labels": true,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"highlight_line": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Git"
+		"Block Cursor Everywhere"
 	],
-	"soda_classic_tabs": true,
-	"soda_folder_icons": true,
-	"tab_size": 4,
-	"theme": "Soda Dark.sublime-theme",
-	"trim_trailing_white_space_on_save": true,
-	"word_wrap": "false",
-	"file_exclude_patterns": ["*.sublime-workspace"]
+	"inverse_caret_state": true,
+	"vintage_start_in_command_mode": true
 }
