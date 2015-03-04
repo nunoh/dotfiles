@@ -13,9 +13,10 @@ call vundle#begin()
 	Plugin 'mattn/emmet-vim'
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'rstacruz/sparkup'
+	Plugin 'scrooloose/nerdcommenter'
 call vundle#end()
 
-filetype plugin indent on    " required
+filetype plugin indent on
 " }}}
 
 " COLORS {{{ 
@@ -59,8 +60,20 @@ set visualbell
 set autoindent
 set nowrap " lines of code will not wrap to the next line
 set encoding=utf8
+" so that spell check is actually readable
+hi clear SpellBad
+hi SpellBad cterm=underline
 " }}}
 
 " REMAPPINGS {{{
-map <Space> :
+
+" changing default leader key from "\" to ","
+:let mapleader = ","
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+nmap <D-S-c> <Plug>NERDCommenterToggle 
+
 " }}}
