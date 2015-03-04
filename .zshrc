@@ -2,7 +2,6 @@ source ~/.dotfiles/.aliases
 source ~/.dotfiles/.exports
 source ~/.dotfiles/.functions
 source ~/.dotfiles/.path
-source ~/.dotfiles/.prompt
 source ~/.dotfiles/.shortcuts
 
 export ZSH=$HOME/.oh-my-zsh

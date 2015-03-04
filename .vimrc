@@ -6,7 +6,7 @@ filetype off		" required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-	Plugin 'gmarik/Vundle.vim' " required
+	Plugin 'gmarik/Vundle.vim'
 	Plugin 'itchyny/lightline.vim'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'HTML-AutoCloseTag'
@@ -19,35 +19,35 @@ call vundle#end()
 filetype plugin indent on
 " }}}
 
-" COLORS {{{ 
+" COLORS {{{
 " colorscheme solarized
 colorscheme monokai
 set background=dark
-syntax enable 
+syntax enable
 " }}}
 
-" SPACES AND TABS {{{ 
+" SPACES AND TABS {{{
 set tabstop=4		" number of visual spaces per tab"
 set softtabstop=4	" number of spaces in tab when editing"
 set smarttab		" indent to correct location with tab"
 " }}}
 
-" UI {{{ 
+" UI {{{
 set number 		" show line numbers"
 set showcmd 		" show command in bottom bar"
 " set cursorline		" hightlight current line"
 filetype indent on 	" load filetype-specific indent files"
-set wildmenu 		" visual autocomplete for command menu"	
+set wildmenu 		" visual autocomplete for command menu"
 set showmatch		" hightlight matching [{()}]"
 set laststatus=2	" show status line always
 " }}}
 
-" SEARCH {{{ 
+" SEARCH {{{
 set incsearch 		" search as characters are entered"
 set hlsearch 		" highlight matches"
 " }}}
 
-" FOLDING {{{ 
+" FOLDING {{{
 set foldenable 		" enable folding"
 set foldmethod=indent	" fold based on indent level"
 " }}}
@@ -74,6 +74,6 @@ hi SpellBad cterm=underline
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-nmap <D-S-c> <Plug>NERDCommenterToggle 
+nmap <D-S-c> <Plug>NERDCommenterToggle
 
 " }}}
