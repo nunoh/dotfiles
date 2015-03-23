@@ -29,6 +29,7 @@ syntax enable
 " SPACES AND TABS {{{
 set tabstop=4		" number of visual spaces per tab"
 set softtabstop=4	" number of spaces in tab when editing"
+set shiftwidth=4		
 set smarttab		" indent to correct location with tab"
 " }}}
 
@@ -50,6 +51,7 @@ set hlsearch 		" highlight matches"
 " FOLDING {{{
 set foldenable 		" enable folding"
 set foldmethod=indent	" fold based on indent level"
+set foldlevelstart=1
 " }}}
 
 " MISC {{{
@@ -63,6 +65,8 @@ set encoding=utf8
 " so that spell check is actually readable
 hi clear SpellBad
 hi SpellBad cterm=underline
+set noswapfile
+set cpoptions+=$
 " }}}
 
 " REMAPPINGS {{{
@@ -75,5 +79,6 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 nmap <D-S-c> <Plug>NERDCommenterToggle
+nmap <D-s> :w
 
 " }}}
