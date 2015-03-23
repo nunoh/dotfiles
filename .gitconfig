@@ -26,3 +26,4 @@
 [core]
 	autocrlf = input
 	excludesfile = /Users/Nuno/.gitignore_global
+	editor = vim
