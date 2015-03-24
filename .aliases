@@ -1,15 +1,19 @@
-alias g="git"
+alias g='git'
 
-alias ll="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lll="ls -l | less"
+alias l='ls -la'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lll='ls -l | less'
 
-alias zshrc="vim ~/.zshrc"
-alias vimrc="vim ~/.vimrc"
-alias ohmyzsh="subl ~/.oh-my-zsh"
-alias reload="source ~/.zshrc"
-alias paths="vim ~/.dotfiles/.path"
+# do not use prezto default's rm confirmation
+unalias rm
+
+alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+alias ohmyzsh='subl ~/.oh-my-zsh'
+alias reload='source ~/.zshrc'
+alias paths='vim ~/.dotfiles/.path'
 
 # adding some sugar to git with hub
-eval "$(hub alias -s)"
+eval '$(hub alias -s)'
