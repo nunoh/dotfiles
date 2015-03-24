@@ -76,6 +76,8 @@ endif
 
 set ttimeoutlen=0 " go back to normal mode immedeatly rather than waiting a few miliseconds after escape
 
+"inoremap { {<CR>}<Esc>ko
+inoremap {<CR> {<CR>}<Esc>ko
 " }}}
 
 " REMAPPINGS {{{
