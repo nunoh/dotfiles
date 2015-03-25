@@ -92,4 +92,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <D-S-c> <Plug>NERDCommenterToggle
 nmap <D-s> :w
 
+" map Ctrl-Space for autocomplete
+" Ctrl-Space gets mapped to Nul on terminals with no gui
+inoremap <Nul> <C-n>
+
 " }}}
