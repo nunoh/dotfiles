@@ -7,7 +7,8 @@ alias lla='ls -la'
 alias lll='ls -l | less'
 
 # do not use prezto default's rm confirmation
-unalias rm
+# and also make sure not to give an error when reloading .zshrc
+unalias rm mv cp >/dev/null 2>/dev/null
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
