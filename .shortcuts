@@ -1,7 +1,8 @@
-alias work="cd ~/Development/workspace"
-alias pp="cd ~/Development/workspace/PORTOphone"
-alias h="cd"
-alias dots="cd ~/.dotfiles"
-alias of="cd ~/Development/openFrameworks"
-alias digi="cd ~/Digitopia"
-alias drop="cd ~/Dropbox"
+alias work='cd ~/Development/workspace'
+alias pp='cd ~/Development/workspace/PORTOphone'
+alias h='cd'
+alias dots='cd ~/.dotfiles'
+alias of='cd ~/Development/openFrameworks'
+alias digi='cd ~/Digitopia'
+alias drop='cd ~/Dropbox'
+alias dev='cd ~/Development'
