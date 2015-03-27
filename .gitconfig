@@ -24,6 +24,10 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 
+; so that git status has pager too
+[pager]
+	status = true
+
 [core]
 	autocrlf = input
 	excludesfile = /Users/Nuno/.gitignore_global
