@@ -1,0 +1,6 @@
+These are some randoms vim stuff that I shouldn't forget
+
+d$	delete until end of line
+D	delete until end of line
+
+zg	add word under cursor to dictionary
