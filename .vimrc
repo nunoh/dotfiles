@@ -74,8 +74,8 @@
 	
 	autocmd Filetype gitcommit setlocal spell textwidth=72
 
-	set mouse=a		" enable mouse
-	set modelines=1	" TODO
+	set mouse=a
+	set modelines=1
 	set visualbell
 	set autoindent
 	set nowrap
@@ -89,10 +89,10 @@
 	" better visual indication until where the change word is happening
 	set cpoptions+=$
 
-	" change cursor shape between insert and normal mode in iTerm2.app
-	if $term_program =~ "iterm"
-		let &t_si = "\<esc>]50;cursorshape=1\x7" " vertical bar in insert mode
-		let &t_ei = "\<esc>]50;cursorshape=0\x7" " block in normal mode
+	" change cursor SHAPE BETWEEN INSERT AND NORMAL MODE IN ITERM2.APP
+	if $TERM_PROGRAM =~ "iTerm"
+		let &t_SI = "\<Esc>]50;CursorShape=1\x7" " vertical bar in insert mode
+		let &t_EI = "\<Esc>]50;CursorShape=0\x7" " block in normal mode
 	endif
 
 	" go back to normal mode immedeatly rather than waiting a few miliseconds after escape
