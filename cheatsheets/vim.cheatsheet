@@ -4,3 +4,12 @@ d$	delete until end of line
 D	delete until end of line
 
 zg	add word under cursor to dictionary
+
+# folds
+zo	open fold
+zc	close fold	
+
+z.	put the line with the cursor in the center of the screen
+zt	put the line with the cursor in the top of the screen
+zb	put the line with the cursor in the bottom of the screen
+
