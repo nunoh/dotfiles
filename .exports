@@ -11,5 +11,7 @@ export LANG="en_US.UTF-8"
 # so that colors still work when piping to less for example
 export CLICOLOR_FORCE=1
 
+export TERM=xterm-256color
+
 # install casks to sensible and predictable locations
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
