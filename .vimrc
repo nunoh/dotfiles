@@ -67,6 +67,14 @@
 	set modelines=1
 	set visualbell
 	set nowrap
+	
+	" remove big vertifcal border
+	hi VertSplit guifg=fg guibg=bg
+	hi VertSplit guifg=fg ctermbg=bg
+
+	" get rid of tildes for 'blank' lines
+	hi NonText guifg=bg
+	hi NonText ctermfg=bg
 
 	" change cursor SHAPE BETWEEN INSERT AND NORMAL MODE IN ITERM2.APP
 	if $TERM_PROGRAM =~ "iTerm"
@@ -113,7 +121,7 @@
 	  \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
 	  \ }
 
-		function! MyModified()
+	function! MyModified()
 	  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 	endfunction
 
@@ -163,6 +171,9 @@
 	set noswapfile
 	set autoindent
 	set mouse=a
+
+	set splitright
+	set splitbelow
 	
 	" configure vim to write better commit messages
 	autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -183,6 +194,12 @@
 	" one space after comment
 	let NERDSpaceDelims=1
 
+	" so that ctrp files open in same window and not in a new split
+	let g:ctrlp_reuse_window = 'netrw'
+
+	" disable automatic comment insertion
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " }}}
 
 " MAPPINGS {{{
@@ -195,6 +212,7 @@
 	" write and quite has to be really fast too
 	nnoremap <Leader>w :w<CR>
 	nnoremap <Leader>q :q<CR>
+	nnoremap <Leader>d :bd<CR>
     
 	" enter visual line easily
 	nmap <Leader><Leader> V
@@ -205,21 +223,21 @@
 	autocmd VimEnter * nunmap <Leader>hs
 	
 	" get rid of all the nerdcommenter mappings
-	autocmd VimEnter * unmap <Leader>ca
-	autocmd VimEnter * unmap <Leader>cA
-	autocmd VimEnter * unmap <Leader>c$
-	autocmd VimEnter * unmap <Leader>cu
-	autocmd VimEnter * unmap <Leader>cb
-	autocmd VimEnter * unmap <Leader>cl
-	autocmd VimEnter * unmap <Leader>cy
-	autocmd VimEnter * unmap <Leader>cs
-	autocmd VimEnter * unmap <Leader>ci
-	autocmd VimEnter * unmap <Leader>cn
-	autocmd VimEnter * unmap <Leader>cm
-	autocmd VimEnter * unmap <Leader>cc
+	" autocmd VimEnter * unmap <Leader>ca
+	" autocmd VimEnter * unmap <Leader>cA
+	" autocmd VimEnter * unmap <Leader>c$
+	" autocmd VimEnter * unmap <Leader>cu
+	" autocmd VimEnter * unmap <Leader>cb
+	" autocmd VimEnter * unmap <Leader>cl
+	" autocmd VimEnter * unmap <Leader>cy
+	" autocmd VimEnter * unmap <Leader>cs
+	" autocmd VimEnter * unmap <Leader>ci
+	" autocmd VimEnter * unmap <Leader>cn
+	" autocmd VimEnter * unmap <Leader>cm
+	" autocmd VimEnter * unmap <Leader>cc
 
 	" so that toggling is really easy and fast
-	map <Leader>c <Plug>NERDCommenterToggle
+	" map <Leader>c <Plug>NERDCommenterToggle
 
 	" fast window switching
 	noremap <silent> <Leader>h <C-W>h
@@ -235,14 +253,25 @@
 	nnoremap <Leader>o :CtrlP<CR>
 
 	" quickly edit/reload the vimrc file
-	nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+	" nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+	nnoremap <Leader>ev :edit $MYVIMRC<CR>
 	nnoremap <Leader>sv :source $MYVIMRC<CR>
 
-	" altenrate with source and header files
+	" alternate with source and header files
 	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 	" map Ctrl-Space for autocomplete
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
 	inoremap <Nul> <C-n>
+
+	" tab mappings
+	nmap <Leader>tn :tabnew<CR>
+	nmap <Leader>tc :tabclose<CR>
+	nmap <Leader>tl :tabnext<CR>
+	nmap <Leader>th :tabprevious<CR>
+
+	" make
+	" nmap <Leader>m :!clear && make<CR>
+	nmap <Leader>m :make<CR>
 
 " }}}

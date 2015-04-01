@@ -6,3 +6,5 @@ alias of='cd ~/Development/openFrameworks'
 alias digi='cd ~/Digitopia'
 alias drop='cd ~/Dropbox'
 alias dev='cd ~/Development'
+alias gamult='cd ~/Development/of_v0.8.4_osx_release/apps/myApps/GamultOSX'
+

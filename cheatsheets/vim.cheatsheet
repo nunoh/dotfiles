@@ -10,5 +10,8 @@ zo	open fold
 zc	close fold	
 
 z.	put the line with the cursor in the center of the screen
+z<CR> igual
 zt	put the line with the cursor in the top of the screen
 zb	put the line with the cursor in the bottom of the screen
+
+C-W-r switch windows
