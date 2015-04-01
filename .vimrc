@@ -212,6 +212,8 @@
 	nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 	nnoremap <Leader>sv :source $MYVIMRC<CR>
 
+	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
 	" map Ctrl-Space for autocomplete
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
 	inoremap <Nul> <C-n>
