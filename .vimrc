@@ -192,28 +192,53 @@
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
 
+	" write and quite has to be really fast too
 	nnoremap <Leader>w :w<CR>
 	nnoremap <Leader>q :q<CR>
-	nnoremap <Leader>o :CtrlP<CR>
-    nmap <Leader><Leader> V
+    
+	" enter visual line easily
+	nmap <Leader><Leader> V
 
 	" remove these mappings so that can use <Leader>h for switching windows
 	autocmd VimEnter * nunmap <Leader>hp
 	autocmd VimEnter * nunmap <Leader>hr
 	autocmd VimEnter * nunmap <Leader>hs
 	
+	" get rid of all the nerdcommenter mappings
+	autocmd VimEnter * unmap <Leader>ca
+	autocmd VimEnter * unmap <Leader>cA
+	autocmd VimEnter * unmap <Leader>c$
+	autocmd VimEnter * unmap <Leader>cu
+	autocmd VimEnter * unmap <Leader>cb
+	autocmd VimEnter * unmap <Leader>cl
+	autocmd VimEnter * unmap <Leader>cy
+	autocmd VimEnter * unmap <Leader>cs
+	autocmd VimEnter * unmap <Leader>ci
+	autocmd VimEnter * unmap <Leader>cn
+	autocmd VimEnter * unmap <Leader>cm
+	autocmd VimEnter * unmap <Leader>cc
+
+	" so that toggling is really easy and fast
+	map <Leader>c <Plug>NERDCommenterToggle
+
+	" fast window switching
 	noremap <silent> <Leader>h <C-W>h
 	noremap <silent> <Leader>j <C-W>j
 	noremap <silent> <Leader>k <C-W>k
 	noremap <silent> <Leader>l <C-W>l
+
+	" for window fullscreen
 	noremap <silent> <Leader>f <C-W>o " for fullscreen
 
+	" show NERDTree and CtrlP
 	nmap <leader>nt :NERDTreeToggle<CR>
+	nnoremap <Leader>o :CtrlP<CR>
 
 	" quickly edit/reload the vimrc file
 	nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 	nnoremap <Leader>sv :source $MYVIMRC<CR>
 
+	" altenrate with source and header files
 	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 	" map Ctrl-Space for autocomplete
