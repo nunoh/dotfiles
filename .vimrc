@@ -20,6 +20,7 @@
 		Plugin 'rosenfeld/conque-term'
 		Plugin 'flazz/vim-colorschemes'
 		Plugin 'tpope/vim-fugitive'
+		Plugin 'airblade/vim-gitgutter'
 
 	call vundle#end()
 
@@ -27,7 +28,7 @@
 
 " }}}
 
-" THEMES {{{
+" THEME {{{
 
 	if !has('gui_running')
 		set t_Co=256
@@ -35,12 +36,12 @@
 
 	syntax enable
 
-	" let g:solarized_termcolors=256
-	" set background=dark
+	let g:solarized_termcolors=16
+	set background=dark
 	" set background=light
-	" colorscheme solarized
+	colorscheme solarized
      
-	colorscheme monokai
+	" colorscheme monokai
 	
 " }}}
 
@@ -93,7 +94,7 @@
 " STATUS LINE {{{
 
    let g:lightline = {
-	  \ 'colorscheme': 'jellybeans',
+	  \ 'colorscheme': 'solarized',
 	  \ 'mode_map': { 'c': 'NORMAL' },
 	  \ 'active': {
 	  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -186,16 +187,15 @@
 
 " REMAPPINGS {{{
 
-	" let mapleader = ","
 	let mapleader = " "
 
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
 
-	nnoremap <Leader>w :w<CR>
-	nnoremap <Leader>q :q<CR>
-	nnoremap <Leader>o :CtrlP<CR>
-	nmap <Leader><Leader> V
+	nnoremap <leader>w :w<CR>
+	nnoremap <leader>q :q<CR>
+	nnoremap <leader>o :CtrlP<CR>
+	nmap <leader><leader> V
 
 	noremap <silent> <leader>h <C-W>h
 	noremap <silent> <leader>j <C-W>j
