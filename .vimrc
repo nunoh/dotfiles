@@ -208,6 +208,8 @@
 	noremap <silent> <Leader>l <C-W>l
 	noremap <silent> <Leader>f <C-W>o " for fullscreen
 
+	nmap <leader>nt :NERDTreeToggle<CR>
+
 	" quickly edit/reload the vimrc file
 	nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 	nnoremap <Leader>sv :source $MYVIMRC<CR>
