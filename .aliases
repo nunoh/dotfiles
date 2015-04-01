@@ -6,6 +6,9 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lll='ls -l | less'
 
+# got used to autojump before fasd
+alias j='z'
+
 # do not use prezto default's rm confirmation
 # and also make sure not to give an error when reloading .zshrc
 unalias rm mv cp >/dev/null 2>/dev/null
@@ -15,6 +18,8 @@ alias vimrc='vim ~/.vimrc'
 alias ohmyzsh='subl ~/.oh-my-zsh'
 alias reload='source ~/.zshrc'
 alias paths='vim ~/.dotfiles/.path'
+
+alias bubu="brew update && brew upgrade && brew cleanup"
 
 # adding some sugar to git with hub
 eval '$(hub alias -s)'
