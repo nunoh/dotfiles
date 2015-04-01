@@ -17,4 +17,7 @@ source $ZSH/oh-my-zsh.sh
 
 setopt combining_chars
 
+# enable vi mode bindings in terminal too
+bindkey -v
+
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
