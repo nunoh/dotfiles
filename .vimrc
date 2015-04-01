@@ -185,26 +185,32 @@
 
 " }}}
 
-" REMAPPINGS {{{
+" MAPPINGS {{{
 
 	let mapleader = " "
 
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
 
-	nnoremap <leader>w :w<CR>
-	nnoremap <leader>q :q<CR>
-	nnoremap <leader>o :CtrlP<CR>
-	nmap <leader><leader> V
+	nnoremap <Leader>w :w<CR>
+	nnoremap <Leader>q :q<CR>
+	nnoremap <Leader>o :CtrlP<CR>
+    nmap <Leader><Leader> V
 
-	noremap <silent> <leader>h <C-W>h
-	noremap <silent> <leader>j <C-W>j
-	noremap <silent> <leader>k <C-W>k
-	noremap <silent> <leader>l <C-W>l
+	" remove these mappings so that can use <Leader>h for switching windows
+	autocmd VimEnter * nunmap <Leader>hp
+	autocmd VimEnter * nunmap <Leader>hr
+	autocmd VimEnter * nunmap <Leader>hs
+	
+	noremap <silent> <Leader>h <C-W>h
+	noremap <silent> <Leader>j <C-W>j
+	noremap <silent> <Leader>k <C-W>k
+	noremap <silent> <Leader>l <C-W>l
+	noremap <silent> <Leader>f <C-W>o " for fullscreen
 
 	" quickly edit/reload the vimrc file
-	nnoremap <leader>ev :vsplit $MYVIMRC<CR>
-	nnoremap <leader>sv :source $MYVIMRC<CR>
+	nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+	nnoremap <Leader>sv :source $MYVIMRC<CR>
 
 	" map Ctrl-Space for autocomplete
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
