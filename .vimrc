@@ -1,5 +1,9 @@
 " vim:foldmethod=marker:foldlevel=0
 
+" TODO
+" toggling comments of block of lines should return cursor
+" comments in C code should be // by default
+
 " PLUGINS {{{
 
 	set nocompatible
@@ -18,9 +22,10 @@
 		Plugin 'rstacruz/sparkup'
 		Plugin 'scrooloose/nerdcommenter'
 		Plugin 'rosenfeld/conque-term'
-		Plugin 'flazz/vim-colorschemes'
 		Plugin 'tpope/vim-fugitive'
 		Plugin 'airblade/vim-gitgutter'
+		Plugin 'altercation/vim-colors-solarized'
+		Plugin 'christoomey/vim-tmux-navigator'
 
 	call vundle#end()
 
@@ -81,6 +86,17 @@
 		let &t_SI = "\<Esc>]50;CursorShape=1\x7" " vertical bar in insert mode
 		let &t_EI = "\<Esc>]50;CursorShape=0\x7" " block in normal mode
 	endif
+
+	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+	" upon hitting escape to change modes,
+	" send successive move-left and move-right
+	" commands to immediately redraw the cursor
+	inoremap <special> <Esc> <Esc>hl
+
+	" don't blink the cursor
+	set guicursor+=i:blinkwait0
 
 " }}}
 
@@ -166,6 +182,7 @@
 
  " MISC {{{
 
+	set wrap
 	set virtualedit=all
 	set encoding=utf8
 	set noswapfile
@@ -206,13 +223,16 @@
 
 	let mapleader = " "
 
+	" makes Y work like D
+	map Y y$
+
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
 
 	" write and quite has to be really fast too
 	nnoremap <Leader>w :w<CR>
 	nnoremap <Leader>q :q<CR>
-	nnoremap <Leader>d :bd<CR>
+	nnoremap <silent> <Leader>d :bd<CR>
     
 	" enter visual line easily
 	nmap <Leader><Leader> V
@@ -239,11 +259,24 @@
 	" so that toggling is really easy and fast
 	" map <Leader>c <Plug>NERDCommenterToggle
 
+	noremap <silent> j gj
+	noremap <silent> k gk
+
 	" fast window switching
-	noremap <silent> <Leader>h <C-W>h
-	noremap <silent> <Leader>j <C-W>j
-	noremap <silent> <Leader>k <C-W>k
-	noremap <silent> <Leader>l <C-W>l
+	noremap <silent> <leader>h <C-W>h
+	noremap <silent> <leader>j <C-W>j
+	noremap <silent> <leader>k <C-W>k
+	noremap <silent> <leader>l <C-W>l
+
+	" no arrow keys
+	inoremap  <up>    <nop>
+	inoremap  <down>  <nop>
+	inoremap  <left>  <nop>
+	inoremap  <right> <nop>
+	noremap   <up>    <nop>
+	noremap   <down>  <nop>
+	noremap   <left>  <nop>
+	noremap   <right> <nop>
 
 	" for window fullscreen
 	noremap <silent> <Leader>f <C-W>o " for fullscreen
@@ -252,10 +285,12 @@
 	nmap <leader>nt :NERDTreeToggle<CR>
 	nnoremap <Leader>o :CtrlP<CR>
 
-	" quickly edit/reload the vimrc file
-	" nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+	" quickly edit common configuration files
 	nnoremap <Leader>ev :edit $MYVIMRC<CR>
+	nnoremap <Leader>et :edit ~/.tmux.conf<CR>
+	
 	nnoremap <Leader>sv :source $MYVIMRC<CR>
+	nnoremap <silent> <Leader>st :!tmux source-file ~/.tmux.conf<CR>
 
 	" alternate with source and header files
 	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
