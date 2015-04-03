@@ -3,6 +3,7 @@
 " TODO
 " toggling comments of block of lines should return cursor
 " comments in C code should be // by default
+" make insert caret work both in terminal and tmux
 
 " PLUGINS {{{
 
