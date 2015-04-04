@@ -21,5 +21,7 @@ alias paths='vim ~/.dotfiles/.path'
 
 alias bubu="brew update && brew upgrade && brew cleanup"
 
+alias lvim='vim -c "normal '\''0"'
+
 # adding some sugar to git with hub
 eval '$(hub alias -s)'
