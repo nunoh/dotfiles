@@ -764,7 +764,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>249 203 924 485 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>225 225 570 429 0 0 1280 800 </string>
+	<string>0 0 1280 800 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 310 570 451 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2316,7 +2316,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<false/>
 	<key>SmartPlacement</key>
