@@ -264,6 +264,10 @@
 	autocmd VimEnter * nunmap <Leader>hp
 	autocmd VimEnter * nunmap <Leader>hr
 	autocmd VimEnter * nunmap <Leader>hs
+
+	let g:NERDCustomDelimiters = {
+        \ 'c': { 'left': '//' }
+    \ }
 	
 	" get rid of all the nerdcommenter mappings
 	" autocmd VimEnter * unmap <Leader>ca
