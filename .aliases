@@ -23,5 +23,9 @@ alias bubu="brew update && brew upgrade && brew cleanup"
 
 alias lvim='vim -c "normal '\''0"'
 
+alias tm='todotxt-machine'
+
+alias t='todo.sh'
+
 # adding some sugar to git with hub
 eval '$(hub alias -s)'

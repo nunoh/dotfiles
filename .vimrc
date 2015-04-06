@@ -1,16 +1,5 @@
 " vim:foldmethod=marker:foldlevel=0
 
-" TODO
-" toggling comments of block of lines should return cursor
-" comments in C code should be // by default
-" make insert caret work both in terminal and tmux
-" multiple enters on git dirs result in empty lines
-" should really get a way of getting cmd+r to work 
-" symlink .zshrc properly (careful not to get rid of the actual one already)
-" nice.. now git as hub doesn't work
-" have fasd working properly again
-" make ctrlp line ignore proper
-
 " PLUGINS {{{
 
 	set nocompatible
@@ -33,6 +22,7 @@
 		Plugin 'airblade/vim-gitgutter'
 		Plugin 'altercation/vim-colors-solarized'
 		Plugin 'christoomey/vim-tmux-navigator'
+		Plugin 'jerrymarino/xcodebuild.vim'
 
 	call vundle#end()
 
@@ -94,8 +84,8 @@
 		let &t_EI = "\<Esc>]50;CursorShape=0\x7" " block in normal mode
 	endif
 
-	let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-	let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+	" let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+	" let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 	" upon hitting escape to change modes,
 	" send successive move-left and move-right
@@ -111,6 +101,8 @@
 
 	set incsearch 		" search as characters are entered"
 	set hlsearch 		" highlight matches"
+	set ignorecase
+	set smartcase
 
 " }}}
 
@@ -189,6 +181,18 @@
 
  " MISC {{{
 
+	autocmd BufEnter *.cpp set makeprg=xcodebuild
+	autocmd BufEnter *.h set makeprg=xcodebuild
+
+	autocmd QuickfixCmdPost make call AfterMakeC()
+	function! AfterMakeC()
+	" No any error after make
+	if len(getqflist()) == 0
+		!open bin/gamultOSX.app
+	endif
+	" :~)
+	endfunction
+
 	set wrap
 	set virtualedit=all
 	set encoding=utf8
@@ -243,7 +247,7 @@
 	let mapleader = " "
 
 	" makes Y work like D
-	map Y y$
+	" map Y y$
 
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
@@ -305,11 +309,14 @@
 	nnoremap <Leader>o :CtrlP<CR>
 
 	" quickly edit common configuration files
-	nnoremap <Leader>ev :edit $MYVIMRC<CR>
-	nnoremap <Leader>et :edit ~/.tmux.conf<CR>
+	nnoremap <leader>ev :edit $MYVIMRC<CR>
+	nnoremap <leader>et :edit ~/.tmux.conf<CR>
+	nnoremap <leader>ez :edit ~/.zshrc<CR>
+	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
 	
-	nnoremap <Leader>sv :source $MYVIMRC<CR>
-	nnoremap <silent> <Leader>st :!tmux source-file ~/.tmux.conf<CR>
+	nnoremap <leader>sv :source $MYVIMRC<CR>
+	nnoremap <silent> <leader>st :!tmux source-file ~/.tmux.conf<CR>
+	nnoremap <leader>sz :source ~/.tmux.conf<CR>
 
 	" alternate with source and header files
 	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>

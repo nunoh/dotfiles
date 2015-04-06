@@ -719,6 +719,8 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 4</string>
 	<key>NSFontPanelPreviewHeight</key>
 	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
@@ -760,9 +762,9 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>480 4 800 482 0 0 1280 778 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>183 197 924 485 0 0 1280 800 </string>
+	<string>249 203 924 485 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1280 800 0 0 1280 778 </string>
+	<string>225 225 570 429 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 310 570 451 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2304,7 +2306,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-04-01T00:52:38Z</date>
+	<date>2015-04-06T11:42:19Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20141022</string>
 	<key>SavePasteHistory</key>
@@ -2338,7 +2340,7 @@
 	<key>UseBorder</key>
 	<false/>
 	<key>UseCompactLabel</key>
-	<true/>
+	<false/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>WebKitDefaultFontSize</key>
