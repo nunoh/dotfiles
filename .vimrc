@@ -312,7 +312,10 @@
 	nnoremap <leader>ev :edit $MYVIMRC<CR>
 	nnoremap <leader>et :edit ~/.tmux.conf<CR>
 	nnoremap <leader>ez :edit ~/.zshrc<CR>
-	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
+	nnoremap <leader>ea :edit ~/.aliases<CR>
+	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
+
+	vmap y ygv<Esc>
 	
 	nnoremap <leader>sv :source $MYVIMRC<CR>
 	nnoremap <silent> <leader>st :!tmux source-file ~/.tmux.conf<CR>
