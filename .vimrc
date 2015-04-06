@@ -4,6 +4,12 @@
 " toggling comments of block of lines should return cursor
 " comments in C code should be // by default
 " make insert caret work both in terminal and tmux
+" multiple enters on git dirs result in empty lines
+" should really get a way of getting cmd+r to work 
+" symlink .zshrc properly (careful not to get rid of the actual one already)
+" nice.. now git as hub doesn't work
+" have fasd working properly again
+" make ctrlp line ignore proper
 
 " PLUGINS {{{
 
@@ -189,6 +195,18 @@
 	set noswapfile
 	set autoindent
 	set mouse=a
+
+	" let g:ctrlp_custom_ignore = {
+	  " \ 'dir':  '\v[\/]\.(git|hg|svn|)|\build)$',
+	  " \ 'file': '\v\.(exe|so|dll|o)$',
+	  " \ 'link': 'some_bad_symbolic_links',
+	  " \ }
+
+	  " Sane Ignore For ctrlp
+	  let g:ctrlp_custom_ignore = {
+	    \ 'dir':  '\.git$\|build\|bin\|gamultOSX.xcodeproj\|bin\',
+	    \ 'file': '\.exe$\|\.so$\|\.dat$'
+	    \ }
 
 	set splitright
 	set splitbelow
