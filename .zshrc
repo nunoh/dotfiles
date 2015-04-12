@@ -1,23 +1,25 @@
+# source Prezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
 source ~/.dotfiles/.aliases
 source ~/.dotfiles/.exports
 source ~/.dotfiles/.functions
 source ~/.dotfiles/.path
 source ~/.dotfiles/.shortcuts
 
-export ZSH=$HOME/.oh-my-zsh
+# soucing specific autocompletion
+# source ~/.dotfiles/completion/tmuxinator.zsh
 
-ZSH_THEME="robbyrussell"
-# ZSH_THEME="awesomepanda"
-# ZSH_THEME="edvardm"
-# ZSH_THEME="cypher"
+# fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=($fpath /usr/local/share/zsh/site-functions)
 
-plugins=(git hub autojump colored-man brew brew-cask osx npm bower)
-
-source $ZSH/oh-my-zsh.sh
-
+# this is so that accents work properly in autocompletion in the terminal
 setopt combining_chars
 
 # enable vi mode bindings in terminal too
 bindkey -v
 
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+# add sugar to git with hub
+eval "$(hub alias -s)"

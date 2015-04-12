@@ -202,17 +202,11 @@
 	set autoindent
 	set mouse=a
 
-	" let g:ctrlp_custom_ignore = {
-	  " \ 'dir':  '\v[\/]\.(git|hg|svn|)|\build)$',
-	  " \ 'file': '\v\.(exe|so|dll|o)$',
-	  " \ 'link': 'some_bad_symbolic_links',
-	  " \ }
-
-	  " Sane Ignore For ctrlp
-	  let g:ctrlp_custom_ignore = {
-	    \ 'dir':  '\.git$\|build\|bin\|gamultOSX.xcodeproj\|bin\',
-	    \ 'file': '\.exe$\|\.so$\|\.dat$'
-	    \ }
+	" Sane Ignore For ctrlp
+	let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|build\|bin\|gamultOSX.xcodeproj\|bin\',
+	\ 'file': '\.exe$\|\.so$\|\.dat$'
+	\ }
 
 	set splitright
 	set splitbelow
@@ -249,7 +243,7 @@
 	let mapleader = " "
 
 	" makes Y work like D
-	" map Y y$
+	map Y y$
 
 	" avoid extra left shift press that is ruining my left hand
 	nmap ç :
@@ -267,26 +261,28 @@
 	autocmd VimEnter * nunmap <Leader>hr
 	autocmd VimEnter * nunmap <Leader>hs
 
+	" proper C comments by default
 	let g:NERDCustomDelimiters = {
         \ 'c': { 'left': '//' }
     \ }
 	
 	" get rid of all the nerdcommenter mappings
-	" autocmd VimEnter * unmap <Leader>ca
-	" autocmd VimEnter * unmap <Leader>cA
-	" autocmd VimEnter * unmap <Leader>c$
-	" autocmd VimEnter * unmap <Leader>cu
-	" autocmd VimEnter * unmap <Leader>cb
-	" autocmd VimEnter * unmap <Leader>cl
-	" autocmd VimEnter * unmap <Leader>cy
-	" autocmd VimEnter * unmap <Leader>cs
+	autocmd VimEnter * unmap <Leader>ca
+	autocmd VimEnter * unmap <Leader>cA
+	autocmd VimEnter * unmap <Leader>c$
+	autocmd VimEnter * unmap <Leader>cu
+	autocmd VimEnter * unmap <Leader>cb
+	autocmd VimEnter * unmap <Leader>cl
+	autocmd VimEnter * unmap <Leader>cy
+	autocmd VimEnter * unmap <Leader>cs
 	" autocmd VimEnter * unmap <Leader>ci
 	" autocmd VimEnter * unmap <Leader>cn
 	" autocmd VimEnter * unmap <Leader>cm
-	" autocmd VimEnter * unmap <Leader>cc
+	autocmd VimEnter * unmap <Leader>cc
+	" autocmd VimEnter * unmap <Leader>c<Leader>
 
 	" so that toggling is really easy and fast
-	" map <Leader>c <Plug>NERDCommenterToggle
+	map <Leader>c<Leader> <Plug>NERDCommenterToggle gv<Esc>
 
 	noremap <silent> j gj
 	noremap <silent> k gk
@@ -318,7 +314,7 @@
 	nnoremap <leader>ev :edit $MYVIMRC<CR>
 	nnoremap <leader>et :edit ~/.tmux.conf<CR>
 	nnoremap <leader>ez :edit ~/.zshrc<CR>
-	nnoremap <leader>ea :edit ~/.aliases<CR>
+	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
 	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
 
 	vmap y ygv<Esc>
