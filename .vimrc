@@ -275,14 +275,15 @@
 	autocmd VimEnter * unmap <Leader>cl
 	autocmd VimEnter * unmap <Leader>cy
 	autocmd VimEnter * unmap <Leader>cs
-	" autocmd VimEnter * unmap <Leader>ci
-	" autocmd VimEnter * unmap <Leader>cn
-	" autocmd VimEnter * unmap <Leader>cm
+	autocmd VimEnter * unmap <Leader>ci
+	autocmd VimEnter * unmap <Leader>cn
+	autocmd VimEnter * unmap <Leader>cm
 	autocmd VimEnter * unmap <Leader>cc
 	" autocmd VimEnter * unmap <Leader>c<Leader>
 
 	" so that toggling is really easy and fast
-	map <Leader>c<Leader> <Plug>NERDCommenterToggle gv<Esc>
+	"  map <Leader>c<Leader> <Plug>NERDCommenterToggle gv<Esc>
+	map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
 
 	noremap <silent> j gj
 	noremap <silent> k gk
