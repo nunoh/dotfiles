@@ -183,6 +183,9 @@
 
  " MISC {{{
 
+	let g:gitgutter_realtime=1
+	set updatetime=750
+
 	autocmd BufEnter *.cpp set makeprg=xcodebuild
 	autocmd BufEnter *.h set makeprg=xcodebuild
 
