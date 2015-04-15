@@ -22,7 +22,8 @@
 		Plugin 'airblade/vim-gitgutter'
 		Plugin 'altercation/vim-colors-solarized'
 		Plugin 'christoomey/vim-tmux-navigator'
-		Plugin 'jerrymarino/xcodebuild.vim'
+		" Plugin 'jerrymarino/xcodebuild.vim'
+		Plugin 'digitaltoad/vim-jade'
 
 	call vundle#end()
 
