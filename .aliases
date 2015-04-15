@@ -7,7 +7,7 @@ alias lla='ls -la'
 alias lll='ls -l | less'
 
 # got used to autojump before fasd
-alias j='z'
+alias j='fasd_cd -d'
 
 # do not use prezto default's rm confirmation
 # and also make sure not to give an error when reloading .zshrc
