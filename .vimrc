@@ -72,14 +72,14 @@
 	set nowrap
 	
 	" remove big vertifcal border
-	hi VertSplit guifg=fg guibg=bg
-	hi VertSplit guifg=fg ctermbg=bg
+	" hi VertSplit guifg=fg guibg=bg
+	" hi VertSplit guifg=fg ctermbg=bg
 
 	" get rid of tildes for 'blank' lines
 	hi NonText guifg=bg
 	hi NonText ctermfg=bg
 
-	" change cursor SHAPE BETWEEN INSERT AND NORMAL MODE IN ITERM2.APP
+	" change cursor shape between insert and normal mode in iterm2.app
 	if $TERM_PROGRAM =~ "iTerm"
 		let &t_SI = "\<Esc>]50;CursorShape=1\x7" " vertical bar in insert mode
 		let &t_EI = "\<Esc>]50;CursorShape=0\x7" " block in normal mode
@@ -182,94 +182,28 @@
 
  " }}}
 
- " MISC {{{
-
-	let g:gitgutter_realtime=1
-	set updatetime=750
-
-	autocmd BufEnter *.cpp set makeprg=xcodebuild
-	autocmd BufEnter *.h set makeprg=xcodebuild
-
-	autocmd QuickfixCmdPost make call AfterMakeC()
-	function! AfterMakeC()
-	" No any error after make
-	if len(getqflist()) == 0
-		!open bin/gamultOSX.app
-	endif
-	" :~)
-	endfunction
-
-	set wrap
-	set virtualedit=all
-	set encoding=utf8
-	set noswapfile
-	set autoindent
-	set mouse=a
-
-	" Sane Ignore For ctrlp
-	let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|build\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
-	\ 'file': '\.exe$\|\.so$\|\.dat$'
-	\ }
-
-	set splitright
-	set splitbelow
-	
-	" configure vim to write better commit messages
-	autocmd Filetype gitcommit setlocal spell textwidth=72
-
-	" so that spell check is actually readable
-	hi clear SpellBad
-	hi SpellBad cterm=underline
-
-	" better visual indication until where the change word is happening
-	set cpoptions+=$
-
-	" go back to normal mode immedeatly rather than waiting a few miliseconds after escape
-	set ttimeoutlen=0
-
-	" auto complete brace in functions
-	inoremap {<CR> {<CR>}<Esc>ko
-
-	" one space after comment
-	let NERDSpaceDelims=1
-
-	" so that ctrp files open in same window and not in a new split
-	let g:ctrlp_reuse_window = 'netrw'
+" AUTOCOMMANDS {{{
 
 	" disable automatic comment insertion
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" }}}
+	" autocmd BufEnter *.cpp set makeprg=xcodebuild
+	" autocmd BufEnter *.h set makeprg=xcodebuild
 
-" MAPPINGS {{{
-
-	let mapleader = " "
-
-	" makes Y work like D
-	map Y y$
-
-	" avoid extra left shift press that is ruining my left hand
-	nmap ç :
-
-	" write and quite has to be really fast too
-	nnoremap <Leader>w :w<CR>
-	nnoremap <Leader>q :q<CR>
-	nnoremap <silent> <Leader>d :bd<CR>
-    
-	" enter visual line easily
-	nmap <Leader><Leader> V
+	" autocmd QuickfixCmdPost make call AfterMakeC()
+	" function! AfterMakeC()
+	" " No any error after make
+	" if len(getqflist()) == 0
+		" !open bin/gamultOSX.app
+	" endif
+	" " :~)
+	" endfunction
 
 	" remove these mappings so that can use <Leader>h for switching windows
 	autocmd VimEnter * nunmap <Leader>hp
 	autocmd VimEnter * nunmap <Leader>hr
 	autocmd VimEnter * nunmap <Leader>hs
 
-	" proper C comments by default
-	let g:NERDCustomDelimiters = {
-        \ 'c': { 'left': '//' }
-    \ }
-	
 	" get rid of all the nerdcommenter mappings
 	autocmd VimEnter * unmap <Leader>ca
 	autocmd VimEnter * unmap <Leader>cA
@@ -285,9 +219,32 @@
 	autocmd VimEnter * unmap <Leader>cc
 	" autocmd VimEnter * unmap <Leader>c<Leader>
 
+" }}}
+
+" MAPPINGS {{{
+
+	let mapleader = " "
+
+	" makes Y work like D
+	map Y y$
+
+	" avoid extra left shift press that is ruining my left hand
+	nmap ç :
+
+	" write and quit has to be really fast
+	nnoremap <leader>w :w<cr>
+	nnoremap <leader>q :q<cr>
+	nnoremap <silent> <leader>d :bd<cr>
+    
+	" enter visual line easily
+	nmap <Leader><Leader> V
+
 	" so that toggling is really easy and fast
 	"  map <Leader>c<Leader> <Plug>NERDCommenterToggle gv<Esc>
 	map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
+
+	" auto complete brace in functions
+	inoremap {<CR> {<CR>}<Esc>ko
 
 	noremap <silent> j gj
 	noremap <silent> k gk
@@ -307,6 +264,8 @@
 	noremap   <down>  <nop>
 	noremap   <left>  <nop>
 	noremap   <right> <nop>
+	
+	vmap y ygv<Esc>
 
 	" for window fullscreen
 	noremap <silent> <Leader>f <C-W>o " for fullscreen
@@ -322,11 +281,9 @@
 	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
 	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
 
-	vmap y ygv<Esc>
-	
+	" quickly source common configuration files
 	nnoremap <leader>sv :source $MYVIMRC<CR>
 	nnoremap <silent> <leader>st :!tmux source-file ~/.tmux.conf<CR>
-	nnoremap <leader>sz :source ~/.tmux.conf<CR>
 
 	" alternate with source and header files
 	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
@@ -344,5 +301,48 @@
 	" make
 	" nmap <Leader>m :!clear && make<CR>
 	nmap <Leader>m :make<CR>
+
+" }}}
+
+ " MISC {{{
+
+	set wrap
+	set updatetime=750
+	set virtualedit=all
+	set encoding=utf8
+	set noswapfile
+	set autoindent
+	set mouse=a
+	set splitright
+	set splitbelow
+	
+	" better visual indication until where the change word is happening
+	set cpoptions+=$
+
+	" go back to normal mode immedeatly rather than waiting a few miliseconds after escape
+	set ttimeoutlen=0
+
+	" so that spell check is actually readable
+	hi clear SpellBad
+	hi SpellBad cterm=underline
+	
+	let g:gitgutter_realtime=1
+
+	" so that ctrp files open in same window and not in a new split
+	let g:ctrlp_reuse_window = 'netrw'
+
+	" sane ignore for ctrlp
+	let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|build\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
+	\ 'file': '\.exe$\|\.so$\|\.dat$'
+	\ }
+
+	" one space after comment
+	let NERDSpaceDelims=1
+
+	" proper C comments by default
+	let g:NERDCustomDelimiters = {
+        \ 'c': { 'left': '//' }
+    \ }
 
 " }}}
