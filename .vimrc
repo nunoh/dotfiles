@@ -208,7 +208,7 @@
 
 	" Sane Ignore For ctrlp
 	let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|build\|bin\|gamultOSX.xcodeproj\|bin\',
+	\ 'dir':  '\.git$\|build\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
 	\ 'file': '\.exe$\|\.so$\|\.dat$'
 	\ }
 
