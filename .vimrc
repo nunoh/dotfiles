@@ -364,4 +364,7 @@
 
 	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
 
+	set undofile
+	set undodir=$HOME/.vimundo/
+
 " }}}
