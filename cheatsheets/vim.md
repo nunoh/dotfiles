@@ -8,6 +8,10 @@ y	yank until end of line
 
 zg	add word under cursor to dictionary
 
+# Changing case
+gu(movement)
+gU(movement)
+
 # Folds
 
 zo	open fold

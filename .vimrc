@@ -17,13 +17,15 @@
 		Plugin 'kien/ctrlp.vim'
 		Plugin 'rstacruz/sparkup'
 		Plugin 'scrooloose/nerdcommenter'
-		Plugin 'rosenfeld/conque-term'
+		" Plugin 'rosenfeld/conque-term'
 		Plugin 'tpope/vim-fugitive'
 		Plugin 'airblade/vim-gitgutter'
 		Plugin 'altercation/vim-colors-solarized'
 		Plugin 'christoomey/vim-tmux-navigator'
 		" Plugin 'jerrymarino/xcodebuild.vim'
 		Plugin 'digitaltoad/vim-jade'
+		Plugin 'majutsushi/tagbar'
+		Plugin 'vim-scripts/TaskList.vim'
 
 	call vundle#end()
 
@@ -58,7 +60,7 @@
 
 " }}}
 
-" UI {{{
+"   UI {{{
 
 	set number			" show line numbers"
 	set showcmd 		" show command in bottom bar"
@@ -219,6 +221,9 @@
 	autocmd VimEnter * unmap <Leader>cc
 	" autocmd VimEnter * unmap <Leader>c<Leader>
 
+	" autocmd VimEnter * NERDTree
+	" autocmd VimEnter * TagbarOpen
+
 " }}}
 
 " MAPPINGS {{{
@@ -240,8 +245,8 @@
 	nmap <Leader><Leader> V
 
 	" so that toggling is really easy and fast
-	"  map <Leader>c<Leader> <Plug>NERDCommenterToggle gv<Esc>
-	map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
+	" map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
+	vnoremap <Leader>c <Plug>NERDCommenterToggle gv<Esc>
 
 	" auto complete brace in functions
 	inoremap {<CR> {<CR>}<Esc>ko
@@ -272,11 +277,13 @@
 
 	" show NERDTree and CtrlP
 	nmap <leader>nt :NERDTreeToggle<CR>
+	nmap <leader>tb :TagbarToggle<CR>
 	nnoremap <Leader>o :CtrlP<CR>
 
 	" quickly edit common configuration files
 	nnoremap <leader>ev :edit $MYVIMRC<CR>
 	nnoremap <leader>et :edit ~/.tmux.conf<CR>
+	map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
 	nnoremap <leader>ez :edit ~/.zshrc<CR>
 	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
 	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
@@ -286,21 +293,24 @@
 	nnoremap <silent> <leader>st :!tmux source-file ~/.tmux.conf<CR>
 
 	" alternate with source and header files
-	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+	map <leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 	" map Ctrl-Space for autocomplete
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
 	inoremap <Nul> <C-n>
 
+
 	" tab mappings
-	nmap <Leader>tn :tabnew<CR>
-	nmap <Leader>tc :tabclose<CR>
-	nmap <Leader>tl :tabnext<CR>
-	nmap <Leader>th :tabprevious<CR>
+	nmap <leader>tn :tabnew<CR>
+	nmap <leader>tc :tabclose<CR>
+	nmap <leader>tl :tabnext<CR>
+	nmap <leader>th :tabprevious<CR>
 
 	" make
 	" nmap <Leader>m :!clear && make<CR>
 	nmap <Leader>m :make<CR>
+
+	map <leader>tl :TaskList<cr>
 
 " }}}
 
@@ -315,6 +325,11 @@
 	set mouse=a
 	set splitright
 	set splitbelow
+
+	set wildignore+=*/env/**
+	set wildignore+=*/tmp/**
+	
+	set wildignore+=*.npy
 	
 	" better visual indication until where the change word is happening
 	set cpoptions+=$
@@ -333,8 +348,8 @@
 
 	" sane ignore for ctrlp
 	let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|build\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
-	\ 'file': '\.exe$\|\.so$\|\.dat$'
+	\ 'dir':  '\.git$\|build\|tmp\|env\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
+	\ 'file': '\.exe$\|\.so$\|\.ttf$\|\.pdf$\|\.pyc$\|\.dat$'
 	\ }
 
 	" one space after comment
@@ -344,5 +359,9 @@
 	let g:NERDCustomDelimiters = {
         \ 'c': { 'left': '//' }
     \ }
+
+	let NERDTreeIgnore = ['\.pyc$']
+
+	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
 
 " }}}

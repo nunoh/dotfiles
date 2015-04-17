@@ -11,12 +11,15 @@ source ~/.dotfiles/.shortcuts
 
 # soucing specific autocompletion
 # source ~/.dotfiles/completion/tmuxinator.zsh
+source ~/.dotfiles/completion/fab-completion.zsh
 
 # fpath=(/usr/local/share/zsh/site-functions $fpath)
 fpath=($fpath /usr/local/share/zsh/site-functions)
 
 # this is so that accents work properly in autocompletion in the terminal
 setopt combining_chars
+unsetopt incappendhistory
+# setopt append_history
 
 # enable vi mode bindings in terminal too
 bindkey -v
