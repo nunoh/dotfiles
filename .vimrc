@@ -26,6 +26,7 @@
 		Plugin 'digitaltoad/vim-jade'
 		Plugin 'majutsushi/tagbar'
 		Plugin 'vim-scripts/TaskList.vim'
+		Plugin 'editorconfig/editorconfig-vim'
 
 	call vundle#end()
 
@@ -245,8 +246,8 @@
 	nmap <Leader><Leader> V
 
 	" so that toggling is really easy and fast
-	" map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
-	vnoremap <Leader>c <Plug>NERDCommenterToggle gv<Esc>
+	nmap <Leader>c <Plug>NERDCommenterToggle<Esc>
+	vmap <Leader>c <Plug>NERDCommenterToggle gv<Esc>
 
 	" auto complete brace in functions
 	inoremap {<CR> {<CR>}<Esc>ko
@@ -283,7 +284,6 @@
 	" quickly edit common configuration files
 	nnoremap <leader>ev :edit $MYVIMRC<CR>
 	nnoremap <leader>et :edit ~/.tmux.conf<CR>
-	map <Leader>c <Plug>NERDCommenterToggle gv<Esc>
 	nnoremap <leader>ez :edit ~/.zshrc<CR>
 	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
 	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
@@ -361,7 +361,6 @@
     \ }
 
 	let NERDTreeIgnore = ['\.pyc$']
-
 	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
 
 	set undofile
