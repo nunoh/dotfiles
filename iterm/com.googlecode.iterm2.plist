@@ -764,7 +764,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>249 203 924 485 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1280 800 0 0 1280 778 </string>
+	<string>0 327 570 451 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 310 570 451 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1327,11 +1327,11 @@
 			<key>Name</key>
 			<string>Solarized Dark</string>
 			<key>Non Ascii Font</key>
-			<string>MenloForPowerline-Regular 11</string>
+			<string>MenloForPowerline-Regular 10</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MenloForPowerline-Regular 11</string>
+			<string>MenloForPowerline-Regular 10</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2306,7 +2306,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-04-14T17:06:44Z</date>
+	<date>2015-04-20T15:17:41Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.0.0.20141022</string>
 	<key>SavePasteHistory</key>
