@@ -27,6 +27,8 @@
 		Plugin 'majutsushi/tagbar'
 		Plugin 'vim-scripts/TaskList.vim'
 		Plugin 'editorconfig/editorconfig-vim'
+		Plugin 'Valloric/YouCompleteMe'
+		Plugin 'scrooloose/syntastic'
 
 	call vundle#end()
 
@@ -340,6 +342,8 @@
 	" so that spell check is actually readable
 	hi clear SpellBad
 	hi SpellBad cterm=underline
+
+	let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
 	
 	let g:gitgutter_realtime=1
 
@@ -365,5 +369,14 @@
 
 	set undofile
 	set undodir=$HOME/.vimundo/
+
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
 
 " }}}
