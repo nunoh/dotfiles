@@ -1,5 +1,10 @@
 These are some randoms vim stuff that I shouldn't forget
 
+# Navigating
+
+C-O jump backward
+C-I jump forward
+
 # Basics
 
 d$	delete until end of line
