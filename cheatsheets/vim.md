@@ -21,6 +21,7 @@ gU(movement)
 
 zo	open fold
 zc	close fold	
+zM  close all folds
 
 z.	put the line with the cursor in the center of the screen
 z<CR> igual
