@@ -30,5 +30,8 @@ alias tm='todotxt-machine'
 
 alias t='todo.sh'
 
+# so that scrolling works in tmux properly
+alias irssi='TERM=screen-256color irssi'
+
 # adding some sugar to git with hub
 eval '$(hub alias -s)'
