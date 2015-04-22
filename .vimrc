@@ -29,6 +29,7 @@
 		Plugin 'editorconfig/editorconfig-vim'
 		Plugin 'Valloric/YouCompleteMe'
 		Plugin 'scrooloose/syntastic'
+		Plugin 'nathanaelkane/vim-indent-guides'
 
 	call vundle#end()
 
@@ -44,12 +45,16 @@
 
 	syntax enable
 
-	let g:solarized_termcolors=16
-	set background=dark
+	" let g:solarized_termcolors=16
+	" set background=dark
 	" set background=light
-	colorscheme solarized
+	" colorscheme solarized
      
-	" colorscheme monokai
+	" colorscheme molokai
+	colorscheme monokai
+
+	" let g:molokai_original = 1
+	" let g:rehash256 = 1
 	
 " }}}
 
@@ -67,7 +72,7 @@
 
 	set number			" show line numbers"
 	set showcmd 		" show command in bottom bar"
-	set cursorline		" hightlight current line"
+	" set cursorline		" hightlight current line"
 	filetype indent on 	" load filetype-specific indent files"
 	set wildmenu 		" visual autocomplete for command menu"
 	set showmatch		" hightlight matching [{()}]"
@@ -125,7 +130,7 @@
 " STATUS LINE {{{
 
    let g:lightline = {
-	  \ 'colorscheme': 'solarized',
+	  \ 'colorscheme': 'default',
 	  \ 'mode_map': { 'c': 'NORMAL' },
 	  \ 'active': {
 	  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
