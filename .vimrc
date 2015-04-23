@@ -40,6 +40,7 @@
 		" misc
 		Plugin 'tpope/vim-sensible'
 		Plugin 'editorconfig/editorconfig-vim'
+		Plugin 'tmux-plugins/vim-tmux'
 		Plugin 'christoomey/vim-tmux-navigator'
 
 		" so that I don't forget
