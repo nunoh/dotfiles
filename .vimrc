@@ -20,6 +20,7 @@
 		Plugin 'vim-scripts/TaskList.vim'
 		Plugin 'nathanaelkane/vim-indent-guides'
 		Plugin 'altercation/vim-colors-solarized'
+		Plugin 'junegunn/goyo.vim'
 
 		" web stuff
 		Plugin 'mattn/emmet-vim'
