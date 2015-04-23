@@ -9,27 +9,43 @@
 
 	call vundle#begin()
 
+		" Vundle better than Pathogen they say
 		Plugin 'gmarik/Vundle.vim'
+		
+		" UI
 		Plugin 'itchyny/lightline.vim'
 		Plugin 'scrooloose/nerdtree'
-		Plugin 'HTML-AutoCloseTag'
-		Plugin 'mattn/emmet-vim'
-		Plugin 'kien/ctrlp.vim'
-		Plugin 'rstacruz/sparkup'
-		Plugin 'scrooloose/nerdcommenter'
-		" Plugin 'rosenfeld/conque-term'
-		Plugin 'tpope/vim-fugitive'
-		Plugin 'airblade/vim-gitgutter'
-		Plugin 'altercation/vim-colors-solarized'
-		Plugin 'christoomey/vim-tmux-navigator'
-		" Plugin 'jerrymarino/xcodebuild.vim'
-		Plugin 'digitaltoad/vim-jade'
 		Plugin 'majutsushi/tagbar'
+		Plugin 'kien/ctrlp.vim'
 		Plugin 'vim-scripts/TaskList.vim'
-		Plugin 'editorconfig/editorconfig-vim'
+		Plugin 'nathanaelkane/vim-indent-guides'
+		Plugin 'altercation/vim-colors-solarized'
+
+		" web stuff
+		Plugin 'mattn/emmet-vim'
+		Plugin 'rstacruz/sparkup'
+		Plugin 'digitaltoad/vim-jade'
+		
+		" text manipulations
+		Plugin 'scrooloose/nerdcommenter'
+
+		" git stuff
+		Plugin 'airblade/vim-gitgutter'
+		Plugin 'tpope/vim-fugitive'
+
+		" linters and completion
 		Plugin 'Valloric/YouCompleteMe'
 		Plugin 'scrooloose/syntastic'
-		Plugin 'nathanaelkane/vim-indent-guides'
+		
+		" misc
+		Plugin 'tpope/vim-sensible'
+		Plugin 'editorconfig/editorconfig-vim'
+		Plugin 'christoomey/vim-tmux-navigator'
+
+		" so that I don't forget
+		" Plugin 'HTML-AutoCloseTag'
+		" Plugin 'jerrymarino/xcodebuild.vim'
+		" Plugin 'rosenfeld/conque-term'
 
 	call vundle#end()
 
@@ -45,13 +61,13 @@
 
 	syntax enable
 
-	" let g:solarized_termcolors=16
+	let g:solarized_termcolors=16
 	" set background=dark
-	" set background=light
-	" colorscheme solarized
+	set background=light
+	colorscheme solarized
      
 	" colorscheme molokai
-	colorscheme monokai
+	" colorscheme monokai
 
 	" let g:molokai_original = 1
 	" let g:rehash256 = 1
@@ -80,6 +96,7 @@
 	set modelines=1
 	set visualbell
 	set nowrap
+	set scrolloff=5		" always have 5 lines below the cursor (or above) when scrolling
 	
 	" remove big vertifcal border
 	" hi VertSplit guifg=fg guibg=bg
@@ -117,6 +134,14 @@
 	set ignorecase
 	set smartcase
 
+	" make search results appear in the middle of the screen
+	nnoremap n nzz
+	nnoremap N Nzz
+	nnoremap * *zz
+	nnoremap # #zz
+	nnoremap g* g*zz
+	nnoremap g# g#zz 
+
 " }}}
 
 " FOLDING {{{
@@ -130,7 +155,7 @@
 " STATUS LINE {{{
 
    let g:lightline = {
-	  \ 'colorscheme': 'default',
+	  \ 'colorscheme': 'solarized',
 	  \ 'mode_map': { 'c': 'NORMAL' },
 	  \ 'active': {
 	  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -306,7 +331,6 @@
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
 	inoremap <Nul> <C-n>
 
-
 	" tab mappings
 	nmap <leader>tn :tabnew<CR>
 	nmap <leader>tc :tabclose<CR>
@@ -318,6 +342,9 @@
 	nmap <Leader>m :make<CR>
 
 	map <leader>tl :TaskList<cr>
+
+	nmap <CR> o<esc>
+	nmap <S-CR> O<esc>
 
 " }}}
 
