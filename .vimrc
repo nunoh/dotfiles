@@ -441,7 +441,7 @@
 
 	set omnifunc=emoji#complete
 
-	let g:goyo_width=120
+	let g:goyo_width=140
 	let g:goyo_margin_top=1
 	let g:goyo_margin_bottom=1
 
