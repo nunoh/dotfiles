@@ -363,6 +363,9 @@
 
 	map <leader>g :Goyo<cr>
 
+	nnoremap <leader>+ 10<C-W>>
+	nnoremap <leader>- 10<C-W><
+
 " }}}
 
  " MISC {{{
@@ -429,6 +432,17 @@
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
 
-	set completefunc+=emoji#complete
+	silent! if emoji#available()
+		let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+		let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+		let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+		let g:gitgutter_sign_modified_removed = emoji#for('collision')
+	endif
+
+	set omnifunc=emoji#complete
+
+	let g:goyo_width=120
+	let g:goyo_margin_top=1
+	let g:goyo_margin_bottom=1
 
 " }}}
