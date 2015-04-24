@@ -1,36 +1,68 @@
-These are some randoms vim stuff that I shouldn't forget
+# My vim cheat sheet
 
-# Navigating
+so that I don't forget them :relaxed:
 
-C-O jump backward
-C-I jump forward
+### Text objects stuff
 
-# Basics
+	dl	 delete character (alias: "x")
+	diw  delete inner word
+	daw  delete a word
+	diW  delete inner WORD
+	daW  delete a WORD
+	dgn  delete the next search pattern match
+	dd   delete one line
+	dis  delete inner sentence
+	das  delete a sentence
+	dib  delete inner '(' ')' block
+	dab  delete a '(' ')' block
+	dip  delete inner paragraph
+	dap  delete a paragraph
+	diB  delete inner '{' '}'
+	daB  delete a '{' '}'
 
-d$	delete until end of line
-D	delete until end of line
-y	yank until end of line
 
-zg	add word under cursor to dictionary
+### Navigating
 
-# Changing case
-gu(movement)
-gU(movement)
+	C-O jump backward
+	C-I jump forward
 
-# Folds
 
-zo	open fold
-zc	close fold	
-zM  close all folds
+### Basics
 
-z.	put the line with the cursor in the center of the screen
-z<CR> igual
-zt	put the line with the cursor in the top of the screen
-zb	put the line with the cursor in the bottom of the screen
+	d$	delete until end of line
+	D	delete until end of line
+	y	yank until end of line
 
-# Windows
+	zg	add word under cursor to dictionary
 
-C-W-r switch windows
+### Changing case
 
-gf	open file under cursor in the same window
-<C-W>f open file under curosr in a new window
+	gu{movement}
+	gU{movement}
+
+
+### Folds
+
+	zo	open fold
+	zc	close fold	
+	zM  close all folds
+	zR	open all folds
+
+
+### Moving cursor around
+
+	z.	put the line with the cursor in the center of the screen
+	z<CR> igual
+	zt	put the line with the cursor in the top of the screen
+	zb	put the line with the cursor in the bottom of the screen
+
+
+### Windows
+
+	C-W-r switch windows
+
+
+### File Stuff
+
+	gf	open file under cursor in the same window
+	<C-W>f open file under curosr in a new window
