@@ -19,6 +19,9 @@ alias ohmyzsh='subl ~/.oh-my-zsh'
 alias reload='source ~/.zshrc'
 alias paths='vim ~/.dotfiles/.path'
 
+# quicklook from command line :)
+alias ql='qlmanage -p >/dev/null 2>/dev/null'
+
 alias bubu='brew update && brew upgrade && brew cleanup'
 alias bci='brew cask install'
 
