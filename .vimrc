@@ -48,11 +48,15 @@
 		Plugin 'editorconfig/editorconfig-vim'
 		Plugin 'tmux-plugins/vim-tmux'
 		Plugin 'christoomey/vim-tmux-navigator'
+		Plugin 'terryma/vim-multiple-cursors'
+		Plugin 'plasticboy/vim-markdown'
+		Plugin 'junegunn/vim-xmark'
 
 		" so that I don't forget
 		" Plugin 'HTML-AutoCloseTag'
 		" Plugin 'jerrymarino/xcodebuild.vim'
 		" Plugin 'rosenfeld/conque-term'
+		" Plugin 'suan/vim-instant-markdown'
 
 	call vundle#end()
 
@@ -232,6 +236,8 @@
 	" autocmd BufEnter *.cpp set makeprg=xcodebuild
 	" autocmd BufEnter *.h set makeprg=xcodebuild
 
+	autocmd BufEnter *.md :Goyo
+	
 	" autocmd QuickfixCmdPost make call AfterMakeC()
 	" function! AfterMakeC()
 	" " No any error after make
@@ -350,8 +356,12 @@
 
 	map <leader>tl :TaskList<cr>
 
-	nmap <CR> o<esc>
-	nmap <S-CR> O<esc>
+	" for entering empty lines without leaving normal mode
+	nmap <CR> O<esc>
+	" nmap <S-CR> o<esc> " not possible to map shift-enter in terminal vim
+	" nmap <C-CR> o<esc> " this didn't seem to work as well 
+
+	map <leader>g :Goyo<cr>
 
 " }}}
 
@@ -418,9 +428,6 @@
 	let g:syntastic_auto_loc_list = 1
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
-
-	autocmd User GoyoEnter Limelight
-	autocmd User GoyoLeave Limelight!
 
 	set completefunc+=emoji#complete
 
