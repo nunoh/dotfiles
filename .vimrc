@@ -21,6 +21,9 @@
 		Plugin 'nathanaelkane/vim-indent-guides'
 		Plugin 'altercation/vim-colors-solarized'
 		Plugin 'junegunn/goyo.vim'
+		Plugin 'junegunn/limelight.vim'
+		Plugin 'junegunn/vim-emoji'
+		Plugin 'mhinz/vim-startify'
 
 		" web stuff
 		Plugin 'mattn/emmet-vim'
@@ -29,6 +32,8 @@
 		
 		" text manipulations
 		Plugin 'scrooloose/nerdcommenter'
+		Plugin 'tpope/vim-surround'
+		Plugin 'tpope/vim-repeat'
 
 		" git stuff
 		Plugin 'airblade/vim-gitgutter'
@@ -63,13 +68,13 @@
 
 	syntax enable
 
-	let g:solarized_termcolors=16
+	" let g:solarized_termcolors=16
 	" set background=dark
-	set background=light
-	colorscheme solarized
+	" set background=light
+	" colorscheme solarized
      
 	" colorscheme molokai
-	" colorscheme monokai
+	colorscheme monokai
 
 	" let g:molokai_original = 1
 	" let g:rehash256 = 1
@@ -157,7 +162,7 @@
 " STATUS LINE {{{
 
    let g:lightline = {
-	  \ 'colorscheme': 'solarized',
+	  \ 'colorscheme': 'jellybeans',
 	  \ 'mode_map': { 'c': 'NORMAL' },
 	  \ 'active': {
 	  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
@@ -401,8 +406,9 @@
 	let NERDTreeIgnore = ['\.pyc$']
 	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
 
-	set undofile
-	set undodir=$HOME/.vimundo/
+	" TODO: ideally this would prompt if wanting to revert before last opening file
+	" set undofile
+	" set undodir=$HOME/.vimundo/
 
 	set statusline+=%#warningmsg#
 	set statusline+=%{SyntasticStatuslineFlag()}
@@ -412,5 +418,10 @@
 	let g:syntastic_auto_loc_list = 1
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
+
+	autocmd User GoyoEnter Limelight
+	autocmd User GoyoLeave Limelight!
+
+	set completefunc+=emoji#complete
 
 " }}}
