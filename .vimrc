@@ -233,19 +233,15 @@
 	" disable automatic comment insertion
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-	" autocmd BufEnter *.cpp set makeprg=xcodebuild
-	" autocmd BufEnter *.h set makeprg=xcodebuild
-
 	autocmd BufEnter *.md :Goyo
-	
-	" autocmd QuickfixCmdPost make call AfterMakeC()
-	" function! AfterMakeC()
-	" " No any error after make
-	" if len(getqflist()) == 0
-		" !open bin/gamultOSX.app
-	" endif
-	" " :~)
-	" endfunction
+
+	" nice higlighting for some custom dotfiles that don't get detected
+	autocmd BufEnter .aliases set syntax=sh
+	autocmd BufEnter .astylerc set syntax=sh
+	autocmd BufEnter .exports set syntax=sh
+	autocmd BufEnter .functions set syntax=sh
+	autocmd BufEnter .path set syntax=sh
+	autocmd BufEnter .shortcuts set syntax=sh
 
 	" remove these mappings so that can use <Leader>h for switching windows
 	autocmd VimEnter * nunmap <Leader>hp
