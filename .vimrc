@@ -357,7 +357,7 @@
 	" nmap <S-CR> o<esc> " not possible to map shift-enter in terminal vim
 	" nmap <C-CR> o<esc> " this didn't seem to work as well 
 
-	map <silent> <Leader>g :Goyo<CR>
+	map <silent> <Leader>gy :Goyo<CR>
 
 	nnoremap <Leader>+ 10<C-W>>
 	nnoremap <Leader>- 10<C-W><
