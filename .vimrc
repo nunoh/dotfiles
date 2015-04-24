@@ -432,12 +432,12 @@
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
 
-	silent! if emoji#available()
-		let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-		let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-		let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-		let g:gitgutter_sign_modified_removed = emoji#for('collision')
-	endif
+	" silent! if emoji#available()
+		" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+		" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+		" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+		" let g:gitgutter_sign_modified_removed = emoji#for('collision')
+	" endif
 
 	set omnifunc=emoji#complete
 
