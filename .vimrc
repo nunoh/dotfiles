@@ -283,9 +283,9 @@
 	nmap ç :
 
 	" write and quit has to be really fast
-	nnoremap <leader>w :w<cr>
-	nnoremap <leader>q :q<cr>
-	nnoremap <silent> <leader>d :bd<cr>
+	nnoremap <Leader>w :w<CR>
+	nnoremap <Leader>q :q<CR>
+	nnoremap <silent> <Leader>d :bd<CR>
     
 	" enter visual line easily
 	nmap <Leader><Leader> V
@@ -301,10 +301,10 @@
 	noremap <silent> k gk
 
 	" fast window switching
-	noremap <silent> <leader>h <C-W>h
-	noremap <silent> <leader>j <C-W>j
-	noremap <silent> <leader>k <C-W>k
-	noremap <silent> <leader>l <C-W>l
+	noremap <silent> <Leader>h <C-W>h
+	noremap <silent> <Leader>j <C-W>j
+	noremap <silent> <Leader>k <C-W>k
+	noremap <silent> <Leader>l <C-W>l
 
 	" no arrow keys
 	inoremap  <up>    <nop>
@@ -322,49 +322,49 @@
 	noremap <silent> <Leader>f <C-W>o " for fullscreen
 
 	" show NERDTree and CtrlP
-	nmap <leader>nt :NERDTreeToggle<CR>
-	nmap <leader>tb :TagbarToggle<CR>
+	nmap <Leader>nt :NERDTreeToggle<CR>
+	nmap <Leader>tb :TagbarToggle<CR>
 	nnoremap <Leader>o :CtrlP<CR>
 
 	" quickly edit common configuration files
-	nnoremap <leader>ev :edit $MYVIMRC<CR>
-	nnoremap <leader>et :edit ~/.tmux.conf<CR>
-	nnoremap <leader>ez :edit ~/.zshrc<CR>
-	nnoremap <leader>ea :edit ~/.dotfiles/.aliases<CR>
-	nnoremap <leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
+	nnoremap <Leader>ev :edit $MYVIMRC<CR>
+	nnoremap <Leader>et :edit ~/.tmux.conf<CR>
+	nnoremap <Leader>ez :edit ~/.zshrc<CR>
+	nnoremap <Leader>ea :edit ~/.dotfiles/.aliases<CR>
+	nnoremap <Leader>ec :edit ~/.dotfiles/cheatsheets/vim.md<CR>
 
 	" quickly source common configuration files
-	nnoremap <leader>sv :source $MYVIMRC<CR>
-	nnoremap <silent> <leader>st :!tmux source-file ~/.tmux.conf<CR>
+	nnoremap <Leader>sv :source $MYVIMRC<CR>
+	nnoremap <silent> <Leader>st :!tmux source-file ~/.tmux.conf<CR>
 
 	" alternate with source and header files
-	map <leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+	map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 	" map Ctrl-Space for autocomplete
 	" Ctrl-Space gets mapped to Nul on terminals with no gui
 	inoremap <Nul> <C-n>
 
 	" tab mappings
-	nmap <leader>tn :tabnew<CR>
-	nmap <leader>tc :tabclose<CR>
-	nmap <leader>tl :tabnext<CR>
-	nmap <leader>th :tabprevious<CR>
+	nmap <Leader>tn :tabnew<CR>
+	nmap <Leader>tc :tabclose<CR>
+	nmap <Leader>tl :tabnext<CR>
+	nmap <Leader>th :tabprevious<CR>
 
 	" make
 	" nmap <Leader>m :!clear && make<CR>
 	nmap <Leader>m :make<CR>
 
-	map <leader>tl :TaskList<cr>
+	map <Leader>tl :TaskList<CR>
 
 	" for entering empty lines without leaving normal mode
 	nmap <CR> O<esc>
 	" nmap <S-CR> o<esc> " not possible to map shift-enter in terminal vim
 	" nmap <C-CR> o<esc> " this didn't seem to work as well 
 
-	map <silent> <leader>g :Goyo<cr>
+	map <silent> <Leader>g :Goyo<CR>
 
-	nnoremap <leader>+ 10<C-W>>
-	nnoremap <leader>- 10<C-W><
+	nnoremap <Leader>+ 10<C-W>>
+	nnoremap <Leader>- 10<C-W><
 
 " }}}
 
