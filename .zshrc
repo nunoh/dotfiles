@@ -12,8 +12,7 @@ source ~/.dotfiles/.shortcuts
 # soucing specific autocompletion
 # source ~/.dotfiles/completion/tmuxinator.zsh
 source ~/.dotfiles/completion/fab-completion.zsh
-
-# fpath=(/usr/local/share/zsh/site-functions $fpath)
+source /Users/Nuno/.gulp-autocompletion-zsh/gulp-autocompletion.zsh
 fpath=($fpath /usr/local/share/zsh/site-functions)
 
 # this is so that accents work properly in autocompletion in the terminal
