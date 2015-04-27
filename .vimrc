@@ -34,6 +34,7 @@
 		Plugin 'scrooloose/nerdcommenter'
 		Plugin 'tpope/vim-surround'
 		Plugin 'tpope/vim-repeat'
+		Plugin 'junegunn/vim-easy-align'
 
 		" git stuff
 		Plugin 'airblade/vim-gitgutter'
@@ -362,6 +363,12 @@
 	nnoremap <Leader>+ 10<C-W>>
 	nnoremap <Leader>- 10<C-W><
 
+	" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+	vmap <Enter> <Plug>(EasyAlign)
+
+	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nmap ga <Plug>(EasyAlign)
+
 " }}}
 
  " MISC {{{
@@ -438,7 +445,9 @@
 	set omnifunc=emoji#complete
 
 	let g:goyo_width=140
-	let g:goyo_margin_top=1
-	let g:goyo_margin_bottom=1
+	let g:goyo_margin_top=0
+	let g:goyo_margin_bottom=0
+
+	let g:syntastic_html_checkers=['']
 
 " }}}
