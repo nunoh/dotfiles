@@ -17,8 +17,8 @@ fpath=($fpath /usr/local/share/zsh/site-functions)
 
 # this is so that accents work properly in autocompletion in the terminal
 setopt combining_chars
-unsetopt incappendhistory
-# setopt append_history
+# unsetopt incappendhistory
+setopt append_history no_inc_append_history no_share_history
 
 # enable vi mode bindings in terminal too
 bindkey -v
