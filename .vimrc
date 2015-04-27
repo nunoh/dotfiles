@@ -234,7 +234,7 @@
 	" disable automatic comment insertion
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-	autocmd BufEnter *.md :Goyo
+	" autocmd BufEnter *.md :Goyo
 
 	" nice higlighting for some custom dotfiles that don't get detected
 	autocmd BufEnter .aliases set syntax=sh
