@@ -416,7 +416,8 @@
 
 	" proper C comments by default
 	let g:NERDCustomDelimiters = {
-        \ 'c': { 'left': '//' }
+        \ 'c': { 'left': '//' },
+        \ 'less': { 'left': '//' }
     \ }
 
 	let NERDTreeIgnore = ['\.pyc$']
