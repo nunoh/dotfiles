@@ -22,7 +22,7 @@ alias paths='vim ~/.dotfiles/.path'
 # quicklook from command line :)
 alias ql='qlmanage -p >/dev/null 2>/dev/null'
 
-alias bubu='brew update && brew upgrade && brew cleanup'
+alias bubu='brew update && brew upgrade --all && brew cleanup'
 alias bci='brew cask install'
 
 alias lvim='vim -c "normal '\''0"'
