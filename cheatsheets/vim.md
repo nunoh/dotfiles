@@ -59,7 +59,8 @@ so that I don't forget them :relaxed:
 
 ### Windows
 
-	C-W-r switch windows
+	C-W-r switch windows (the cursor)
+	C-W x swtich the buffer of the windows
 
 
 ### File Stuff
