@@ -24,6 +24,7 @@
 		Plugin 'junegunn/limelight.vim'
 		Plugin 'junegunn/vim-emoji'
 		Plugin 'mhinz/vim-startify'
+		Plugin 'moll/vim-bbye'
 
 		" web stuff
 		Plugin 'mattn/emmet-vim'
