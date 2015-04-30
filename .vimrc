@@ -163,6 +163,10 @@
 	set foldmethod=indent
 	set foldlevelstart=20
 
+    " remember folds after closing
+	autocmd BufWinLeave *.* mkview
+	autocmd BufWinEnter *.* silent loadview 
+
 " }}}
 
 " STATUS LINE {{{
