@@ -289,7 +289,8 @@
 	" write and quit has to be really fast
 	nnoremap <Leader>w :w<CR>
 	nnoremap <Leader>q :q<CR>
-	nnoremap <silent> <Leader>d :bd<CR>
+	" nnoremap <silent> <Leader>d :bd<CR>
+	nnoremap <silent> <Leader>d :Bdelete<CR>
     
 	" enter visual line easily
 	nmap <Leader><Leader> V
