@@ -110,6 +110,8 @@
 	set visualbell
 	set nowrap
 	set scrolloff=5		" always have 5 lines below the cursor (or above) when scrolling
+
+	set listchars=tab:┊\ 
 	
 	" remove big vertifcal border
 	" hi VertSplit guifg=fg guibg=bg
