@@ -36,6 +36,7 @@
 		Plugin 'tpope/vim-surround'
 		Plugin 'tpope/vim-repeat'
 		Plugin 'junegunn/vim-easy-align'
+		Plugin 'godlygeek/tabular'
 
 		" git stuff
 		Plugin 'airblade/vim-gitgutter'
