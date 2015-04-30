@@ -381,7 +381,6 @@
 
  " MISC {{{
 
-	set wrap
 	set updatetime=750
 	set virtualedit=all
 	set encoding=utf8
