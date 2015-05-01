@@ -459,4 +459,6 @@
 
 	let g:syntastic_html_checkers=['']
 
+	let NERDTreeMinimalUI=1
+
 " }}}
