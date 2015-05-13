@@ -36,5 +36,8 @@ alias t='todo.sh'
 # so that scrolling works in tmux properly
 alias irssi='TERM=screen-256color irssi'
 
+alias thead='brew switch tesseract HEAD'
+alias t3='brew switch tesseract 3.02.02_3'
+
 # adding some sugar to git with hub
 eval '$(hub alias -s)'
