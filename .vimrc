@@ -75,17 +75,13 @@
 
 	syntax enable
 
-	" let g:solarized_termcolors=16
-	" set background=dark
+	let g:solarized_termcolors=16
+	set background=dark
 	" set background=light
-	" colorscheme solarized
+	colorscheme solarized
      
-	" colorscheme molokai
-	colorscheme monokai
+	" colorscheme monokai
 
-	" let g:molokai_original = 1
-	" let g:rehash256 = 1
-	
 " }}}
 
 " SPACES AND TABS {{{
@@ -175,7 +171,7 @@
 " STATUS LINE {{{
 
    let g:lightline = {
-	  \ 'colorscheme': 'jellybeans',
+	  \ 'colorscheme': 'solarized',
 	  \ 'mode_map': { 'c': 'NORMAL' },
 	  \ 'active': {
 	  \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
