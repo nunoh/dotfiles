@@ -248,11 +248,6 @@
 	autocmd BufEnter .path set syntax=sh
 	autocmd BufEnter .shortcuts set syntax=sh
 
-	" remove these mappings so that can use <Leader>h for switching windows
-	autocmd VimEnter * nunmap <Leader>hp
-	autocmd VimEnter * nunmap <Leader>hr
-	autocmd VimEnter * nunmap <Leader>hs
-
 	" get rid of all the nerdcommenter mappings
 	autocmd VimEnter * unmap <Leader>ca
 	autocmd VimEnter * unmap <Leader>cA
@@ -301,12 +296,6 @@
 
 	noremap <silent> j gj
 	noremap <silent> k gk
-
-	" fast window switching
-	noremap <silent> <Leader>h <C-W>h
-	noremap <silent> <Leader>j <C-W>j
-	noremap <silent> <Leader>k <C-W>k
-	noremap <silent> <Leader>l <C-W>l
 
 	" no arrow keys
 	inoremap  <up>    <nop>
@@ -398,39 +387,6 @@
 	" go back to normal mode immedeatly rather than waiting a few miliseconds after escape
 	set ttimeoutlen=0
 
-	" so that spell check is actually readable
-	hi clear SpellBad
-	hi SpellBad cterm=underline
-
-	let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
-	
-	let g:gitgutter_realtime=1
-
-	" so that ctrp files open in same window and not in a new split
-	let g:ctrlp_reuse_window = 'netrw'
-
-	" sane ignore for ctrlp
-	let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|build\|tmp\|env\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
-	\ 'file': '\.exe$\|\.so$\|\.ttf$\|\.pdf$\|\.pyc$\|\.dat$'
-	\ }
-
-	" one space after comment
-	let NERDSpaceDelims=1
-
-	" proper C comments by default
-	let g:NERDCustomDelimiters = {
-        \ 'c': { 'left': '//' },
-        \ 'less': { 'left': '//' }
-    \ }
-
-	let NERDTreeIgnore = ['\.pyc$']
-	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
-
-	" TODO: ideally this would prompt if wanting to revert before last opening file
-	" set undofile
-	" set undodir=$HOME/.vimundo/
-
 	set statusline+=%#warningmsg#
 	set statusline+=%{SyntasticStatuslineFlag()}
 	set statusline+=%*
@@ -438,26 +394,58 @@
 	" syncronize vim register and system clipboard 
 	set clipboard^=unnamed
 
+	set omnifunc=emoji#complete
+
+	" so that spell check is actually readable
+	hi clear SpellBad
+	hi SpellBad cterm=underline
+
+	" TODO: ideally this would prompt if wanting to revert before last opening file
+	" set undofile
+	" set undodir=$HOME/.vimundo/
+
+" }}}
+
+" PLUGIN CONFIGURATIONS {{{
+
+	let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
+	
+	" sane ignore for ctrlp
+	let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|build\|tmp\|env\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
+	\ 'file': '\.exe$\|\.so$\|\.ttf$\|\.pdf$\|\.pyc$\|\.dat$'
+	\ }
+	let g:ctrlp_reuse_window = 'netrw' " so that ctrp files open in same window and not in a new split
+
+	
+	" proper C comments by default
+	let g:NERDCustomDelimiters = {
+        \ 'c': { 'left': '//' },
+        \ 'less': { 'left': '//' }
+    \ }
+	let g:NERDSpaceDelims=1 " one space after comment
+
+	let g:NERDTreeIgnore = ['\.pyc$']
+	let g:NERDTreeMinimalUI=1
+
+	let g:tlTokenList = ["TODO", "NOTE", "FIXME"]
+
 	let g:syntastic_always_populate_loc_list = 1
 	let g:syntastic_auto_loc_list = 1
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
+	let g:syntastic_html_checkers=['']
 
+	let g:goyo_width=140
+	let g:goyo_margin_top=0
+	let g:goyo_margin_bottom=0
+
+	let g:gitgutter_realtime=1
 	" silent! if emoji#available()
 		" let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
 		" let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
 		" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 		" let g:gitgutter_sign_modified_removed = emoji#for('collision')
 	" endif
-
-	set omnifunc=emoji#complete
-
-	let g:goyo_width=140
-	let g:goyo_margin_top=0
-	let g:goyo_margin_bottom=0
-
-	let g:syntastic_html_checkers=['']
-
-	let NERDTreeMinimalUI=1
 
 " }}}
