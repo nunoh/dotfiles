@@ -27,6 +27,10 @@ so that I don't forget them :relaxed:
 	C-I jump forward
 
 
+### Searching 
+
+	#	search for word under the cursor
+
 ### Basics
 
 	d$	delete until end of line
