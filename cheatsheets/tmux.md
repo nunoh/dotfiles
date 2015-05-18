@@ -11,7 +11,7 @@ prefix + L
 
 # Copy mode
 
-enter copy mode: 
+enter copy mode:  prefix + y
 
 # Swapping 
 
