@@ -65,6 +65,7 @@ so that I don't forget them :relaxed:
 
 	C-W-r switch windows (the cursor)
 	C-W x swtich the buffer of the windows
+	C-W=  resize splits evenly
 
 
 ### File Stuff
