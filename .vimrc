@@ -23,8 +23,11 @@
 		Plugin 'junegunn/goyo.vim'
 		Plugin 'junegunn/limelight.vim'
 		Plugin 'junegunn/vim-emoji'
-		Plugin 'mhinz/vim-startify'
+		" Plugin 'mhinz/vim-startify'
 		Plugin 'moll/vim-bbye'
+		Plugin 'tmhedberg/SimpylFold'
+		Plugin 'jeetsukumaran/vim-buffergator'
+		" Plugin 'fholgado/minibufexpl.vim'
 
 		" web stuff
 		Plugin 'mattn/emmet-vim'
