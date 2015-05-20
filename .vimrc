@@ -396,6 +396,8 @@
 	set wildignore+=*/tmp/**
 	
 	set wildignore+=*.npy
+
+	set tags=.tags
 	
 	" better visual indication until where the change word is happening
 	set cpoptions+=$
