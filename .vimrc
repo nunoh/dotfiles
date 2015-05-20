@@ -54,6 +54,8 @@
 		Plugin 'terryma/vim-multiple-cursors'
 		Plugin 'plasticboy/vim-markdown'
 		Plugin 'junegunn/vim-xmark'
+		Plugin 'klen/python-mode'
+		Plugin 'Shougo/unite.vim'
 
 		" so that I don't forget
 		" Plugin 'HTML-AutoCloseTag'
@@ -447,5 +449,13 @@
 		" let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
 		" let g:gitgutter_sign_modified_removed = emoji#for('collision')
 	" endif
+
+	let g:SimpylFold_docstring_preview = 1
+	let g:SimpylFold_fold_docstring = 0
+
+	let g:pymode_lint_ignore="E701,E501,E203,E201,E202,C901"
+
+	map <Leader>f :Unite file<CR>
+	map <Leader>b :Unite buffers<CR>
 
 " }}}
