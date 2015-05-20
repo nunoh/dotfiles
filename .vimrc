@@ -313,7 +313,7 @@
 	vmap y ygv<Esc>
 
 	" for window fullscreen
-	noremap <silent> <Leader>f <C-W>o " for fullscreen
+	" noremap <silent> <Leader>f <C-W>o " for fullscreen
 
 	" show NERDTree and CtrlP
 	nmap <Leader>nt :NERDTreeToggle<CR>
@@ -365,6 +365,19 @@
 
 	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 	nmap ga <Plug>(EasyAlign)
+
+	" nnoremap <C-l> :tabnext<CR>
+	" nnoremap <C-h> :tabprevious<CR>
+	" nnoremap <C-t> :tabnew<CR>
+
+	" Move to the previous buffer with "gp"
+	nnoremap gp :bp<CR>
+
+	" Move to the next buffer with "gn"
+	nnoremap gn :bn<CR>
+
+	" List all possible buffers with "gl"
+	nnoremap gl :ls<CR>
 
 " }}}
 
