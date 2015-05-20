@@ -163,6 +163,7 @@
 	set foldenable
 	set foldmethod=indent
 	set foldlevelstart=20
+	set foldnestmax=1
 
     " remember folds after closing
 	autocmd BufWinLeave *.* mkview
