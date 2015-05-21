@@ -49,7 +49,11 @@ so that I don't forget them :relaxed:
 ### Folds
 
 	zo	open fold
+	zO	open fold recursively
+
 	zc	close fold	
+	zC	close fold recursively
+
 	zM  close all folds
 	zR	open all folds
 
