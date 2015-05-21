@@ -24,9 +24,9 @@
         Plugin 'junegunn/limelight.vim'
         Plugin 'junegunn/vim-emoji'
         Plugin 'moll/vim-bbye'
+        Plugin 'Yggdroot/indentLine'
         " Plugin 'tmhedberg/SimpylFold'
-        Plugin 'jeetsukumaran/vim-buffergator'
-        " Plugin 'Yggdroot/indentLine'
+        " Plugin 'jeetsukumaran/vim-buffergator'
 
         " web stuff
         Plugin 'mattn/emmet-vim'
@@ -70,7 +70,7 @@
         " Plugin 'suan/vim-instant-markdown'
         " Plugin 'fholgado/minibufexpl.vim'
         Plugin 'mhinz/vim-startify'
-        Plugin 'notpratheek/Pychimp-vim'
+        " Plugin 'notpratheek/Pychimp-vim'
 
     call vundle#end()
 
@@ -171,9 +171,9 @@
 " FOLDING {{{
 
     set foldenable
-    " set foldmethod=indent
-    " set foldlevelstart=20
-    set foldnestmax=1
+    set foldmethod=indent
+    " set foldlevelstart=10
+    set foldnestmax=20
 
     " remember folds after closing
     " autocmd BufWinLeave *.* mkview
@@ -395,6 +395,8 @@
     map <F9>  :PrevColorScheme<CR>
     map <F10> :RandomColorScheme<CR>
 
+    map l lzO
+
 " }}}
 
  " MISC {{{
@@ -414,7 +416,7 @@
     set wildignore+=*.npy
 
     set tags=.tags
-    
+
     " better visual indication until where the change word is happening
     set cpoptions+=$
 
@@ -527,5 +529,8 @@
 
     " let g:startify_custom_header =
       " \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
+
+    " let g:indentLine_leadingSpaceEnabled = 1
+    " let g:indentLine_char = '│'
 
 " }}}
