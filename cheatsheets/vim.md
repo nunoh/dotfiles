@@ -4,7 +4,7 @@ so that I don't forget them :relaxed:
 
 ### Text objects stuff
 
-	dl	 delete character (alias: "x")
+	dl   delete character (alias: "x")
 	diw  delete inner word
 	daw  delete a word
 	diW  delete inner WORD
@@ -39,6 +39,7 @@ so that I don't forget them :relaxed:
 
 	zg	add word under cursor to dictionary
 
+
 ### Changing case
 
 	gu{movement}
@@ -72,3 +73,13 @@ so that I don't forget them :relaxed:
 
 	gf	open file under cursor in the same window
 	<C-W>f open file under curosr in a new window
+
+### Misc
+
+Inserting any unicode character in VIM. (while in insert mode, cause otherwise goes to visual-block)
+
+    <C-v>u25b8
+
+Start vim without any configuration, vanilla vim:
+
+    $ vim -u NONE
