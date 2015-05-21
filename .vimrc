@@ -65,6 +65,8 @@
 		" Plugin 'jerrymarino/xcodebuild.vim'
 		" Plugin 'rosenfeld/conque-term'
 		" Plugin 'suan/vim-instant-markdown'
+		" Plugin 'fholgado/minibufexpl.vim'
+		Plugin 'mhinz/vim-startify'
 
 	call vundle#end()
 
