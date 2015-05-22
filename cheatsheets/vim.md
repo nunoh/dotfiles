@@ -87,3 +87,10 @@ Inserting any unicode character in VIM. (while in insert mode, cause otherwise g
 Start vim without any configuration, vanilla vim:
 
     $ vim -u NONE
+
+### Command line
+
+C-B     go to beginning of the line
+C-E     go to the end of the line
+C-P     go to the previous command entered
+C-N     go to the next command entered
