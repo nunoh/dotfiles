@@ -395,8 +395,6 @@
     map <F9>  :PrevColorScheme<CR>
     map <F10> :RandomColorScheme<CR>
 
-    map l lzO
-
 " }}}
 
  " MISC {{{
