@@ -427,6 +427,16 @@
     set statusline+=%{SyntasticStatuslineFlag()}
     set statusline+=%*
 
+    function! OpenFoldOrNot()
+        if foldclosed(line(".")) == -1
+            normal! l
+        else
+            normal! lzO 
+        endif
+    endfunction
+
+    nmap <silent> l :call OpenFoldOrNot()<CR>
+
     " syncronize vim register and system clipboard 
     set clipboard^=unnamed
 
