@@ -398,6 +398,10 @@
     map <F9>  :PrevColorScheme<CR>
     map <F10> :RandomColorScheme<CR>
 
+    " make the jump list more like back and forward buttons in a browser
+    nnoremap <C-i> <C-o>
+    nnoremap <C-o> <C-i>
+
 " }}}
 
  " MISC {{{
