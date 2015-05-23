@@ -25,7 +25,7 @@
         Plugin 'kien/ctrlp.vim'
         Plugin 'terryma/vim-multiple-cursors'
         Plugin 'Shougo/unite.vim'
-        " Plugin 'xolox/vim-easytags'
+        Plugin 'xolox/vim-easytags'
 
         " web stuff
         Plugin 'mattn/emmet-vim'
@@ -420,7 +420,7 @@
     
     set wildignore+=*.npy
 
-    set tags=.tags
+    " set tags=.tags
 
     " better visual indication until where the change word is happening
     set cpoptions+=$
@@ -547,5 +547,7 @@
 
     " let g:indentLine_leadingSpaceEnabled = 1
     " let g:indentLine_char = '│'
+
+    let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
 
 " }}}
