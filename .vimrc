@@ -14,26 +14,25 @@
         
         " UI
         Plugin 'itchyny/lightline.vim'
+        Plugin 'nathanaelkane/vim-indent-guides'
+        Plugin 'Yggdroot/indentLine'
+
+        " IDE like stuff
         Plugin 'scrooloose/nerdtree'
         Plugin 'majutsushi/tagbar'
-        Plugin 'kien/ctrlp.vim'
+        Plugin 'mhinz/vim-startify'
         Plugin 'vim-scripts/TaskList.vim'
-        Plugin 'nathanaelkane/vim-indent-guides'
-        Plugin 'altercation/vim-colors-solarized'
-        Plugin 'junegunn/goyo.vim'
-        Plugin 'junegunn/limelight.vim'
-        Plugin 'junegunn/vim-emoji'
-        Plugin 'moll/vim-bbye'
-        Plugin 'Yggdroot/indentLine'
-        " Plugin 'tmhedberg/SimpylFold'
-        " Plugin 'jeetsukumaran/vim-buffergator'
+        Plugin 'kien/ctrlp.vim'
+        Plugin 'terryma/vim-multiple-cursors'
+        Plugin 'Shougo/unite.vim'
+        " Plugin 'xolox/vim-easytags'
 
         " web stuff
         Plugin 'mattn/emmet-vim'
         Plugin 'rstacruz/sparkup'
         Plugin 'digitaltoad/vim-jade'
         
-        " text manipulations
+        " text manipulation
         Plugin 'scrooloose/nerdcommenter'
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
@@ -47,29 +46,37 @@
         " linters and completion
         Plugin 'Valloric/YouCompleteMe'
         Plugin 'scrooloose/syntastic'
-        
+
+        " markdown
+        Plugin 'junegunn/goyo.vim'
+        Plugin 'junegunn/limelight.vim'
+        Plugin 'plasticboy/vim-markdown'
+        Plugin 'junegunn/vim-xmark'
+
+        " colors / themes
+        Plugin 'altercation/vim-colors-solarized'
+        Plugin 'guns/xterm-color-table.vim'
+        Plugin 'xolox/vim-colorscheme-switcher'
+        Plugin 'flazz/vim-colorschemes'
+
         " misc
         Plugin 'tpope/vim-sensible'
         Plugin 'editorconfig/editorconfig-vim'
         Plugin 'tmux-plugins/vim-tmux'
         Plugin 'christoomey/vim-tmux-navigator'
-        Plugin 'terryma/vim-multiple-cursors'
-        Plugin 'plasticboy/vim-markdown'
-        Plugin 'junegunn/vim-xmark'
-        " Plugin 'klen/python-mode'
-        Plugin 'Shougo/unite.vim'
-        Plugin 'guns/xterm-color-table.vim'
-        Plugin 'xolox/vim-colorscheme-switcher'
         Plugin 'xolox/vim-misc'
-        Plugin 'flazz/vim-colorschemes'
+        Plugin 'junegunn/vim-emoji'
+        Plugin 'moll/vim-bbye'
 
         " so that I don't forget
+        " Plugin 'tmhedberg/SimpylFold'
+        " Plugin 'jeetsukumaran/vim-buffergator'
+        " Plugin 'klen/python-mode'
         " Plugin 'HTML-AutoCloseTag'
         " Plugin 'jerrymarino/xcodebuild.vim'
         " Plugin 'rosenfeld/conque-term'
         " Plugin 'suan/vim-instant-markdown'
         " Plugin 'fholgado/minibufexpl.vim'
-        Plugin 'mhinz/vim-startify'
         " Plugin 'notpratheek/Pychimp-vim'
 
     call vundle#end()
