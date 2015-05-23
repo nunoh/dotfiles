@@ -186,10 +186,6 @@
     " autocmd BufWinLeave *.* mkview
     " autocmd BufWinEnter *.* silent loadview 
 
-    " syn match MyEmptyLines "\(^\s*\n\)\+" fold
-    " syn sync fromstart
-    " setlocal foldmethod=syntax
-
 " }}}
 
 " STATUS LINE {{{
