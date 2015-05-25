@@ -287,6 +287,10 @@
     " autocmd VimEnter * NERDTree
     " autocmd VimEnter * TagbarOpen
 
+    autocmd Filetype mkd setlocal wrap 
+    autocmd Filetype mkd setlocal spell spelllang=en_us
+    autocmd Filetype mkd setlocal linebreak
+
 " }}}
 
 " MAPPINGS {{{
@@ -504,7 +508,7 @@
     let g:syntastic_check_on_wq = 0
     let g:syntastic_html_checkers=['']
 
-    let g:goyo_width=140
+    let g:goyo_width=80
     let g:goyo_margin_top=0
     let g:goyo_margin_bottom=0
 
