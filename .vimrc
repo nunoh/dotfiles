@@ -99,6 +99,7 @@
 
     hi clear Visual
     hi Visual ctermbg=237
+    hi Folded cterm=underline
 
     set listchars=tab:▸\ ,eol:¬ " nicer tab symbol and show eol when visual line
 
@@ -177,9 +178,9 @@
 
 " FOLDING {{{
 
-    set foldenable
+    " set foldenable
     set foldmethod=indent
-    " set foldlevelstart=10
+    set foldlevelstart=10
     set foldnestmax=20
 
     " remember folds after closing
