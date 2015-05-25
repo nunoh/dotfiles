@@ -402,6 +402,13 @@
     nnoremap <C-i> <C-o>
     nnoremap <C-o> <C-i>
 
+    " vim to a whole another level
+    nmap <Leader>gs :Gstatus<CR>
+    nmap <Leader>gc :Gcommit<CR>
+    nmap <Leader>ga :Gwrite<CR>
+    nmap <Leader>gl :Glog<CR>
+    nmap <Leader>gd :Gdiff<CR>
+
 " }}}
 
  " MISC {{{
