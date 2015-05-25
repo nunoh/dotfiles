@@ -34,6 +34,7 @@
         
         " text manipulation
         Plugin 'scrooloose/nerdcommenter'
+        Plugin 'tpope/vim-commentary'
         Plugin 'tpope/vim-surround'
         Plugin 'tpope/vim-repeat'
         Plugin 'junegunn/vim-easy-align'
