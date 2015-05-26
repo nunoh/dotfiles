@@ -13,9 +13,10 @@
         Plugin 'gmarik/Vundle.vim'
         
         " UI
-        Plugin 'itchyny/lightline.vim'
+        " Plugin 'itchyny/lightline.vim'
         Plugin 'nathanaelkane/vim-indent-guides'
         Plugin 'Yggdroot/indentLine'
+        Plugin 'bling/vim-airline'
 
         " IDE like stuff
         Plugin 'scrooloose/nerdtree'
@@ -192,25 +193,25 @@
 
 " STATUS LINE {{{
 
-   let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'mode_map': { 'c': 'NORMAL' },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-      \ },
-      \ 'component_function': {
-      \   'modified': 'MyModified',
-      \   'readonly': 'MyReadonly',
-      \   'fugitive': 'MyFugitive',
-      \   'filename': 'MyFilename',
-      \   'fileformat': 'MyFileformat',
-      \   'filetype': 'MyFiletype',
-      \   'fileencoding': 'MyFileencoding',
-      \   'mode': 'MyMode',
-      \ },
-         \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      \ }
+   " let g:lightline = {
+      " \ 'colorscheme': 'solarized',
+      " \ 'mode_map': { 'c': 'NORMAL' },
+      " \ 'active': {
+      " \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+      " \ },
+      " \ 'component_function': {
+      " \   'modified': 'MyModified',
+      " \   'readonly': 'MyReadonly',
+      " \   'fugitive': 'MyFugitive',
+      " \   'filename': 'MyFilename',
+      " \   'fileformat': 'MyFileformat',
+      " \   'filetype': 'MyFiletype',
+      " \   'fileencoding': 'MyFileencoding',
+      " \   'mode': 'MyMode',
+      " \ },
+         " \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      " \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      " \ }
 
     function! MyModified()
       return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -562,5 +563,7 @@
     " let g:indentLine_char = '│'
 
     let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
+
+    let g:airline_powerline_fonts = 1
 
 " }}}
