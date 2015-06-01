@@ -32,6 +32,7 @@
         Plugin 'mattn/emmet-vim'
         Plugin 'rstacruz/sparkup'
         Plugin 'digitaltoad/vim-jade'
+        Plugin 'jaxbot/browserlink.vim'
         
         " text manipulation
         Plugin 'scrooloose/nerdcommenter'
