@@ -70,6 +70,7 @@
         Plugin 'xolox/vim-misc'
         Plugin 'junegunn/vim-emoji'
         Plugin 'moll/vim-bbye'
+        Plugin 'regedarek/ZoomWin'
 
         " so that I don't forget
         " Plugin 'tmhedberg/SimpylFold'
@@ -101,7 +102,7 @@
     " colorscheme monokai
 
     hi clear Visual
-    hi Visual ctermbg=237
+    hi Visual ctermbg=238
     hi Folded cterm=underline
 
     set listchars=tab:▸\ ,eol:¬ " nicer tab symbol and show eol when visual line
