@@ -88,6 +88,10 @@ Start vim without any configuration, vanilla vim:
 
     $ vim -u NONE
 
+Join lines
+
+    S-j
+
 ### Command line
 
 C-B     go to beginning of the line

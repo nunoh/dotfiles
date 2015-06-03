@@ -32,6 +32,7 @@
 	autocrlf = input
 	excludesfile = /Users/Nuno/.gitignore_global
 	editor = vim
+
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
