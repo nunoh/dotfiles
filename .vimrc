@@ -79,7 +79,7 @@
         " Plugin 'HTML-AutoCloseTag'
         " Plugin 'jerrymarino/xcodebuild.vim'
         " Plugin 'rosenfeld/conque-term'
-        " Plugin 'suan/vim-instant-markdown'
+        Plugin 'suan/vim-instant-markdown'
         " Plugin 'fholgado/minibufexpl.vim'
         " Plugin 'notpratheek/Pychimp-vim'
 
@@ -567,5 +567,8 @@
     let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
 
     let g:airline_powerline_fonts = 1
+
+    " otherwise it's realtime and it lags
+    let g:instant_markdown_slow = 1
 
 " }}}
