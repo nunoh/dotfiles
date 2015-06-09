@@ -185,7 +185,7 @@
 " FOLDING {{{
 
     " set foldenable
-    set foldmethod=indent
+    set foldmethod=syntax
     set foldlevelstart=10
     set foldnestmax=20
 
