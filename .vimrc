@@ -513,6 +513,7 @@
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
     let g:syntastic_html_checkers=['']
+    let g:syntastic_javascript_checkers = ['jshint']
 
     let g:goyo_width=80
     let g:goyo_margin_top=0
