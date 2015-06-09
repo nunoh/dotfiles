@@ -41,6 +41,8 @@
         Plugin 'tpope/vim-repeat'
         Plugin 'junegunn/vim-easy-align'
         Plugin 'godlygeek/tabular'
+        Plugin 'SirVer/ultisnips'
+        Plugin 'honza/vim-snippets'
 
         " git stuff
         Plugin 'airblade/vim-gitgutter'
@@ -570,5 +572,9 @@
 
     " otherwise it's realtime and it lags
     let g:instant_markdown_slow = 1
+
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " }}}
