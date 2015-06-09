@@ -48,6 +48,8 @@ so that I don't forget them :relaxed:
 
 ### Folds
 
+    zi  enable/disable folding
+
 	zo	open fold
 	zO	open fold recursively
 
