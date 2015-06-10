@@ -106,7 +106,7 @@
 
     hi clear Visual
     hi Visual ctermbg=238
-    hi Folded cterm=underline
+    hi Folded cterm=NONE
 
     set listchars=tab:▸\ ,eol:¬ " nicer tab symbol and show eol when visual line
 
@@ -121,7 +121,7 @@
 
 " }}}
 
-"   UI {{{
+" UI {{{
 
     set number          " show line numbers"
     set showcmd         " show command in bottom bar"
@@ -189,11 +189,26 @@
     set foldmethod=syntax
     set foldlevelstart=10
     set foldnestmax=20
+    
+    function! MyFoldText()
+        let nl = v:foldend - v:foldstart + 1
+        let comment = substitute(getline(v:foldstart),"^ *","",1)
+        " let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
+        " let txt = strpart(comment, 0, strlen(comment)-2) . ' ' . nl . ' lines '
+        " let txt = strpart(comment, 0, strlen(comment)-1)
+        let txt = strpart(comment, 0, strlen(comment))
+        return txt
+    endfunction
+    set foldtext=MyFoldText()
+
+    " syn match MyEmptyLines "\(^\s*\n\)\+" fold
+    " syn sync fromstart
 
     " remember folds after closing
     autocmd BufWinLeave *.* mkview
     autocmd BufWinEnter *.* silent loadview 
 
+    set fillchars=
 " }}}
 
 " STATUS LINE {{{
