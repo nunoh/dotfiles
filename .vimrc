@@ -73,6 +73,7 @@
         Plugin 'junegunn/vim-emoji'
         Plugin 'moll/vim-bbye'
         Plugin 'regedarek/ZoomWin'
+        Plugin 'sjl/gundo.vim'
 
         " so that I don't forget
         " Plugin 'tmhedberg/SimpylFold'
