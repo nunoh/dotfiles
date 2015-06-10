@@ -503,14 +503,16 @@
 " PLUGIN CONFIGURATIONS {{{
 
     let g:ycm_global_ycm_extra_conf = '~/.dotfiles/.ycm_extra_conf.py'
-    
+    let g:ycm_filetype_blacklist = {
+    \ 'cpp' : 1
+    \}
+
     " sane ignore for ctrlp
     let g:ctrlp_custom_ignore = {
     \ 'dir':  '\.git$\|build\|tmp\|env\|bin\|node_modules\|bower_components\|gamultOSX.xcodeproj\|bin\',
     \ 'file': '\.exe$\|\.so$\|\.ttf$\|\.pdf$\|\.pyc$\|\.dat$'
     \ }
     let g:ctrlp_reuse_window = 'netrw' " so that ctrp files open in same window and not in a new split
-
     
     " proper C comments by default
     let g:NERDCustomDelimiters = {
@@ -537,15 +539,6 @@
     let g:goyo_margin_bottom=0
 
     let g:gitgutter_realtime=1
-    " silent! if emoji#available()
-        " let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-        " let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-        " let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-        " let g:gitgutter_sign_modified_removed = emoji#for('collision')
-    " endif
-
-    " let g:SimpylFold_docstring_preview = 1
-    " let g:SimpylFold_fold_docstring = 0
 
     let g:pymode_lint_ignore="E701,E501,E203,E201,E202,E221,C901"
 
@@ -554,35 +547,6 @@
 
     let g:pymode = 1
     let g:pymode_folding = 1
-
-    " let g:startify_enable_special         = 0
-    " let g:startify_files_number           = 8
-    " let g:startify_relative_path          = 1
-    " let g:startify_change_to_dir          = 1
-    " let g:startify_session_autoload       = 1
-    " let g:startify_session_persistence    = 1
-    " let g:startify_session_delete_buffers = 1
-
-    " let g:startify_list_order = [
-        " \ ['   MRU:'],
-        " \ 'files',
-        " \ ['   MRU within this dir:'],
-        " \ 'dir',
-        " \ ['   Sessions:'],
-        " \ 'sessions',
-        " \ ['   Bookmarks:'],
-        " \ 'bookmarks',
-        " \ ]
-
-    " let g:startify_bookmarks = [
-        " \ '~/.vim/vimrc',
-        " \ ]
-
-    " let g:startify_custom_header =
-      " \ map(split(system('fortune | cowsay'), '\n'), '"   ". v:val') + ['','']
-
-    " let g:indentLine_leadingSpaceEnabled = 1
-    " let g:indentLine_char = '│'
 
     let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
 
