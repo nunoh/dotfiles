@@ -100,3 +100,9 @@ C-B     go to beginning of the line
 C-E     go to the end of the line
 C-P     go to the previous command entered
 C-N     go to the next command entered
+
+### 
+
+Insert in paste mode (from clipboard)
+
+   <C-r>*
