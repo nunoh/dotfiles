@@ -551,6 +551,15 @@
     let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
 
     let g:airline_powerline_fonts = 1
+    let g:airline_left_sep=''
+    let g:airline_right_sep=''
+    let g:airline#extensions#hunks#enabled = 0
+    let g:airline#extensions#whitespace#enabled = 0
+    let g:airline#extensions#tagbar#enabled = 0
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline_inactive_collapse=1
+    let g:airline_section_y = ''
+    let g:airline_section_z = '%l:%c'
 
     " otherwise it's realtime and it lags
     let g:instant_markdown_slow = 1
