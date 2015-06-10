@@ -395,7 +395,7 @@
     map <Leader>tl :TaskList<CR>
 
     " for entering empty lines without leaving normal mode
-    nmap <CR> O<esc>
+    " nmap <CR> O<esc>
 
     map <silent> <Leader>gy :Goyo<CR>
 
