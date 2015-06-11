@@ -104,9 +104,24 @@
     " colorscheme Tomorrow-Night
     " colorscheme monokai
 
+    " more transparent color when selecting text
     hi clear Visual
     hi Visual ctermbg=238
+
+    " clean text when folded
     hi Folded cterm=NONE
+    
+    " get rid of tildes for 'blank' lines
+    hi NonText guifg=bg
+    hi NonText ctermfg=bg
+
+    " only underline mispelled words
+    hi clear SpellBad
+    hi SpellBad cterm=underline
+
+    " remove big vertifcal border
+    hi VertSplit guifg=fg guibg=bg
+    hi VertSplit guifg=fg ctermbg=bg
 
     set listchars=tab:▸\ ,eol:¬ " nicer tab symbol and show eol when visual line
 
@@ -137,13 +152,6 @@
 
     " set listchars=tab:┊\ 
     
-    " remove big vertifcal border
-    " hi VertSplit guifg=fg guibg=bg
-    " hi VertSplit guifg=fg ctermbg=bg
-
-    " get rid of tildes for 'blank' lines
-    hi NonText guifg=bg
-    hi NonText ctermfg=bg
 
     " change cursor shape between insert and normal mode in iterm2.app
     if $TERM_PROGRAM =~ "iTerm"
@@ -482,9 +490,6 @@
     set omnifunc=emoji#complete
 
     " so that spell check is actually readable
-    hi clear SpellBad
-    hi SpellBad cterm=underline
-
     " TODO: ideally this would prompt if wanting to revert before last opening file
     " set undofile
     " set undodir=$HOME/.vimundo/
