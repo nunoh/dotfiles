@@ -413,10 +413,10 @@
     " nnoremap <C-t> :tabnew<CR>
 
     " Move to the previous buffer with "gp"
-    nnoremap gp :bp<CR>
+    nnoremap gp :bp!<CR>
 
     " Move to the next buffer with "gn"
-    nnoremap gn :bn<CR>
+    nnoremap gn :bn!<CR>
 
     " List all possible buffers with "gl"
     nnoremap gl :ls<CR>
