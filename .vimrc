@@ -553,6 +553,9 @@
     let g:airline_powerline_fonts = 1
     let g:airline_left_sep=''
     let g:airline_right_sep=''
+    let g:airline#extensions#tabline#left_sep = ''
+    " let g:airline#extensions#tabline#left_alt_sep = '|'
+    let g:airline#extensions#tabline#left_alt_sep = ''
     let g:airline#extensions#hunks#enabled = 0
     let g:airline#extensions#whitespace#enabled = 0
     let g:airline#extensions#tagbar#enabled = 0
@@ -560,8 +563,10 @@
     let g:airline_inactive_collapse=1
     let g:airline_section_y = ''
     let g:airline_section_z = '%l:%c'
-
+    " Just show the filename (no path) in the tab
+    let g:airline#extensions#tabline#fnamemod = ':t'
     " otherwise it's realtime and it lags
+
     let g:instant_markdown_slow = 1
 
     let g:UltiSnipsExpandTrigger="<tab>"
