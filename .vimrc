@@ -125,7 +125,7 @@
 
     set number          " show line numbers"
     set showcmd         " show command in bottom bar"
-    " set cursorline        " hightlight current line"
+    set cursorline        " hightlight current line"
     filetype indent on  " load filetype-specific indent files"
     set wildmenu        " visual autocomplete for command menu"
     set showmatch       " hightlight matching [{()}]"
