@@ -1,4 +1,4 @@
-" vim:foldmethod=marker:foldlevel=0
+vim:foldmethod=marker:foldlevel=0
 
 " PLUGINS {{{
 
@@ -13,7 +13,6 @@
         Plugin 'gmarik/Vundle.vim'
         
         " UI
-        " Plugin 'itchyny/lightline.vim'
         Plugin 'nathanaelkane/vim-indent-guides'
         Plugin 'Yggdroot/indentLine'
         Plugin 'bling/vim-airline'
@@ -55,8 +54,10 @@
         " markdown
         Plugin 'junegunn/goyo.vim'
         Plugin 'junegunn/limelight.vim'
-        Plugin 'plasticboy/vim-markdown'
         Plugin 'junegunn/vim-xmark'
+        " Plugin 'suan/vim-instant-markdown'
+        " Plugin 'plasticboy/vim-markdown'
+        Plugin  'nelstrom/vim-markdown-folding'
 
         " colors / themes
         Plugin 'altercation/vim-colors-solarized'
@@ -82,7 +83,6 @@
         " Plugin 'HTML-AutoCloseTag'
         " Plugin 'jerrymarino/xcodebuild.vim'
         " Plugin 'rosenfeld/conque-term'
-        Plugin 'suan/vim-instant-markdown'
         " Plugin 'fholgado/minibufexpl.vim'
         " Plugin 'notpratheek/Pychimp-vim'
 
@@ -119,7 +119,7 @@
     hi clear SpellBad
     hi SpellBad cterm=underline
 
-    " remove big vertifcal border
+    " remove big vertical border
     hi VertSplit guifg=fg guibg=bg
     hi VertSplit guifg=fg ctermbg=bg
 
@@ -213,76 +213,11 @@
     " syn sync fromstart
 
     " remember folds after closing
-    autocmd BufWinLeave *.* mkview
-    autocmd BufWinEnter *.* silent loadview 
+    " autocmd BufWinLeave *.* mkview
+    " autocmd BufWinEnter *.* silent loadview 
 
     set fillchars=
 " }}}
-
-" STATUS LINE {{{
-
-   " let g:lightline = {
-      " \ 'colorscheme': 'solarized',
-      " \ 'mode_map': { 'c': 'NORMAL' },
-      " \ 'active': {
-      " \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-      " \ },
-      " \ 'component_function': {
-      " \   'modified': 'MyModified',
-      " \   'readonly': 'MyReadonly',
-      " \   'fugitive': 'MyFugitive',
-      " \   'filename': 'MyFilename',
-      " \   'fileformat': 'MyFileformat',
-      " \   'filetype': 'MyFiletype',
-      " \   'fileencoding': 'MyFileencoding',
-      " \   'mode': 'MyMode',
-      " \ },
-         " \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-      " \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
-      " \ }
-
-    function! MyModified()
-      return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-    endfunction
-
-    function! MyReadonly()
-      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '\ue0a2' : ''
-    endfunction
-
-    function! MyFilename()
-      return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-            \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-            \  &ft == 'unite' ? unite#get_status_string() :
-            \  &ft == 'vimshell' ? vimshell#get_status_string() :
-            \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-            \ ('' != MyModified() ? ' ' . MyModified() : '')
-    endfunction
-
-    function! MyFugitive()
-      if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? "\ue0a0 "._ : ''
-      endif
-      return ''
-    endfunction
-
-    function! MyFileformat()
-      return winwidth(0) > 70 ? &fileformat : ''
-    endfunction
-
-    function! MyFiletype()
-      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-    endfunction
-
-    function! MyFileencoding()
-      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-    endfunction
-
-    function! MyMode()
-      return winwidth(0) > 60 ? lightline#mode() : ''
-    endfunction
-
- " }}}
 
 " AUTOCOMMANDS {{{
 
@@ -320,6 +255,9 @@
     autocmd Filetype mkd setlocal wrap 
     autocmd Filetype mkd setlocal spell spelllang=en_us
     autocmd Filetype mkd setlocal linebreak
+    
+    " so that quotes in json files are not hidden
+    autocmd BufEnter *.json setlocal conceallevel=0
 
 " }}}
 
@@ -373,7 +311,8 @@
     nnoremap <Leader>o :CtrlP<CR>
 
     " quickly edit common configuration files
-    nnoremap <Leader>ev :edit $MYVIMRC<CR>
+    " nnoremap <Leader>ev :edit $MYVIMRC<CR>
+    nnoremap <Leader>ev :edit ~/.dotfiles/.vimrc<CR> " so that I can use fugitive
     nnoremap <Leader>et :edit ~/.tmux.conf<CR>
     nnoremap <Leader>ez :edit ~/.zshrc<CR>
     nnoremap <Leader>ea :edit ~/.dotfiles/.aliases<CR>
@@ -538,6 +477,7 @@
     let g:syntastic_html_checkers=['']
     let g:syntastic_cpp_checkers=['']
     let g:syntastic_javascript_checkers = ['jshint']
+    let g:syntastic_css_csslint_args="--ignore=ids"
 
     let g:goyo_width=80
     let g:goyo_margin_top=0
@@ -572,10 +512,17 @@
     let g:airline#extensions#tabline#fnamemod = ':t'
     " otherwise it's realtime and it lags
 
-    let g:instant_markdown_slow = 1
+    " let g:instant_markdown_slow = 1
 
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<c-b>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    let g:UltiSnipsExpandTrigger="<c-b>"
+    " let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+    " let g:vim_markdown_folding_disabled=1
+
+    " let g:UltiSnipsExpandTrigger               <tab>
+    " let g:UltiSnipsListSnippets                <c-tab>
+    " let g:UltiSnipsJumpForwardTrigger          <c-j>
+    " let g:UltiSnipsJumpBackwardTrigger         <c-k>
 
 " }}}
