@@ -16,6 +16,7 @@
         Plugin 'nathanaelkane/vim-indent-guides'
         Plugin 'Yggdroot/indentLine'
         Plugin 'bling/vim-airline'
+        Plugin 'kien/rainbow_parentheses.vim'
 
         " IDE like stuff
         Plugin 'scrooloose/nerdtree'
@@ -524,5 +525,10 @@
     " let g:UltiSnipsListSnippets                <c-tab>
     " let g:UltiSnipsJumpForwardTrigger          <c-j>
     " let g:UltiSnipsJumpBackwardTrigger         <c-k>
+
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
 
 " }}}
