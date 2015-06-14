@@ -486,7 +486,7 @@
     let g:syntastic_html_checkers=['']
     let g:syntastic_cpp_checkers=['']
     let g:syntastic_javascript_checkers = ['jshint']
-    let g:syntastic_css_csslint_args="--ignore=ids"
+    let g:syntastic_css_csslint_args="--ignore=ids,adjoining-classes"
 
     let g:goyo_width=80
     let g:goyo_margin_top=0
