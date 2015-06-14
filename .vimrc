@@ -99,11 +99,18 @@
 
     let g:solarized_menu = 1
 
-    set background=dark
     colorscheme solarized
     " colorscheme pychimp
     " colorscheme Tomorrow-Night
     " colorscheme monokai
+
+    if $ITERM_PROFILE == "Solarized Dark"
+        set background=dark
+    endif
+
+    if $ITERM_PROFILE == "Solarized Light"
+        set background=light
+    endif
 
     " more transparent color when selecting text
     hi clear Visual
