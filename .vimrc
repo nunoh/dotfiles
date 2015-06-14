@@ -390,6 +390,7 @@
     nmap <Leader>ga :Gwrite<CR>
     nmap <Leader>gl :Glog<CR>
     nmap <Leader>gd :Gdiff<CR>
+    nmap <Leader>gp :Gpush<CR>
 
 " }}}
 
