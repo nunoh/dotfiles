@@ -496,8 +496,11 @@
 
     let g:pymode_lint_ignore="E701,E501,E203,E201,E202,E221,C901"
 
-    map <Leader>f :Unite file<CR>
-    map <Leader>b :Unite buffers<CR>
+    let g:unite_source_history_yank_enable = 1
+    nnoremap <Leader>f :Unite -no-split -start-insert file<CR>
+    " nnoremap <C-P> :Unite -no-split -start-insert file<CR>
+    nnoremap <Leader>b :Unite buffers<CR>
+    nnoremap <Leader>y :Unite history/yank<cr>
 
     let g:pymode = 1
     let g:pymode_folding = 1
