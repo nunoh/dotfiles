@@ -13,7 +13,6 @@
         Plugin 'gmarik/Vundle.vim'
         
         " UI
-        Plugin 'nathanaelkane/vim-indent-guides'
         Plugin 'Yggdroot/indentLine'
         Plugin 'bling/vim-airline'
         Plugin 'kien/rainbow_parentheses.vim'
@@ -393,6 +392,8 @@
     nmap <Leader>gl :Glog<CR>
     nmap <Leader>gd :Gdiff<CR>
     nmap <Leader>gp :Gpush<CR>
+
+    nmap <Leader>il :IndentLinesToggle<CR>
 
 " }}}
 
