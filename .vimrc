@@ -76,6 +76,7 @@
         Plugin 'moll/vim-bbye'
         Plugin 'regedarek/ZoomWin'
         Plugin 'sjl/gundo.vim'
+        Plugin 'rizzatti/dash.vim'
 
         " so that I don't forget
         " Plugin 'tmhedberg/SimpylFold'
@@ -541,5 +542,7 @@
     au Syntax * RainbowParenthesesLoadRound
     au Syntax * RainbowParenthesesLoadSquare
     au Syntax * RainbowParenthesesLoadBraces
+
+    nmap <silent> <Leader>l <Plug>DashSearch
 
 " }}}
