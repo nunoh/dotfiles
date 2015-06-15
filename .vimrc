@@ -522,7 +522,7 @@
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_inactive_collapse=1
     let g:airline_section_y = ''
-    let g:airline_section_z = '%p%% %l:%c'
+    " let g:airline_section_z = '%p%% %l:%c'
     " Just show the filename (no path) in the tab
     let g:airline#extensions#tabline#fnamemod = ':t'
     " otherwise it's realtime and it lags
