@@ -546,5 +546,6 @@
     au Syntax * RainbowParenthesesLoadBraces
 
     nmap <silent> <Leader>l <Plug>DashSearch
+    nmap <silent> K <Plug>DashSearch
 
 " }}}
