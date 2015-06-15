@@ -76,6 +76,7 @@
         Plugin 'moll/vim-bbye'
         Plugin 'regedarek/ZoomWin'
         Plugin 'sjl/gundo.vim'
+        Plugin 'othree/html5.vim'
         Plugin 'rizzatti/dash.vim'
 
         " so that I don't forget
