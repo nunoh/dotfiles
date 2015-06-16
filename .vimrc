@@ -265,6 +265,10 @@
     autocmd Filetype mkd setlocal spell spelllang=en_us
     autocmd Filetype mkd setlocal linebreak
     
+    " convert selection of html to jade with gq
+    let jade_prg  = "html2jade --bodyless --noemptypipe --noattrcomma"
+    autocmd FileType jade let &formatprg=jade_prg
+    
     " so that quotes in json files are not hidden
     autocmd BufEnter *.json setlocal conceallevel=0
 
