@@ -32,6 +32,8 @@
         Plugin 'rstacruz/sparkup'
         Plugin 'digitaltoad/vim-jade'
         Plugin 'jaxbot/browserlink.vim'
+        Plugin 'pangloss/vim-javascript'
+        Plugin 'othree/html5.vim'
         
         " text manipulation
         Plugin 'scrooloose/nerdcommenter'
@@ -75,7 +77,6 @@
         Plugin 'moll/vim-bbye'
         Plugin 'regedarek/ZoomWin'
         Plugin 'sjl/gundo.vim'
-        Plugin 'othree/html5.vim'
         Plugin 'rizzatti/dash.vim'
 
         " so that I don't forget
