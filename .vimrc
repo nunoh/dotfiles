@@ -398,7 +398,7 @@
     nmap <Leader>gd :Gdiff<CR>
     nmap <Leader>gp :Gpush<CR>
 
-    nmap <Leader>il :IndentLinesToggle<CR>
+    nmap <silent> <Leader>il :IndentLinesToggle<CR>
 
 " }}}
 
