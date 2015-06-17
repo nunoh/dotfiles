@@ -57,7 +57,7 @@
         Plugin 'junegunn/goyo.vim'
         Plugin 'junegunn/limelight.vim'
         Plugin 'junegunn/vim-xmark'
-        " Plugin 'suan/vim-instant-markdown'
+        Plugin 'suan/vim-instant-markdown'
         " Plugin 'plasticboy/vim-markdown'
         Plugin  'nelstrom/vim-markdown-folding'
 
@@ -552,5 +552,7 @@
 
     nmap <silent> <Leader>l <Plug>DashSearch
     nmap <silent> K <Plug>DashSearch
+
+    let g:instant_markdown_autostart = 0
 
 " }}}
