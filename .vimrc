@@ -18,9 +18,9 @@
         Plugin 'kien/rainbow_parentheses.vim'
 
         " IDE like stuff
+        Plugin 'mhinz/vim-startify'
         Plugin 'scrooloose/nerdtree'
         Plugin 'majutsushi/tagbar'
-        Plugin 'mhinz/vim-startify'
         Plugin 'vim-scripts/TaskList.vim'
         Plugin 'kien/ctrlp.vim'
         Plugin 'terryma/vim-multiple-cursors'
@@ -133,7 +133,8 @@
     hi VertSplit guifg=fg guibg=bg
     hi VertSplit guifg=fg ctermbg=bg
 
-    set listchars=tab:▸\ ,eol:¬ " nicer tab symbol and show eol when visual line
+    " nicer tab symbol and show eol when visual line
+    set listchars=tab:▸\ ,eol:¬ 
 
 " }}}
 
@@ -159,9 +160,6 @@
     set visualbell
     set nowrap
     set scrolloff=5     " always have 5 lines below the cursor (or above) when scrolling
-
-    " set listchars=tab:┊\ 
-    
 
     " change cursor shape between insert and normal mode in iterm2.app
     if $TERM_PROGRAM =~ "iTerm"
@@ -211,16 +209,10 @@
     function! MyFoldText()
         let nl = v:foldend - v:foldstart + 1
         let comment = substitute(getline(v:foldstart),"^ *","",1)
-        " let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
-        " let txt = strpart(comment, 0, strlen(comment)-2) . ' ' . nl . ' lines '
-        " let txt = strpart(comment, 0, strlen(comment)-1)
         let txt = strpart(comment, 0, strlen(comment))
         return txt
     endfunction
     set foldtext=MyFoldText()
-
-    " syn match MyEmptyLines "\(^\s*\n\)\+" fold
-    " syn sync fromstart
 
     " remember folds after closing
     " autocmd BufWinLeave *.* mkview
@@ -233,8 +225,6 @@
 
     " disable automatic comment insertion
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-    " autocmd BufEnter *.md :Goyo
 
     " nice higlighting for some custom dotfiles that don't get detected
     autocmd BufEnter .aliases set syntax=sh
@@ -259,8 +249,10 @@
     autocmd VimEnter * unmap <Leader>cc
     " autocmd VimEnter * unmap <Leader>c<Leader>
 
-    " autocmd VimEnter * NERDTree
-    " autocmd VimEnter * TagbarOpen
+    autocmd VimEnter * RainbowParenthesesToggle
+    autocmd Syntax * RainbowParenthesesLoadRound
+    autocmd Syntax * RainbowParenthesesLoadSquare
+    autocmd Syntax * RainbowParenthesesLoadBraces
 
     autocmd Filetype mkd setlocal wrap 
     autocmd Filetype mkd setlocal spell spelllang=en_us
@@ -288,7 +280,6 @@
     " write and quit has to be really fast
     nnoremap <Leader>w :w<CR>
     nnoremap <Leader>q :q<CR>
-    " nnoremap <silent> <Leader>d :bd<CR>
     nnoremap <silent> <Leader>d :Bdelete<CR>
     
     " enter visual line easily
@@ -316,16 +307,12 @@
     
     vmap y ygv<Esc>
 
-    " for window fullscreen
-    " noremap <silent> <Leader>f <C-W>o " for fullscreen
-
     " show NERDTree and CtrlP
     nmap <Leader>nt :NERDTreeToggle<CR>
     nmap <Leader>tb :TagbarToggle<CR>
     nnoremap <Leader>o :CtrlP<CR>
 
     " quickly edit common configuration files
-    " nnoremap <Leader>ev :edit $MYVIMRC<CR>
     nnoremap <Leader>ev :edit ~/.dotfiles/.vimrc<CR> " so that I can use fugitive
     nnoremap <Leader>et :edit ~/.tmux.conf<CR>
     nnoremap <Leader>ez :edit ~/.zshrc<CR>
@@ -339,7 +326,7 @@
     " alternate with source and header files
     map <Leader>a :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
-    " map Ctrl-Space for autocomplete
+    " map Ctrl-n for autocomplete
     " Ctrl-Space gets mapped to Nul on terminals with no gui
     inoremap <Nul> <C-n>
 
@@ -349,8 +336,6 @@
     nmap <Leader>tl :tabnext<CR>
     nmap <Leader>th :tabprevious<CR>
 
-    " make
-    " nmap <Leader>m :!clear && make<CR>
     nmap <Leader>m :make<CR>
 
     map <Leader>tl :TaskList<CR>
@@ -369,22 +354,10 @@
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
     nmap ga <Plug>(EasyAlign)
 
-    " nnoremap <C-l> :tabnext<CR>
-    " nnoremap <C-h> :tabprevious<CR>
-    " nnoremap <C-t> :tabnew<CR>
-
-    " Move to the previous buffer with "gp"
+    " use buffers more
     nnoremap gp :bp!<CR>
-
-    " Move to the next buffer with "gn"
     nnoremap gn :bn!<CR>
-
-    " List all possible buffers with "gl"
     nnoremap gl :ls<CR>
-
-    map <F8>  :NextColorScheme<CR>
-    map <F9>  :PrevColorScheme<CR>
-    map <F10> :RandomColorScheme<CR>
 
     " make the jump list more like back and forward buttons in a browser
     nnoremap <C-i> <C-o>
@@ -399,6 +372,19 @@
     nmap <Leader>gp :Gpush<CR>
 
     nmap <silent> <Leader>il :IndentLinesToggle<CR>
+
+    map <F8>  :NextColorScheme<CR>
+    map <F9>  :PrevColorScheme<CR>
+    map <F10> :RandomColorScheme<CR>
+
+    " Show syntax highlighting groups for word under cursor
+    nmap <F10> :call <SID>SynStack()<CR>
+    function! <SID>SynStack()
+        if !exists("*synstack")
+            return
+        endif
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endfunc
 
 " }}}
 
@@ -417,8 +403,6 @@
     set wildignore+=*/tmp/**
     
     set wildignore+=*.npy
-
-    " set tags=.tags
 
     " better visual indication until where the change word is happening
     set cpoptions+=$
@@ -445,19 +429,9 @@
 
     set omnifunc=emoji#complete
 
-    " so that spell check is actually readable
     " TODO: ideally this would prompt if wanting to revert before last opening file
     " set undofile
     " set undodir=$HOME/.vimundo/
-
-    " Show syntax highlighting groups for word under cursor
-    nmap <F10> :call <SID>SynStack()<CR>
-    function! <SID>SynStack()
-    if !exists("*synstack")
-        return
-    endif
-    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-    endfunc
 
 " }}}
 
@@ -506,14 +480,14 @@
 
     let g:unite_source_history_yank_enable = 1
     nnoremap <Leader>f :Unite -no-split -start-insert file<CR>
-    " nnoremap <C-P> :Unite -no-split -start-insert file<CR>
     nnoremap <Leader>b :Unite buffers<CR>
     nnoremap <Leader>y :Unite history/yank<cr>
 
     let g:pymode = 1
     let g:pymode_folding = 1
 
-    let g:easytags_suppress_report = 1 " surpress how long it took to generate the tags everytime you save a file
+    " surpress how long it took to generate the tags everytime you save a file
+    let g:easytags_suppress_report = 1 
 
     let g:airline_powerline_fonts = 1
     let g:airline_left_sep=''
@@ -528,31 +502,21 @@
     let g:airline_inactive_collapse=1
     let g:airline_section_y = ''
     " let g:airline_section_z = '%p%% %l:%c'
-    " Just show the filename (no path) in the tab
-    let g:airline#extensions#tabline#fnamemod = ':t'
-    " otherwise it's realtime and it lags
-
-    " let g:instant_markdown_slow = 1
-
+    let g:airline#extensions#tabline#fnamemod = ':t' " Just show the filename (no path) in the tab
+    
     let g:UltiSnipsExpandTrigger="<c-b>"
     " let g:UltiSnipsJumpForwardTrigger="<c-b>"
     " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-    " let g:vim_markdown_folding_disabled=1
 
     " let g:UltiSnipsExpandTrigger               <tab>
     " let g:UltiSnipsListSnippets                <c-tab>
     " let g:UltiSnipsJumpForwardTrigger          <c-j>
     " let g:UltiSnipsJumpBackwardTrigger         <c-k>
 
-    au VimEnter * RainbowParenthesesToggle
-    au Syntax * RainbowParenthesesLoadRound
-    au Syntax * RainbowParenthesesLoadSquare
-    au Syntax * RainbowParenthesesLoadBraces
-
     nmap <silent> <Leader>l <Plug>DashSearch
     nmap <silent> K <Plug>DashSearch
 
     let g:instant_markdown_autostart = 0
+    let g:instant_markdown_slow = 1
 
 " }}}
