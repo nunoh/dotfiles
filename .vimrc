@@ -114,6 +114,10 @@
         set background=light
     endif
 
+    if !exists('$ITERM_PROFILE')
+        set background=dark
+    endif
+
     " more transparent color when selecting text
     hi clear Visual
     hi Visual ctermbg=238
