@@ -23,5 +23,8 @@ setopt append_history no_inc_append_history no_share_history
 # enable vi mode bindings in terminal too
 bindkey -v
 
+# so that git and hub autocomplete coexist
+autoload -U compinit && compinit
+
 # add sugar to git with hub
 eval "$(hub alias -s)"
