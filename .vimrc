@@ -471,7 +471,8 @@
     let g:syntastic_check_on_wq = 0
     let g:syntastic_html_checkers=['']
     let g:syntastic_cpp_checkers=['']
-    let g:syntastic_javascript_checkers = ['jshint']
+    " let g:syntastic_javascript_checkers = ['jshint']
+    let g:syntastic_javascript_checkers = ['']
     let g:syntastic_css_csslint_args="--ignore=ids,adjoining-classes"
 
     let g:goyo_width=80
