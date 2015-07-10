@@ -26,6 +26,7 @@
         Plugin 'terryma/vim-multiple-cursors'
         Plugin 'Shougo/unite.vim'
         Plugin 'xolox/vim-easytags'
+        Plugin 'mileszs/ack.vim'
 
         " web stuff
         Plugin 'mattn/emmet-vim'
@@ -34,6 +35,7 @@
         Plugin 'jaxbot/browserlink.vim'
         Plugin 'pangloss/vim-javascript'
         Plugin 'othree/html5.vim'
+        Plugin 'moll/vim-node'
         
         " text manipulation
         Plugin 'scrooloose/nerdcommenter'
