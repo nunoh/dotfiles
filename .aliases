@@ -1,6 +1,12 @@
 alias g='git'
 
-alias l='ls -la'
+
+# this is aliasing for a fancy git log I don't need, but need the core utills ls version, prefixed with g
+unalias gls >/dev/null 2>/dev/null
+unalias gs >/dev/null 2>/dev/null # don't want git stash
+
+# alias l='ls -la'
+alias l='gls -la -I ".DS_Store" --color=auto' # using brew coreutils, prefix with 'g'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
