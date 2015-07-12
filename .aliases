@@ -12,6 +12,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lll='ls -l | less'
 
+alias cl='clear'
+
 # got used to autojump before fasd
 alias j='fasd_cd -d'
 
