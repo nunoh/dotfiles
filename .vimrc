@@ -318,6 +318,8 @@
     nmap <Leader>tb :TagbarToggle<CR>
     nnoremap <Leader>o :CtrlP<CR>
 
+    nmap <Leader>nf :NERDTreeFind<CR>
+
     " quickly edit common configuration files
     nnoremap <Leader>ev :edit ~/.dotfiles/.vimrc<CR> " so that I can use fugitive
     nnoremap <Leader>et :edit ~/.tmux.conf<CR>
