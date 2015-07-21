@@ -103,9 +103,10 @@
 
     let g:solarized_menu = 1
 
-    colorscheme solarized
+    " colorscheme solarized
     " colorscheme pychimp
     " colorscheme Tomorrow-Night
+    colorscheme Tomorrow-Night-Eighties
     " colorscheme monokai
 
     if $ITERM_PROFILE == "Solarized Dark"

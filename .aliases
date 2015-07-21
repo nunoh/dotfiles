@@ -30,7 +30,8 @@ alias paths='vim ~/.dotfiles/.path'
 # quicklook from command line :)
 alias ql='qlmanage -p >/dev/null 2>/dev/null'
 
-alias bubu='brew update && brew upgrade --all && brew cleanup'
+# alias bubu='brew update && brew upgrade --all && brew cleanup'
+alias bubu='brew update; and brew upgrade --all; and brew cleanup'
 alias bci='brew cask install'
 
 alias lvim='vim -c "normal '\''0"'
@@ -48,4 +49,4 @@ alias thead='brew switch tesseract HEAD'
 alias t3='brew switch tesseract 3.02.02_3'
 
 # adding some sugar to git with hub
-eval '$(hub alias -s)'
+# eval '$(hub alias -s)'
