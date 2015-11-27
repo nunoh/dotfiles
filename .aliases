@@ -17,6 +17,8 @@ alias cl='clear'
 # got used to autojump before fasd
 alias j='fasd_cd -d'
 
+alias e='sublime'
+
 # do not use prezto default's rm confirmation
 # and also make sure not to give an error when reloading .zshrc
 # unalias rm mv cp >/dev/null 2>/dev/null
