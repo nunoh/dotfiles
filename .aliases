@@ -1,4 +1,10 @@
 alias g='git'
+alias gc='git commit'
+alias gp='git push'
+alias gpf='git push --force'
+alias gap='git add -p'
+alias gca='git commit --amend'
+alias gcane='git commit --amend --no-edit'
 
 # this is aliasing for a fancy git log I don't need, but need the core utills ls version, prefixed with g
 unalias gls >/dev/null 2>/dev/null
