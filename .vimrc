@@ -25,7 +25,7 @@
         Plugin 'kien/ctrlp.vim'
         Plugin 'terryma/vim-multiple-cursors'
         Plugin 'Shougo/unite.vim'
-        Plugin 'xolox/vim-easytags'
+        " Plugin 'xolox/vim-easytags' " disabling cause making vim opening up too slow
         Plugin 'mileszs/ack.vim'
 
         " web stuff
@@ -53,7 +53,7 @@
 
         " linters and completion
         Plugin 'Valloric/YouCompleteMe'
-        Plugin 'scrooloose/syntastic'
+        " Plugin 'scrooloose/syntastic' " disabling cause making vim opening up too slow
 
         " markdown
         Plugin 'junegunn/goyo.vim'
