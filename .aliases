@@ -23,6 +23,7 @@ alias cl='clear'
 alias j='fasd_cd -d'
 
 alias e='sublime'
+alias o='open'
 
 # do not use prezto default's rm confirmation
 # and also make sure not to give an error when reloading .zshrc
