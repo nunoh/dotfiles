@@ -5,7 +5,7 @@ set -gx OMF_PATH /Users/Nuno/.local/share/omf
 # set -gx OMF_CONFIG /Users/Nuno/.config/omf
 
 # Load oh-my-fish configuration.
-source $OMF_PATH/init.fish
+# source $OMF_PATH/init.fish
 
 source ~/.dotfiles/.aliases
 source ~/.dotfiles/.exports
@@ -15,9 +15,10 @@ set -gx PATH $PATH /bin
 set -gx PATH $PATH /usr/bin
 set -gx PATH $PATH /usr/local/bin
 set -gx PATH $PATH /usr/local/sbin
-set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac/sdk/build-tools/android-4.4W
-set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac/sdk/platform-tools
-set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac/sdk/tools
+set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac-x86_64-20140702/sdk/build-tools/android-4.4W
+set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac-x86_64-20140702/sdk/platform-tools
+set -gx PATH $PATH /Users/Nuno/Development/adt-bundle-mac-x86_64-20140702/sdk/tools
+
 set -gx PATH $PATH /Users/Nuno/Qt/5.5/clang_64/bin
 
 set -gx DOCKER_TLS_VERIFY "1";
