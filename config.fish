@@ -2,10 +2,10 @@
 set -gx OMF_PATH /Users/Nuno/.local/share/omf
 
 # Customize Oh My Fish configuration path.
-# set -gx OMF_CONFIG /Users/Nuno/.config/omf
+set -gx OMF_CONFIG /Users/Nuno/.config/omf
 
 # Load oh-my-fish configuration.
-# source $OMF_PATH/init.fish
+source $OMF_PATH/init.fish
 
 source ~/.dotfiles/.aliases
 source ~/.dotfiles/.exports
@@ -35,3 +35,5 @@ end
 function j
   cd (fasd -d -e 'printf %s' "$argv")
 end
+
+gulp --completion=fish | source
