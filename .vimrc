@@ -52,7 +52,7 @@
         Plugin 'tpope/vim-fugitive'
 
         " linters and completion
-        Plugin 'Valloric/YouCompleteMe'
+        " Plugin 'Valloric/YouCompleteMe'
         " Plugin 'scrooloose/syntastic' " disabling cause making vim opening up too slow
 
         " markdown
