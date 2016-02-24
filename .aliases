@@ -2,9 +2,12 @@ alias g='git'
 alias gc='git commit'
 alias gs='git s'
 alias gp='git push'
+alias gb='git browse'
 alias gpf='git push --force'
+alias ga='git add'
 alias gap='git add -p'
 alias gca='git commit --amend'
+alias gcm='git commit -m'
 alias gcane='git commit --amend --no-edit'
 
 # this is aliasing for a fancy git log I don't need, but need the core utills ls version, prefixed with g
@@ -36,6 +39,7 @@ alias vimrc='vim ~/.vimrc'
 alias ohmyzsh='subl ~/.oh-my-zsh'
 alias reload='source ~/.zshrc'
 alias paths='vim ~/.dotfiles/.path'
+alias aliases='vim ~/.dotfiles/.aliases'
 
 # quicklook from command line :)
 alias ql='qlmanage -p >/dev/null 2>/dev/null'
