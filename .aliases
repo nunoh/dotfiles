@@ -1,5 +1,6 @@
 alias g='git'
 alias gc='git commit'
+alias gs='git s'
 alias gp='git push'
 alias gpf='git push --force'
 alias gap='git add -p'
@@ -18,6 +19,7 @@ alias lla='ls -la'
 alias lll='ls -l | less'
 
 alias cl='clear'
+alias c='clear'
 
 # got used to autojump before fasd
 alias j='fasd_cd -d'
