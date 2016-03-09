@@ -4,6 +4,7 @@ alias gs='git s'
 alias gp='git push'
 alias gb='git browse'
 alias gpf='git push --force'
+alias gdc='git diff --cached'
 alias ga='git add'
 alias gap='git add -p'
 alias gca='git commit --amend'
@@ -29,6 +30,9 @@ alias j='fasd_cd -d'
 
 alias e='sublime'
 alias o='open'
+alias a='atom'
+
+alias sublime='reattach-to-user-namespace sublime'
 
 # do not use prezto default's rm confirmation
 # and also make sure not to give an error when reloading .zshrc
