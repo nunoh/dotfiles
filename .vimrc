@@ -136,6 +136,8 @@
     hi clear SpellBad
     hi SpellBad cterm=underline
 
+    setlocal spell
+
     " remove big vertical border
     hi VertSplit guifg=fg guibg=bg
     hi VertSplit guifg=fg ctermbg=bg
