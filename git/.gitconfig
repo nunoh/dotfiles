@@ -4,7 +4,7 @@
 [alias]
 	s = status -s
 	st = status
-	# l = log --pretty=oneline --abbrev-commit
+    # l = log --pretty=oneline --abbrev-commit
 	l = log --all --graph --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	pom = push origin master
 	co = checkout
@@ -47,3 +47,10 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[user]
+	name = Nuno Hespanhol
+	email = nuno.hespanhol@gmail.com
+[hub]
+	protocol = https
+[github]
+	user = nunoh

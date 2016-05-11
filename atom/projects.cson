@@ -1,0 +1,90 @@
+generator:
+  title: "generator"
+  paths: [
+    "/Users/Nuno/toFlow/generator"
+  ]
+"xflow-engine":
+  title: "xflow-engine"
+  paths: [
+    "/Users/Nuno/toFlow/xflow-engine"
+  ]
+"aether-client":
+  title: "aether-client"
+  paths: [
+    "/Users/Nuno/toFlow/aether-client"
+  ]
+"aether-frontend":
+  title: "aether-frontend"
+  paths: [
+    "/Users/Nuno/toFlow/aether-frontend"
+  ]
+"aether-backend":
+  title: "aether-backend"
+  paths: [
+    "/Users/Nuno/toFlow/aether-backend"
+  ]
+aether:
+  title: "aether"
+  paths: [
+    "/Users/Nuno/toFlow/aether"
+  ]
+"generated-static":
+  title: "generated-static"
+  paths: [
+    "/Users/Nuno/toFlow/generated-static"
+  ]
+"generated-webserver":
+  title: "generated-webserver"
+  paths: [
+    "/Users/Nuno/toFlow/generated-webserver"
+  ]
+"generated-worker":
+  title: "generated-worker"
+  paths: [
+    "/Users/Nuno/toFlow/generated-worker"
+  ]
+"xflow-webclient":
+  title: "xflow-webclient"
+  paths: [
+    "/Users/Nuno/toFlow/xflow-webclient"
+  ]
+frontend:
+  title: "frontend"
+  paths: [
+    "/Users/Nuno/toFlow/frontend"
+  ]
+pdfstore:
+  title: "pdfstore"
+  paths: [
+    "/Users/Nuno/Dropbox/NHS/pdfstore"
+  ]
+"xflow-mocks":
+  title: "xflow-mocks"
+  paths: [
+    "/Users/Nuno/toFlow/xflow-mocks"
+  ]
+"xflow-connect":
+  title: "xflow-connect"
+  paths: [
+    "/Users/Nuno/toFlow/xflow-connect"
+  ]
+"generated-kinesis":
+  title: "generated-kinesis"
+  paths: [
+    "/Users/Nuno/toFlow/generated-kinesis"
+  ]
+"ws-openframeworks":
+  title: "ws-openframeworks"
+  paths: [
+    "/Users/Nuno/Digitopia/Workshops/ws-openframeworks"
+  ]
+"trust-bapi":
+  title: "trust-bapi"
+  paths: [
+    "/Users/Nuno/toFlow/trust-bapi"
+  ]
+"xflow-bapi":
+  title: "xflow-bapi"
+  paths: [
+    "/Users/Nuno/toFlow/xflow-bapi"
+  ]

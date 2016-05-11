@@ -1,6 +1,6 @@
 alias g='git'
 alias gc='git commit'
-alias gs='git s'
+# alias gs='git s'
 alias gp='git push'
 alias gb='git browse'
 alias gpf='git push --force'

@@ -1,35 +1,63 @@
 "*":
   core:
+    automaticallyUpdate: false
     disabledPackages: [
       "wrap-guide"
-      "circle-ci"
       "vim-mode"
+      "power-mode"
+      "case-switch"
+      "linter-flake8"
+      "activate-power-mode"
+      "atom-alignment"
+      "welcome"
+      "livereload"
+      "pigments"
     ]
     themes: [
       "atom-dark-ui"
       "monokai"
     ]
   editor:
-    fontSize: 12
+    fontSize: 10
     invisibles: {}
+    softWrap: true
     tabLength: 4
   "exception-reporting":
     userId: "7e9edc51-f3a3-7ea6-125b-e7f2db088d3f"
+  "highlight-line":
+    enableBackgroundColor: false
+    hideHighlightOnSelect: true
   jshint:
     validateOnlyOnSave: true
   jslint:
     hideOnNoErrors: true
   "lcov-info": {}
+  linter: {}
+  "linter-flake8":
+    projectConfigFile: ".flake8rc"
+  "linter-pylint": {}
   "markdown-preview": {}
   "merge-conflicts": {}
   minimap:
     autoToggle: false
   "one-light-ui": {}
   pigments: {}
+  "project-manager":
+    closeCurrent: true
+    prettifyTitle: false
+    sortBy: "title"
   tabs:
     usePreviewTabs: true
+  "todo-show":
+    sortAscending: false
+    sortBy: "Type"
   "tree-view":
-    hideIgnoredNames: true
     hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
+".ini.source":
+  editor:
+    tabLength: 4
+".jade.source":
+  editor:
+    tabLength: 4

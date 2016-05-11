@@ -3,11 +3,11 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-source ~/.dotfiles/.aliases
-source ~/.dotfiles/.exports
-source ~/.dotfiles/.functions
-source ~/.dotfiles/.path
-source ~/.dotfiles/.shortcuts
+source ~/.dotfiles/shell/.aliases
+source ~/.dotfiles/shell/.exports
+source ~/.dotfiles/shell/.functions
+source ~/.dotfiles/shell/.path
+source ~/.dotfiles/shell/.shortcuts
 
 # soucing specific autocompletion
 # source ~/.dotfiles/completion/tmuxinator.zsh

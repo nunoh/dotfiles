@@ -1,12 +1,7 @@
 export EDITOR='vim'
 
-export ANDROID_HOME="/Users/Nuno/Development/adt-bundle-mac-x86_64-20140702/sdk"
-
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
-
-# export LANG="pt_PT.UTF-8"
-# export LC_ALL="pt_PT.UTF-8"
 
 # so that colors still work when piping to less for example
 export CLICOLOR_FORCE=1
