@@ -4,5 +4,6 @@ ln -sfv ~/.dotfiles/zsh/.* ~
 ln -sfv ~/.dotfiles/git/.* ~ 
 ln -sfv ~/.dotfiles/vim/.* ~ 
 ln -sfv ~/.dotfiles/shell/.* ~ 
+ln -sfv ~/.dotfiles/tmux/.* ~ 
 
 
