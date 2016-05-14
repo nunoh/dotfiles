@@ -876,7 +876,7 @@
 	<key>Default Arrangement Name</key>
 	<string>Top</string>
 	<key>Default Bookmark Guid</key>
-	<string>3DF2A1F7-71A5-4BB8-8F2F-D1D53FD7DEC9</string>
+	<string>337BF916-1358-4356-9E56-6FBE4FFA2D62</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -930,9 +930,11 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 521}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -957,11 +959,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>176 174 924 485 0 0 1280 777 </string>
+	<string>809 555 924 485 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1280 800 0 0 1280 777 </string>
+	<string>0 966 650 451 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>173 27 650 451 0 0 1280 777 </string>
+	<string>524 80 650 451 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>1 2 1273 774 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
@@ -3906,7 +3908,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>477870593.723315</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>481584958.73390698</real>
+	<real>484912741.52812302</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3973,7 +3975,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-05T21:35:57Z</date>
+	<date>2016-05-14T09:58:58Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
