@@ -6,4 +6,7 @@ plugins=(git colored-man-pages zsh-history-substring-search supervisor docker gi
 
 source $ZSH/oh-my-zsh.sh
 
+# don't share command history between shell sessions
+setopt APPEND_HISTORY
+
 for f in ~/.dotfiles/shell/.*; do source $f; done
