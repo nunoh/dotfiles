@@ -2,7 +2,7 @@ export ZSH=/Users/Nuno/.oh-my-zsh
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git colored-man-pages zsh-history-substring-search supervisor docker github node npm fasd nvm pip python brew osx battery zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colored-man-pages zsh-history-substring-search supervisor docker github gulp node npm fasd nvm brew osx battery zsh-autosuggestions zsh-syntax-highlighting per-directory-history)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -10,3 +10,9 @@ source $ZSH/oh-my-zsh.sh
 setopt APPEND_HISTORY
 
 for f in ~/.dotfiles/shell/.*; do source $f; done
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

@@ -33,6 +33,8 @@ alias s='sublime'
 alias o='open'
 alias a='atom'
 
+alias ho='heroku open'
+
 alias sublime='reattach-to-user-namespace sublime'
 
 alias zshrc='vim ~/.zshrc'
