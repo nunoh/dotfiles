@@ -17,7 +17,7 @@ plugins=(
   brew
   osx
   # battery
-  # zsh-autosuggestions
+  zsh-autosuggestions
   zsh-syntax-highlighting
   per-directory-history
 )
