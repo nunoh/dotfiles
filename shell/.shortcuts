@@ -4,5 +4,4 @@ alias digi='cd ~/Digitopia'
 alias drop='cd ~/Dropbox'
 alias desk='cd ~/Desktop'
 alias dev='cd ~/Development'
-alias tf='cd ~/toFlow'
 
