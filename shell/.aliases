@@ -10,6 +10,8 @@ alias gap='git add -p'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias gcane='git commit --amend --no-edit'
+alias gdo='git diff origin'
+alias gh='github'
 
 # this is aliasing for a fancy git log I don't need, but need the core utills ls version, prefixed with g
 unalias gls >/dev/null 2>/dev/null
