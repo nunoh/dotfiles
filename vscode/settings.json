@@ -1,0 +1,21 @@
+{
+    "atomKeymap.promptV3Features": true,
+    "editor.formatOnPaste": true,
+    "editor.minimap.enabled": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.renderWhitespace": "none",
+    "explorer.openEditors.visible": 0,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "window.zoomLevel": 0,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerLanes": 1,
+    "editor.overviewRulerBorder": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.fontSize": 13,
+    "files.trimFinalNewlines": true,
+    "explorer.confirmDragAndDrop": false
+}
