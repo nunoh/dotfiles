@@ -9,13 +9,15 @@ Step 0: Install [brew](brew.sh).
     core-utils \
     htop \
     hub \
-    vim
+    vim \
+    wget
   ```
 
   - Casks
 
   ```bash
   brew cask install \
+      android-file-transfer \
       anki \
       appcleaner \
       atom \

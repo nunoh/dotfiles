@@ -32,7 +32,7 @@
         Plugin 'mattn/emmet-vim'
         Plugin 'rstacruz/sparkup'
         Plugin 'digitaltoad/vim-jade'
-        Plugin 'jaxbot/browserlink.vim'
+        " Plugin 'jaxbot/browserlink.vim'
         Plugin 'pangloss/vim-javascript'
         Plugin 'othree/html5.vim'
         Plugin 'moll/vim-node'
