@@ -34,6 +34,9 @@ Step 0: Install [brew](brew.sh).
       spectacle \
       spotify \
       sublime-text \
+      hyperswitch \
+      mendeley \
+      visual-studio-code \
       vlc
   ```
 
@@ -42,6 +45,16 @@ Step 0: Install [brew](brew.sh).
   Some apps don't (didn't) work as casks install.
   - utorrent
   - TotalSpaces2
+  - audacity
+  - battery monitor
+  - Github Desktop
+  - HyperSwitch
+  - Microsoft Office
+  - MonitorControl
+  - Pd-extended
+  - Sonic Pi
+  - Latex
+  - Thyme  
 
 ### Terminal
   - [ ] `git clone https://github.com/nunoh/dotfiles ~/.dotfiles`
