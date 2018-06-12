@@ -18,8 +18,6 @@ Step 0: Install [brew](brew.sh).
   ```bash
   brew cask install \
       android-file-transfer \
-      anki \
-      appcleaner \
       atom \
       awareness \
       bartender \
@@ -71,22 +69,9 @@ Step 0: Install [brew](brew.sh).
      - `brew install node`
      - `npm install -g n && n lts`
 
-   - openFrameworks
-     - `brew cask install android-studio`
-     - `git clone openFrameworks`
-
 ### App Store
 
   - Pages
   - Keynote
   - Numbers
   - Xcode
-
-### OSX customizations
-
-  _(override to same sane hacker defaults)_
-  - [ ] Map Caps Lock key to Escape
-
-### Keyboard shortcuts
-
-  _TODO_
