@@ -6,7 +6,7 @@ Step 0: Install [brew](brew.sh).
 
   ```bash
   brew install \
-    core-utils \
+    coreutils \
     htop \
     hub \
     vim \
@@ -27,7 +27,6 @@ Step 0: Install [brew](brew.sh).
       firefox \
       flux \
       flycut \
-      google-drive \
       iterm2 \
       rescuetime \
       skype \
