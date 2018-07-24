@@ -18,7 +18,7 @@ unalias gls >/dev/null 2>/dev/null
 unalias gs >/dev/null 2>/dev/null # don't want git stash
 
 # alias l='ls -la'
-# alias l='gls -la -I ".DS_Store" --color=auto'
+alias l='gls -la -I ".DS_Store" --color=auto'
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
