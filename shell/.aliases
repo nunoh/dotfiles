@@ -13,6 +13,8 @@ alias gcane='git commit --amend --no-edit'
 alias gdo='git diff origin'
 alias gh='github'
 
+alias j='z'
+
 # this is aliasing for a fancy git log I don't need, but need the core utills ls version, prefixed with g
 unalias gls >/dev/null 2>/dev/null
 unalias gs >/dev/null 2>/dev/null # don't want git stash
@@ -27,17 +29,10 @@ alias lll='ls -l | less'
 alias cl='clear'
 alias c='clear'
 
-# got used to autojump before fasd
-alias j='fasd_cd -d'
-
 alias e='$EDITOR'
 alias s='sublime'
 alias o='open'
 alias a='atom'
-
-alias ho='heroku open'
-
-alias sublime='reattach-to-user-namespace sublime'
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
@@ -57,9 +52,6 @@ alias unique-lines='grep -F -x -v -f'
 
 # so that scrolling works in tmux properly
 alias irssi='TERM=screen-256color irssi'
-
-alias thead='brew switch tesseract HEAD'
-alias t3='brew switch tesseract 3.02.02_3'
 
 # adding some sugar to git with hub
 # eval '$(hub alias -s)'

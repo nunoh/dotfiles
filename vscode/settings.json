@@ -1,21 +1,74 @@
 {
-    "atomKeymap.promptV3Features": true,
-    "editor.formatOnPaste": true,
     "editor.minimap.enabled": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.renderWhitespace": "none",
     "explorer.openEditors.visible": 0,
     "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": 0,
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": false,
+    "workbench.startupEditor": "welcomePage",
+    "workbench.statusBar.visible": true,
     "diffEditor.ignoreTrimWhitespace": true,
-    "editor.hideCursorInOverviewRuler": true,
-    "editor.overviewRulerLanes": 1,
-    "editor.overviewRulerBorder": false,
-    "workbench.colorTheme": "One Dark Pro",
-    "editor.fontSize": 13,
     "files.trimFinalNewlines": true,
-    "explorer.confirmDragAndDrop": false
-}
+    "explorer.confirmDragAndDrop": false,
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "left",
+    "editor.stablePeek": true,
+    "editor.colorDecorators": true,
+    "terminal.integrated.rendererType": "dom",
+    "python.pythonPath": "/usr/local/bin/python3",
+    "eslint.enable": true,
+    "eslint.run": "onType",
+    "vetur.validation.template": false,
+    "prettier.eslintIntegration": true,
+    "eslint.validate": [
+      {
+        "language": "vue",
+        "autoFix": true
+      },
+      {
+        "language": "html",
+        "autoFix": true
+      },
+      {
+        "language": "javascript",
+        "autoFix": true
+      },
+    ],
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "git.decorations.enabled": false,
+    "workbench.colorTheme": "One Dark Pro Bold",
+    "togglequotes.chars": [
+      "'",
+      "`"
+    ],
+    "workbench.iconTheme": "vscode-great-icons",
+    "projectManager.groupList": true,
+    "window.zoomLevel": -1,
+    "editor.lineNumbers": "on",
+    "editor.fontFamily": "Monaco",
+    "breadcrumbs.enabled": false,
+    "files.associations": {
+      "*.minimap": "yaml",
+      ".env.*": "dotenv"
+    },
+    "scrolloff.scrolloff": 2,
+    "editor.wordWrap": "on",
+    "python.linting.enabled": true,
+    "files.exclude": {
+      "**/__pycache__": true
+    },
+    "python.formatting.provider": "autopep8",
+    "workbench.settings.openDefaultSettings": true,
+    "[markdown]": {
+      "editor.tabSize": 4
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.fontSize": 14,
+    "window.restoreWindows": "none",
+  }

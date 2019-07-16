@@ -57,4 +57,75 @@
         "command": "workbench.action.terminal.split",
         "when": "terminalFocus"
     },
+    {
+        "key": "ctrl+cmd+a",
+        "command": "alignment.align",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "shift+alt+0",
+        "command": "-alignment.align",
+        "when": "editorHasSelection"
+    },
+    {
+        "key": "cmd+l",
+        "command": "console.log.wrap.down.prefix",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+alt+w ctrl+alt+down",
+        "command": "-console.log.wrap.down.prefix",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "-workbench.action.terminal.findPrevious",
+        "when": "terminalFindWidgetFocused"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "-workbench.action.terminal.findPreviousTerminalFocus",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "-editor.action.previousMatchFindAction",
+        "when": "editorFocus"
+    },
+    {
+        "key": "ctrl+cmd+g",
+        "command": "-editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "workbench.view.scm"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm"
+    },
+    {
+        "key": "ctrl+cmd+g",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+cmd+l",
+        "command": "-editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "-restructuredtext.showPreview",
+        "when": "editorLangId == 'restructuredtext'"
+    },
+    {
+        "key": "shift+cmd+r",
+        "command": "workbench.action.terminal.runActiveFile"
+    },
 ]
