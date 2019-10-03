@@ -27,4 +27,4 @@ for f in ~/.dotfiles/shell/.*; do source $f; done
 setopt APPEND_HISTORY
 
 eval "$(rbenv init -)"
-# eval "$(pyenv init -)"
+eval "$(pyenv init -)"
