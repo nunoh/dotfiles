@@ -53,5 +53,7 @@ alias unique-lines='grep -F -x -v -f'
 # so that scrolling works in tmux properly
 alias irssi='TERM=screen-256color irssi'
 
+alias h='history'
+
 # adding some sugar to git with hub
 # eval '$(hub alias -s)'

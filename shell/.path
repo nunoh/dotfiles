@@ -1,12 +1,11 @@
 export PATH="$PATH:/usr/local/opt/coreutils/libexec/gnubin"
-export PATH="$PATH:$HOME/.pyenv/bin"
 export PATH="$PATH:$HOME/Library/Android/sdk/tools"
 export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
-export PATH="$PATH:$HOME/usr/local/lib/ruby/gems/2.6.0/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=/Applications/Postgres.app/Contents/Versions/11/bin:$PATH
 export PATH=/Applications/VLC.app/Contents/MacOS:$PATH
 export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
-
-
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export PATH="/opt/local/sbin/mysql2sqlite:$PATH"
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"

@@ -5,16 +5,20 @@ ZSH_THEME="robbyrussell"
 plugins=(
   brew
   colored-man-pages
+  composer
   django
+  docker
+  fabric
   git
   github
+  history-substring-search
   per-directory-history
   pipenv
   pyenv
-  zsh-autosuggestions
-  history-substring-search
-  zsh-syntax-highlighting
+  python
   z
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -26,5 +30,4 @@ for f in ~/.dotfiles/shell/.*; do source $f; done
 # don't share command history between shell sessions
 setopt APPEND_HISTORY
 
-eval "$(rbenv init -)"
 eval "$(pyenv init -)"

@@ -19,7 +19,6 @@
     "eslint.enable": true,
     "eslint.run": "onType",
     "vetur.validation.template": false,
-    "prettier.eslintIntegration": true,
     "eslint.validate": [
       {
         "language": "vue",
@@ -37,11 +36,7 @@
     "eslint.alwaysShowStatus": true,
     "eslint.autoFixOnSave": true,
     "git.decorations.enabled": false,
-    "workbench.colorTheme": "One Dark Pro Bold",
-    "togglequotes.chars": [
-      "'",
-      "`"
-    ],
+    "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-great-icons",
     "projectManager.groupList": true,
     "window.zoomLevel": -1,
@@ -61,7 +56,8 @@
     "python.formatting.provider": "autopep8",
     "workbench.settings.openDefaultSettings": true,
     "[markdown]": {
-      "editor.tabSize": 4
+      "editor.tabSize": 4,
+      "editor.defaultFormatter": "fcrespo82.markdown-table-formatter"
     },
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -71,4 +67,26 @@
     },
     "editor.fontSize": 14,
     "window.restoreWindows": "none",
+    "importCost.typescriptExtensions": [
+      "\\.vue$"
+    ],
+    "spellright.language": [
+      "en"
+    ],
+    "spellright.documentTypes": [
+      "latex",
+      "plaintext"
+    ],
+    "emmet.excludeLanguages": [],
+"emmet.includeLanguages": {
+  "markdown": "html"
+},
+"csv-preview.hasHeaders": false,
+"[sql]": {},
+"[javascript]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+},
   }
