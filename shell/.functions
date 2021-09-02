@@ -26,12 +26,12 @@ function s() {
     fi;
 }
 
-# Open man page as PDF
+# Open man page as PDF or not really
 function manpdf() {
  man -t "${1}" | open -f -a /Applications/Preview.app/
 }
 
-# Extra many types of compressed packages
+# Another Heading
 # Credit: http://nparikh.org/notes/zshrc.txt
 extract () {
   if [ -f $1 ]; then
@@ -57,17 +57,6 @@ extract () {
 }
 
 function manflag () { man $1 | less -p "^ +$2" }
-
-function showfiles() {
-  defaults write com.apple.finder AppleShowAllFiles YES;
-  killall Finder /System/Library/CoreServices/Finder.app;
-}
-
-function hidefiles() {
-  defaults write com.apple.finder AppleShowAllFiles NO;
-  killall Finder /System/Library/CoreServices/Finder.app;
-}
-
 
 # Invoke tab-completion script to be sourced with the Z shell.
 # Known to work on zsh 5.0.x, probably works on later 4.x releases as well (as

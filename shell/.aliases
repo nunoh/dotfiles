@@ -12,6 +12,7 @@ alias gcm='git commit -m'
 alias gcane='git commit --amend --no-edit'
 alias gdo='git diff origin'
 alias gh='github'
+alias gcae='git commit --allow-empty'
 
 alias j='z'
 
@@ -32,7 +33,6 @@ alias c='clear'
 alias e='$EDITOR'
 alias s='sublime'
 alias o='open'
-alias a='atom'
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
@@ -53,7 +53,23 @@ alias unique-lines='grep -F -x -v -f'
 # so that scrolling works in tmux properly
 alias irssi='TERM=screen-256color irssi'
 
+# alias django='python manage.py' # commenting temporarily, so that it doesn't override `django-shortcuts`
+alias dj='django'
+
 alias h='history'
+
+alias ho='heroku open'
 
 # adding some sugar to git with hub
 # eval '$(hub alias -s)'
+
+alias dropbox-ignore='xattr -w com.dropbox.ignored 1'
+alias dropbox-unignore='xattr -d com.dropbox.ignored'
+
+alias notify='terminal-notifier -message'
+alias noti='notify'
+
+# experimental: g stands for group
+alias assh='pssh -i -H "sievpm mms orelhudo-prod"'
+
+alias startwiki="screen -d -m bash -c 'cd ~/Wiki/pwiki/ && tiddlywiki --listen'"

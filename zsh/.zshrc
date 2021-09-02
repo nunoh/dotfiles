@@ -11,7 +11,9 @@ plugins=(
   fabric
   git
   github
+  heroku
   history-substring-search
+  npm
   per-directory-history
   pipenv
   pyenv
@@ -31,3 +33,8 @@ for f in ~/.dotfiles/shell/.*; do source $f; done
 setopt APPEND_HISTORY
 
 eval "$(pyenv init -)"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# autocomplete ssh with Host first instead of HostName
+zstyle ':completion:*:ssh:*' hosts off

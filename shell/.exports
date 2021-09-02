@@ -14,10 +14,13 @@ export KEYTIMEOUT=1
 # install casks to sensible and predictable locations
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-export STUDIO_JDK="/Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk"
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
 
-export PIPENV_DONT_LOAD_ENV=1
-
 export GEM_HOME="$HOME/.gem"
+
+# pipenv stuff
+export PIPENV_DONT_LOAD_ENV=1 # don't load .env files
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+export PIPENV_VENV_IN_PROJECT=1 # venvs are placed into local .venv instead of home dir 
+
+export HOMEBREW_NO_AUTO_UPDATE=1
