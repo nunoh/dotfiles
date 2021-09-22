@@ -24,8 +24,6 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.z.sh
-
 for f in ~/.dotfiles/shell/.*; do source $f; done
 
 # don't share command history between shell sessions
