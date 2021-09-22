@@ -6,7 +6,6 @@ plugins=(
   brew
   colored-man-pages
   composer
-  django
   docker
   fabric
   git
