@@ -48,9 +48,6 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[user]
-	name = Nuno Hespanhol
-	email = nuno.hespanhol@gmail.com
 [hub]
 	protocol = https
 [github]
