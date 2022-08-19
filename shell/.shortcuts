@@ -1,5 +1,2 @@
 alias dots='cd ~/.dotfiles'
-alias digi='cd ~/Digitopia'
-alias drop='cd ~/Dropbox'
 alias desk='cd ~/Desktop'
-alias contract='cd ~/Dropbox/Contract-Work/'
