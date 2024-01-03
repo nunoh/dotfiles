@@ -14,7 +14,6 @@ plugins=(
   history-substring-search
   npm
   per-directory-history
-  pipenv
   pyenv
   python
   z
