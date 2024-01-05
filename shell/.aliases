@@ -61,3 +61,20 @@ alias ho='heroku open'
 
 alias notify='terminal-notifier -message'
 alias noti='notify'
+
+# experimental: g stands for group
+alias assh='pssh -i -H "sievpm mms orelhudo-prod"'
+
+alias startwiki="screen -d -m bash -c 'cd ~/Wiki/pwiki/ && tiddlywiki --listen'"
+
+alias openbb="/Applications/OpenBB\ Terminal/OpenBB\ Terminal ; exit;"
+
+# lookback terminal MVP
+alias lookback-score="todoist cl -f today | grep "@pts:" | rev | cut -d ':' -f 1 | rev | paste -sd+ - | bc"
+alias lookback-total="todoist cl -f today | wc -l | rev | cut -d ' ' -f 1 | rev"
+# alias lookback-today-header="echo \"    Today, you've done $(lookback-total) tasks @ $(lookback-score) points. \n\""
+alias lookback-today-tasks="todoist cl -f today | grep -v 'pts:0$' | cut -d ' ' -f5- | sed 's/@\:[0-9]{1}//' | xargs -L1 echo '      ✅' | tac"
+# alias lookback-today="echo && lookback-today-header && lookback-today-tasks && echo"
+alias lookback="/Users/nuno/Code/lab/lookback/venv/bin/python /Users/nuno/Code/lab/lookback/_cli/main.py"
+
+alias mkenv='python -m venv venv --prompt . && source venv/bin/activate'

@@ -44,7 +44,7 @@
         Plugin 'tpope/vim-repeat'
         Plugin 'junegunn/vim-easy-align'
         Plugin 'godlygeek/tabular'
-        Plugin 'SirVer/ultisnips'
+        " Plugin 'SirVer/ultisnips'
         Plugin 'honza/vim-snippets'
 
         " git stuff
