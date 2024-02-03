@@ -24,3 +24,5 @@ export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 export PIPENV_VENV_IN_PROJECT=1 # venvs are placed into local .venv instead of home dir 
 
 export HOMEBREW_NO_AUTO_UPDATE=1
+
+export PYTHONBREAKPOINT='IPython.core.debugger.set_trace'
