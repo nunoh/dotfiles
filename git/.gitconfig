@@ -9,6 +9,7 @@
 	pom = push origin master
 	co = checkout
 	b = branch
+	tagcommit = rev-list -n 1
 
 [color]
 	ui = true
@@ -31,7 +32,7 @@
 [core]
 	autocrlf = input
 	excludesfile = /Users/Nuno/.gitignore_global
-	editor = vim
+	editor = subl -n -w
 
 [filter "hawser"]
 	clean = git hawser clean %f
@@ -44,12 +45,10 @@
 	required = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[hub]
-	protocol = https
 [github]
 	user = nunoh
 [init]

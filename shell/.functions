@@ -94,3 +94,18 @@ function path() {
 }
 
 # vim: set ft=sh :
+
+plo () {  # [<requirements.in>...]
+  emulate -L zsh
+
+  local reqsins=($@)
+  if [[ ! $reqsins ]] reqsins=(requirements.in)
+
+  local watchlist=() reqsin
+  for reqsin ( $reqsins ) watchlist+=(${(f)"$(<$reqsin)"})
+  watchlist=(${watchlist%%[ #><=]*})
+  typeset -U watchlist
+
+  pip --disable-pip-version-check list -o --format json \
+  | yaml-get -p "[name =~ /^(${(j:|:)watchlist})$/]"
+}

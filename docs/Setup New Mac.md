@@ -1,10 +1,22 @@
+#topic/tech 
+
 Guide to setting up a new macbook.
 
 ## Checklist before fresh install
 - [x] remember FF password
+- [x] remember Google password
 - [x] check dotfiles repo for local changes
 - [x] `mackup backup`
 - [x] full disk time machine backup to external drive
+
+## To improve next time
+- Cask install on /Applications or ~/Applications?
+- Bootstrap script errors, though it works ok I think
+- mackup not doing much...
+- binding to move tabs around in FF
+- remove all from dock
+	`defaults write com.apple.dock persistent-apps -array && defaults write com.apple.dock persistent-others -array && killall Dock`
+- move `.zsh_history`
 
 ## Menubar (for reference)
 
@@ -31,12 +43,10 @@ brew install \
 	cmake \
 	coreutils \
 	ddcctl \
-	dokku \
 	ffmpeg \
 	gh \
 	git \
 	htop \
-	hub \
 	imagemagick \
 	jq \
 	mackup \
@@ -45,6 +55,7 @@ brew install \
 	pre-commit \
 	pyenv \
 	sqlite \
+	stow \
 	terminal-notifier \
 	tldr \
 	tree \
@@ -79,7 +90,6 @@ brew install --cask \
 	keepingyouawake \
 	lm-studio \
 	menumeters \
-	microsoft-remote-desktop \
 	monitorcontrol \
 	notion \
 	obsidian \
@@ -89,10 +99,9 @@ brew install --cask \
 	rescuetime \
 	sizeup \
 	slack \
-	spectacle \
+	rectangle \
 	spotify \
 	sublime-text \
-	syntax-highlight \
 	ticktick \
 	transmission \
 	visual-studio-code \
@@ -127,12 +136,24 @@ vim +PluginInstall
 ```
 - restore OSX system and app preferences with [mackup](https://github.com/lra/mackup)
 ```
-# double check what to import on `shell/.mackup.cfg`
+# double check what to import on `osx/.mackup.cfg`
 mackup restore
 ```
 - set up Firefox
 	- login with Firefox sync
-	- install extensions (don’t get synced)
-	  ![](firefox_extensions.png)
+	- remove blue dot indicator (look at `chrome` dir of previous FF profile - userChrome.css and userContent.css)
+	- follow https://www.userchrome.org/how-create-userchrome-css.html
 - set up Chrome
 	- login
+- set up vscode
+	- Turn on Settings Sync
+- Set up python stuff
+```
+pyenv install 3.12
+pyenv install 2.7
+pyenv global 3.12
+```
+- Set up calendar
+	- add internet acconuts gmail
+
+set up `~/.gitconfig_user`

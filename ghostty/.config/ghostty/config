@@ -1,0 +1,64 @@
+# Ghostty config — ported from iTerm2 basics.
+# Lives at ~/.config/ghostty/config on macOS and Linux.
+
+# ── Appearance ────────────────────────────────────────────────────────────────
+font-family = "FiraCode Nerd Font Mono"
+font-size = 14
+
+theme = Solarized Dark
+
+cursor-style = block
+cursor-style-blink = false
+
+background-opacity = 0.80
+window-padding-x = 4
+window-padding-y = 4
+
+# ── macOS only ────────────────────────────────────────────────────────────────
+macos-option-as-alt = left
+macos-titlebar-style = tabs
+macos-non-native-fullscreen = visible-menu
+
+# ── Shell / behavior ──────────────────────────────────────────────────────────
+shell-integration = detect
+copy-on-select = false
+confirm-close-surface = false
+mouse-hide-while-typing = true
+
+# ── Keybindings ───────────────────────────────────────────────────────────────
+# Notes for Linux: replace `cmd` with `ctrl+shift` (Ghostty's Linux convention).
+# You can keep this single file and the `cmd` binds will simply no-op there.
+
+# Tabs
+keybind = cmd+t=new_tab
+keybind = cmd+w=close_surface
+keybind = cmd+shift+]=next_tab
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+1=goto_tab:1
+keybind = cmd+2=goto_tab:2
+keybind = cmd+3=goto_tab:3
+keybind = cmd+4=goto_tab:4
+keybind = cmd+5=goto_tab:5
+keybind = cmd+6=goto_tab:6
+keybind = cmd+7=goto_tab:7
+keybind = cmd+8=goto_tab:8
+keybind = cmd+9=last_tab
+
+# Splits — iTerm uses cmd+d / cmd+shift+d
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+
+# Pane navigation (vim-style, matches your iTerm cmd+h/j/k/l)
+keybind = cmd+h=goto_split:left
+keybind = cmd+j=goto_split:bottom
+keybind = cmd+k=goto_split:top
+keybind = cmd+l=goto_split:right
+
+# Pane resize (cmd+ctrl+h/j/k/l)
+keybind = cmd+ctrl+h=resize_split:left,10
+keybind = cmd+ctrl+j=resize_split:down,10
+keybind = cmd+ctrl+k=resize_split:up,10
+keybind = cmd+ctrl+l=resize_split:right,10
+
+# Misc
+keybind = shift+enter=text:\n

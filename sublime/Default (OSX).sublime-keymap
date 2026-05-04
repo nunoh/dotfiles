@@ -1,5 +1,9 @@
 [
-	{ "keys": ["super+shift+c"], "command": "toggle_comment", "args": { "block": false } },
-  	{ "keys": ["ctrl+tab"], "command": "next_view" },
-    { "keys": ["ctrl+shift+tab"], "command": "prev_view" }
+  {
+    "keys": ["super+shift+c"],
+    "command": "toggle_comment",
+    "args": { "block": false }
+  },
+  { "keys": ["ctrl+tab"], "command": "next_view" },
+  { "keys": ["ctrl+shift+tab"], "command": "prev_view" }
 ]

@@ -1,7 +1,38 @@
 #!/bin/sh
+set -eu
 
-ln -sfv ~/.dotfiles/zsh/.* ~
-ln -sfv ~/.dotfiles/git/.* ~
-ln -sfv ~/.dotfiles/vim/.* ~
-ln -sfv ~/.dotfiles/shell/.* ~
-ln -sfv ~/.dotfiles/osx/.mackup.cfg ~
+# Symlinks dotfiles into $HOME using GNU stow.
+# Run from anywhere: `~/.dotfiles/scripts/bootstrap`
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+
+if ! command -v stow >/dev/null 2>&1; then
+  echo "stow not found. Install it:" >&2
+  echo "  macOS: brew install stow" >&2
+  echo "  Linux: apt/dnf/pacman install stow" >&2
+  exit 1
+fi
+
+# Reap any leftover absolute-path symlinks from the old bootstrap so stow
+# can recreate them as relative links without conflict. Only touches links
+# whose target is inside this repo.
+find -H "$HOME" -maxdepth 3 -type l 2>/dev/null | while IFS= read -r link; do
+  target=$(readlink "$link")
+  case "$target" in
+    "$DOTFILES"/*|*/.dotfiles/*) unlink "$link" ;;
+  esac
+done
+
+COMMON="zsh git vim shell ghostty"
+MAC="osx hammerspoon"
+
+cd "$DOTFILES"
+# shellcheck disable=SC2086
+stow --target="$HOME" --restow $COMMON
+
+case "$(uname -s)" in
+  Darwin)
+    # shellcheck disable=SC2086
+    stow --target="$HOME" --restow $MAC
+    ;;
+esac
