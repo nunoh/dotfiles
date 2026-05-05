@@ -24,7 +24,7 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 
 | Package       | Symlinks into                  | Notes                |
 |---------------|--------------------------------|----------------------|
-| `zsh`         | `~/.zshrc`                     |                      |
+| `zsh`         | `~/.zshrc`, `~/.zsh_plugins.txt` |                    |
 | `git`         | `~/.gitconfig`, `~/.gitignore_global` | also: `cp git/.gitconfig_user.example ~/.gitconfig_user` and fill in |
 | `vim`         | `~/.vimrc`, `~/.ycm_extra_conf.py` |                  |
 | `shell`       | `~/.aliases`, `~/.exports`, `~/.functions`, `~/.path`, `~/.shortcuts`, `~/.hushlogin` | sourced by zsh |
