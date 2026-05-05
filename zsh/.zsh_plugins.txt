@@ -13,6 +13,5 @@ ohmyzsh/ohmyzsh path:plugins/z
 
 MichaelAquilina/zsh-autoswitch-virtualenv
 jimhester/per-directory-history
-lukechilds/zsh-nvm
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting

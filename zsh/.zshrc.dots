@@ -10,11 +10,10 @@ fi
 
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
-# nvm — lazy-loaded by lukechilds/zsh-nvm to keep shell startup fast.
-export NVM_DIR="$HOME/.nvm"
-export NVM_LAZY_LOAD=true
-
 antidote load
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 for f in ~/.dotfiles/shell/.*; do source $f; done
 
