@@ -1,3 +1,7 @@
+# Host-local overrides (not tracked in the repo). Sourced early so it can
+# override ZSH_THEME and anything else read during plugin load.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 # Antidote — zsh plugin manager. https://github.com/mattmc3/antidote
 # Plugins listed in ~/.zsh_plugins.txt.
 # macOS: `brew install antidote`
@@ -8,7 +12,7 @@ else
   source $HOME/.antidote/antidote.zsh
 fi
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
 # nvm — lazy-loaded by lukechilds/zsh-nvm to keep shell startup fast.
 export NVM_DIR="$HOME/.nvm"
