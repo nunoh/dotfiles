@@ -24,7 +24,7 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 
 | Package       | Symlinks into                  | Notes                |
 |---------------|--------------------------------|----------------------|
-| `zsh`         | `~/.zshrc`, `~/.zsh_plugins.txt` |                    |
+| `zsh`         | `~/.zshrc.dots`, `~/.zsh_plugins.txt` | also: `cp zsh/.zshrc.example ~/.zshrc` and customize (see below) |
 | `git`         | `~/.gitconfig`, `~/.gitignore_global` | also: `cp git/.gitconfig_user.example ~/.gitconfig_user` and fill in |
 | `vim`         | `~/.vimrc`, `~/.ycm_extra_conf.py` |                  |
 | `shell`       | `~/.aliases`, `~/.exports`, `~/.functions`, `~/.path`, `~/.shortcuts`, `~/.hushlogin` | sourced by zsh |
@@ -46,6 +46,19 @@ stow -D hammerspoon             # uninstall (remove its symlinks)
 stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
+
+## Per-host `~/.zshrc`
+
+`zsh/.zshrc.dots` holds the shared zsh config. Each machine has its own
+`~/.zshrc` (untracked) that sources it. Bootstrap from the template:
+
+```sh
+cp ~/.dotfiles/zsh/.zshrc.example ~/.zshrc
+```
+
+Then edit `~/.zshrc` to suit the host. Overrides above the source line
+are read during plugin init (e.g. `ZSH_THEME`); overrides below it run
+after plugins load (e.g. `PROMPT`, host-specific aliases).
 
 ## New machine setup
 

@@ -1,0 +1,12 @@
+# Per-host ~/.zshrc — copy this file to ~/.zshrc and customize.
+#
+# Anything above `source ~/.zshrc.dots` runs before plugins load
+# (use it for ZSH_THEME and other vars read during plugin init).
+# Anything below runs after plugins load (use it to override what
+# plugins set, e.g. PROMPT, aliases, key bindings).
+
+# ZSH_THEME="agnoster"
+
+source ~/.zshrc.dots
+
+# PROMPT="%m ${PROMPT}"
