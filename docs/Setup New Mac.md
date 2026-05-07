@@ -98,10 +98,7 @@ mas install \
 - Manual installs (own builds, not on brew)
 	- [uSwitch](https://github.com/nunoh/uSwitch)
 	- [Unwind](https://github.com/nunoh/unwind)
-- install [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file)
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-```
+- install [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file) (follow the install script from the repo readme)
 - set up vim (Vundle is vim-only; neovim is installed but uses no plugin manager yet)
 ```
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
