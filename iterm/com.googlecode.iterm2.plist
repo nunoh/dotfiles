@@ -1357,7 +1357,7 @@
 			<key>Disable Smcup Rmcup</key>
 			<false/>
 			<key>Disable Window Resizing</key>
-			<true/>
+			<false/>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -1425,7 +1425,7 @@
 			<key>Scrollback Lines</key>
 			<integer>0</integer>
 			<key>Scrollback With Status Bar</key>
-			<false/>
+			<true/>
 			<key>Scrollback in Alternate Screen</key>
 			<true/>
 			<key>Selected Text Color</key>
@@ -2175,7 +2175,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowNewOutputIndicator</key>
 	<true/>
 	<key>ShowPaneTitles</key>
