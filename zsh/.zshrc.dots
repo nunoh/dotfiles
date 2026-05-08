@@ -21,3 +21,16 @@ for f in ~/.dotfiles/shell/.*; do source $f; done
 setopt APPEND_HISTORY
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Show user@host in prompt when over SSH. The theme sets PROMPT via a precmd
+# hook (not at source time), so we register our own precmd to run after it,
+# prepend %n@%m, then unregister. add-zsh-hook is the canonical way to manage
+# precmd_functions.
+if [[ -n "$SSH_CONNECTION" ]]; then
+  autoload -U add-zsh-hook
+  _ssh_prompt_prefix() {
+    PROMPT="%{$fg[yellow]%}%n@%m%{$reset_color%} $PROMPT"
+    add-zsh-hook -d precmd _ssh_prompt_prefix
+  }
+  add-zsh-hook precmd _ssh_prompt_prefix
+fi
