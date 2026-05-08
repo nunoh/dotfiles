@@ -5,8 +5,6 @@
 font-family = "FiraCode Nerd Font Mono"
 font-size = 14
 
-theme = Solarized Dark
-
 cursor-style = block
 cursor-style-blink = false
 
@@ -21,6 +19,7 @@ macos-non-native-fullscreen = visible-menu
 
 # ── Shell / behavior ──────────────────────────────────────────────────────────
 shell-integration = detect
+shell-integration-features = no-cursor
 copy-on-select = false
 confirm-close-surface = false
 mouse-hide-while-typing = true
@@ -48,11 +47,11 @@ keybind = cmd+9=last_tab
 keybind = cmd+d=new_split:right
 keybind = cmd+shift+d=new_split:down
 
-# Pane navigation (vim-style, matches your iTerm cmd+h/j/k/l)
-keybind = cmd+h=goto_split:left
-keybind = cmd+j=goto_split:bottom
-keybind = cmd+k=goto_split:top
-keybind = cmd+l=goto_split:right
+# Pane navigation (vim-style, ctrl+h/j/k/l)
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
 
 # Pane resize (cmd+ctrl+h/j/k/l)
 keybind = cmd+ctrl+h=resize_split:left,10
@@ -60,5 +59,18 @@ keybind = cmd+ctrl+j=resize_split:down,10
 keybind = cmd+ctrl+k=resize_split:up,10
 keybind = cmd+ctrl+l=resize_split:right,10
 
-# Misc
-keybind = shift+enter=text:\n
+# Clear — cmd+r clears visible screen (preserves scrollback, like iTerm cmd+r);
+# cmd+k wipes screen + scrollback (like iTerm cmd+k / "Clear Buffer").
+keybind = cmd+r=text:\x0c
+keybind = cmd+k=clear_screen
+
+# Toggle between configured background-opacity and fully opaque.
+keybind = cmd+u=toggle_background_opacity
+
+# Send alt+enter on shift+enter so apps that expect alt+enter for "soft newline"
+# (e.g. hermes-agent) get the right input. Overrides kitty-protocol encoding for this key.
+keybind = shift+enter=text:\x1b\r
+
+# Quick terminal — global hotkey to toggle a drop-down ghostty window from anywhere.
+keybind = global:cmd+escape=toggle_quick_terminal
+
