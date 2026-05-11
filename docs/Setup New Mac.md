@@ -124,7 +124,11 @@ uv python install --default
 - Set up calendar
 	- add internet accounts gmail
 - Restore Raycast settings & data from the pre-install export
-- set up `~/.gitconfig.local`
+- set up identity in `~/.gitconfig.local`:
+  ```sh
+  git config -f ~/.gitconfig.local user.name "Your Name"
+  git config -f ~/.gitconfig.local user.email "you@example.com"
+  ```
 
 ## Terminal
 

@@ -29,16 +29,15 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lll='ls -l | less'
 
-alias cl='clear'
-alias c='clear'
-
 alias e='$EDITOR'
-alias s='sublime'
-alias o='open'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias o='open'
+else
+  alias o='nautilus'
+fi
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
-alias ohmyzsh='$EDITOR ~/.oh-my-zsh'
 alias reload='source ~/.zshrc'
 
 alias paths='vim ~/.dotfiles/shell/.path'
@@ -48,19 +47,7 @@ alias aliases='vim ~/.dotfiles/shell/.aliases'
 # quicklook from command line :)
 alias ql='qlmanage -p >/dev/null 2>/dev/null'
 
-alias lvim='vim -c "normal '\''0"'
-
-alias unique-lines='grep -F -x -v -f'
-
-# alias django='python manage.py' # commenting temporarily, so that it doesn't override `django-shortcuts`
-alias dj='django'
-
 alias h='history'
-
-alias ho='heroku open'
-
-# adding some sugar to git with hub
-# eval '$(hub alias -s)'
 
 alias notify='terminal-notifier -message'
 alias noti='notify'

@@ -11,4 +11,4 @@ hs.urlevent.httpCallback = function(_scheme, _host, _params, fullURL)
   hs.urlevent.openURLWithBundle(fullURL, bundleID)
 end
 
-hs.alert.show("Browser router loaded")
+-- hs.alert.show("Browser router loaded")

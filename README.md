@@ -1,10 +1,6 @@
 # dotfiles
 
-Personal dotfiles, managed with [GNU stow](https://www.gnu.org/software/stow/).
-
-Each top-level directory is a stow *package* — its contents mirror the layout
-they should have in `$HOME`. Running stow on a package symlinks its files into
-place.
+Personal dotfiles, managed with stow.
 
 ## Install
 
@@ -12,28 +8,33 @@ place.
 # prerequisite
 brew install stow            # macOS
 sudo apt install stow        # Debian/Ubuntu
-
 git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 ~/.dotfiles/scripts/bootstrap
 ```
 
-`scripts/bootstrap` reaps any leftover absolute-path symlinks from the old
-`ln -sfv` setup and then stows the right packages for your OS.
+## Directories
 
-## Packages
+### Stowed packages
 
-| Package       | Symlinks into                  | Notes                |
-|---------------|--------------------------------|----------------------|
-| `zsh`         | `~/.zshrc.dots`, `~/.zsh_plugins.txt` | also: `cp zsh/.zshrc.example ~/.zshrc` and customize (see below) |
-| `git`         | `~/.gitconfig`, `~/.gitignore_global` | also: `cp git/.gitconfig.linux ~/.gitconfig.local` or `cp git/.gitconfig.osx ~/.gitconfig.local`, then fill in |
-| `vim`         | `~/.vimrc`, `~/.ycm_extra_conf.py` |                  |
-| `shell`       | `~/.aliases`, `~/.exports`, `~/.functions`, `~/.path`, `~/.shortcuts`, `~/.hushlogin` | sourced by zsh |
-| `ghostty`     | `~/.config/ghostty/config`     | macOS + Linux        |
-| `osx`         | `~/.mackup.cfg`                | macOS only           |
-| `hammerspoon` | `~/.hammerspoon/init.lua`      | macOS only           |
+- `zsh`: shared shell startup files, aliases, functions, and plugin setup.
+- `git`: shared Git config and ignore rules.
+- `vim`: shared Vim config.
+- `shell`: shared shell aliases, exports, helper functions, and paths.
+- `ghostty`: shared Ghostty config and key bindings.
+- `tmux`: tmux key bindings, session behavior, and color themes.
+- `osx`: macOS-specific preferences for `mackup`.
+- `hammerspoon`: Hammerspoon config for macOS automation.
 
-Reference-only directories (not stowed): `iterm`, `sublime`, `vscode`, `tmux`,
-`cheatsheets`, `docs`. App preferences for those live under `~/Library/...`
+### Reference-only directories
+
+- `iterm`
+- `sublime`
+- `vscode`
+- `cheatsheets`: quick reference notes for terminal tools.
+- `docs`: setup guides for new machines.
+- `keyd`: Linux keyboard remapping config.
+
+App preferences for the reference-only directories live under `~/Library/...`
 and are managed via [mackup](https://github.com/lra/mackup).
 
 ## Common tasks
@@ -42,23 +43,26 @@ and are managed via [mackup](https://github.com/lra/mackup).
 cd ~/.dotfiles
 
 stow ghostty                    # install one package
+stow tmux                       # install one package
 stow -D hammerspoon             # uninstall (remove its symlinks)
 stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
 
-## Per-host `~/.zshrc`
+## Per-host settings
 
-`zsh/.zshrc.dots` holds the shared zsh config. Each machine has its own
-`~/.zshrc` (untracked) that sources it. Bootstrap from the template:
+### zsh
 
 ```sh
-cp ~/.dotfiles/zsh/.zshrc.example ~/.zshrc
+cp ~/.dotfiles/zsh/.zshrc.local.example ~/.zshrc.local
 ```
 
-Then edit `~/.zshrc` to suit the host. Overrides above the source line
-are read during plugin init (e.g. `ZSH_THEME`); overrides below it run
-after plugins load (e.g. `PROMPT`, host-specific aliases).
+## git
+
+```sh
+git config -f ~/.gitconfig.local user.name "Your Name"
+git config -f ~/.gitconfig.local user.email "you@example.com"
+```
 
 ## New machine setup
 

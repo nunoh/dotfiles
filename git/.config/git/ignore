@@ -21,3 +21,12 @@ node_modules
 
 htmlcov
 .coverage
+
+**/.claude/settings.local.json
+
+# Syncthing
+**/.stfolder/
+**/.stversions/
+**/.stignore
+**/.syncthing.*.tmp
+*.sync-conflict-*

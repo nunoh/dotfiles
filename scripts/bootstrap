@@ -13,6 +13,33 @@ if ! command -v stow >/dev/null 2>&1; then
   exit 1
 fi
 
+migrate_legacy_zshrc() {
+  legacy="$HOME/.zshrc"
+  backup="$HOME/.zshrc.legacy-dots"
+
+  if [ -f "$legacy" ] && [ ! -L "$legacy" ] && grep -q '\.zshrc\.dots' "$legacy"; then
+    if [ ! -e "$HOME/.zshrc.local" ]; then
+      cp "$DOTFILES/zsh/.zshrc.local.example" "$HOME/.zshrc.local"
+    fi
+
+    if [ -e "$backup" ]; then
+      backup="$backup.$(date +%Y%m%d%H%M%S)"
+    fi
+
+    mv "$legacy" "$backup"
+    echo "Moved legacy ~/.zshrc wrapper to $backup"
+  fi
+
+  if [ -L "$HOME/.zshrc.dots" ]; then
+    target=$(readlink "$HOME/.zshrc.dots")
+    case "$target" in
+      "$DOTFILES"/*|*/.dotfiles/*) unlink "$HOME/.zshrc.dots" ;;
+    esac
+  fi
+}
+
+migrate_legacy_zshrc
+
 # Reap any leftover absolute-path symlinks from the old bootstrap so stow
 # can recreate them as relative links without conflict. Only touches links
 # whose target is inside this repo.
@@ -23,7 +50,7 @@ find -H "$HOME" -maxdepth 3 -type l 2>/dev/null | while IFS= read -r link; do
   esac
 done
 
-COMMON="zsh git vim shell ghostty"
+COMMON="zsh git vim shell ghostty tmux"
 MAC="osx hammerspoon"
 
 cd "$DOTFILES"
