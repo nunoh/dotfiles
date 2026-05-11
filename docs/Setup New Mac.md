@@ -124,7 +124,7 @@ uv python install --default
 - Set up calendar
 	- add internet accounts gmail
 - Restore Raycast settings & data from the pre-install export
-- set up `~/.gitconfig_user`
+- set up `~/.gitconfig.local`
 
 ## Terminal
 

@@ -1,0 +1,9 @@
+# Per-host ~/.zshrc.local - copy this file to ~/.zshrc.local and customize.
+#
+# This file is sourced by ~/.zshrc after shared plugins, aliases, functions,
+# and shell integration load. Keep machine-specific exports, aliases, prompt
+# tweaks, and one-off path additions here.
+
+# export WORKON_HOME="$HOME/.virtualenvs"
+# alias work='cd ~/work'
+# PROMPT="%m ${PROMPT}"

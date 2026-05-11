@@ -1,7 +1,0 @@
-# Copy to ~/.gitconfig_user and fill in.
-# Included by ~/.gitconfig — kept out of the repo so identity settings
-# stay machine-local.
-
-[user]
-	name = Your Name
-	email = you@example.com

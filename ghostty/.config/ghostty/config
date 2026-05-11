@@ -74,3 +74,5 @@ keybind = shift+enter=text:\x1b\r
 # Quick terminal — global hotkey to toggle a drop-down ghostty window from anywhere.
 keybind = global:cmd+escape=toggle_quick_terminal
 
+# Misc
+keybind = shift+enter=text:\n

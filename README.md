@@ -25,7 +25,7 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 | Package       | Symlinks into                  | Notes                |
 |---------------|--------------------------------|----------------------|
 | `zsh`         | `~/.zshrc.dots`, `~/.zsh_plugins.txt` | also: `cp zsh/.zshrc.example ~/.zshrc` and customize (see below) |
-| `git`         | `~/.gitconfig`, `~/.gitignore_global` | also: `cp git/.gitconfig_user.example ~/.gitconfig_user` and fill in |
+| `git`         | `~/.gitconfig`, `~/.gitignore_global` | also: `cp git/.gitconfig.linux ~/.gitconfig.local` or `cp git/.gitconfig.osx ~/.gitconfig.local`, then fill in |
 | `vim`         | `~/.vimrc`, `~/.ycm_extra_conf.py` |                  |
 | `shell`       | `~/.aliases`, `~/.exports`, `~/.functions`, `~/.path`, `~/.shortcuts`, `~/.hushlogin` | sourced by zsh |
 | `ghostty`     | `~/.config/ghostty/config`     | macOS + Linux        |
@@ -62,5 +62,7 @@ after plugins load (e.g. `PROMPT`, host-specific aliases).
 
 ## New machine setup
 
-See [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md) for the full
-brew/casks/zsh-plugins/vim list.
+See the setup guides for full package, app, zsh, vim, and restore steps:
+
+- [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
+- [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)

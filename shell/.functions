@@ -93,6 +93,63 @@ function path() {
     echo $PATH | tr ":" "\n" | nl
 }
 
+function ghostty-toggle-opacity() {
+    emulate -L zsh
+
+    local config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/ghostty"
+    local config="$config_dir/config"
+    local transparent="0.80"
+
+    [[ -f "$config" ]] || config="$config_dir/config.ghostty"
+    if [[ ! -f "$config" ]]; then
+        echo "Ghostty config not found in $config_dir"
+        return 1
+    fi
+    config="$(realpath "$config")"
+
+    local current target tmp
+    current="$(
+        awk -F= '/^[[:space:]]*background-opacity[[:space:]]*=/ {
+            value = $2
+            gsub(/^[[:space:]]+|[[:space:]]+$/, "", value)
+            print value
+        }' "$config" | tail -n 1
+    )"
+
+    if [[ "$current" == "1" || "$current" == "1.0" || "$current" == "1.00" ]]; then
+        target="$transparent"
+    else
+        target="1"
+    fi
+
+    tmp="$(mktemp "${config:h}/.ghostty-config.XXXXXX")" || return 1
+    if ! awk -v opacity="$target" '
+        /^[[:space:]]*background-opacity[[:space:]]*=/ {
+            print "background-opacity = " opacity
+            seen = 1
+            next
+        }
+        { print }
+        END {
+            if (!seen) {
+                print "background-opacity = " opacity
+            }
+        }
+    ' "$config" > "$tmp"; then
+        rm -f "$tmp"
+        return 1
+    fi
+    mv "$tmp" "$config"
+
+    if systemctl reload --user app-com.mitchellh.ghostty.service >/dev/null 2>&1; then
+        echo "Ghostty opacity: $target"
+    elif pkill -USR2 -x ghostty >/dev/null 2>&1; then
+        echo "Ghostty opacity: $target"
+    else
+        echo "Ghostty opacity: $target; press Ctrl+Shift+, to reload"
+    fi
+}
+
 # vim: set ft=sh :
 
 plo () {  # [<requirements.in>...]
