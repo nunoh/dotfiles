@@ -4,21 +4,18 @@ Personal dotfiles, managed with stow.
 
 ## Install
 
-### macOS
+### macOS / Ubuntu (Desktop)
 
 ```sh
-brew install stow
 git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 ~/.dotfiles/scripts/bootstrap
+cp ~/.dotfiles/zsh/.zshrc.local.example ~/.zshrc.local
+git config -f ~/.gitconfig.local user.name "Your Name"
+git config -f ~/.gitconfig.local user.email "you@example.com"
 ```
 
-### Ubuntu (desktop)
-
-```sh
-sudo apt install -y stow git
-git clone https://github.com/nunoh/dotfiles ~/.dotfiles
-~/.dotfiles/scripts/bootstrap
-```
+- [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
+- [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)
 
 ### Server (Debian/Ubuntu)
 
@@ -67,25 +64,3 @@ stow -D hammerspoon             # uninstall (remove its symlinks)
 stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
-
-## Per-host settings
-
-### zsh
-
-```sh
-cp ~/.dotfiles/zsh/.zshrc.local.example ~/.zshrc.local
-```
-
-## git
-
-```sh
-git config -f ~/.gitconfig.local user.name "Your Name"
-git config -f ~/.gitconfig.local user.email "you@example.com"
-```
-
-## New machine setup
-
-See the setup guides for full package, app, zsh, vim, and restore steps:
-
-- [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
-- [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)
