@@ -4,12 +4,31 @@ Personal dotfiles, managed with stow.
 
 ## Install
 
+### macOS
+
 ```sh
-# prerequisite
-brew install stow            # macOS
-sudo apt install stow        # Debian/Ubuntu
+brew install stow
 git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 ~/.dotfiles/scripts/bootstrap
+```
+
+### Ubuntu (desktop)
+
+```sh
+sudo apt install -y stow git
+git clone https://github.com/nunoh/dotfiles ~/.dotfiles
+~/.dotfiles/scripts/bootstrap
+```
+
+### Server (Debian/Ubuntu)
+
+Installs base packages, stows the server subset (`zsh vim shell tmux`),
+clones antidote, and switches the login shell to zsh.
+
+```sh
+sudo apt install -y git
+git clone https://github.com/nunoh/dotfiles ~/.dotfiles
+~/.dotfiles/scripts/setup-server
 ```
 
 ## Directories

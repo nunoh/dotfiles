@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+
+# Bootstrap a fresh Debian/Ubuntu server: install base packages,
+# symlink dotfiles, switch login shell to zsh.
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+SUDO=$([ "$(id -u)" -eq 0 ] || echo sudo)
+
+$SUDO apt-get update
+$SUDO apt-get install -y zsh vim tmux git stow curl wget ca-certificates
+
+cd "$DOTFILES"
+stow --target="$HOME" --restow zsh vim shell tmux
+
+[ -d "$HOME/.antidote" ] || git clone --depth=1 https://github.com/mattmc3/antidote "$HOME/.antidote"
+
+chsh -s "$(command -v zsh)"
+
+echo "Done. Log out and back in to start using zsh."
