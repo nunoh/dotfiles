@@ -1,9 +1,11 @@
 # My Ghostty cheat sheet
 
-config lives at `~/.config/ghostty/config` on macOS and Linux.
+entrypoint lives at `~/.config/ghostty/config`.
+shared config lives at `~/.config/ghostty/config.d/shared.conf`.
 reload after edits with `cmd+shift+,` (macOS) / `ctrl+shift+,` (Linux).
 
-most binds use `cmd` on macOS — on Linux swap `cmd` for `ctrl+shift` (Ghostty's convention there).
+The custom `cmd` bindings are shared because Ghostty accepts `cmd` as `super`;
+Linux can ignore the ones that are not useful there.
 
 
 ### Tabs
@@ -43,10 +45,13 @@ uses plain `ctrl` so the same bind works inside tmux's vim-aware nav.
 
 	cmd+u                   toggle background opacity (configured ↔ fully opaque)
 
+Ghostty starts at 1.00 opacity because GTK/Linux does not currently support
+opacity toggling.
+
 
 ### Misc
 
-	shift+enter             sends alt+enter (for apps that want a "soft newline")
+	shift+enter             sends alt+enter (shared; for apps that want a "soft newline")
 	cmd+escape              toggle quick terminal (drop-down, global hotkey)
 	cmd+,                   open config
 	cmd+shift+,             reload config
