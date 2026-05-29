@@ -6,6 +6,8 @@ set -eu
 
 DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
 
+command -v git >/dev/null 2>&1 || { echo "git is required but not installed." >&2; exit 1; }
+
 if ! command -v stow >/dev/null 2>&1; then
   echo "stow not found. Install it:" >&2
   echo "  macOS: brew install stow" >&2
@@ -13,53 +15,113 @@ if ! command -v stow >/dev/null 2>&1; then
   exit 1
 fi
 
-migrate_legacy_zshrc() {
-  legacy="$HOME/.zshrc"
-  backup="$HOME/.zshrc.legacy-dots"
-
-  if [ -f "$legacy" ] && [ ! -L "$legacy" ] && grep -q '\.zshrc\.dots' "$legacy"; then
-    if [ ! -e "$HOME/.zshrc.local" ]; then
-      cp "$DOTFILES/zsh/.zshrc.local.example" "$HOME/.zshrc.local"
-    fi
-
-    if [ -e "$backup" ]; then
-      backup="$backup.$(date +%Y%m%d%H%M%S)"
-    fi
-
-    mv "$legacy" "$backup"
-    echo "Moved legacy ~/.zshrc wrapper to $backup"
-  fi
-
-  if [ -L "$HOME/.zshrc.dots" ]; then
-    target=$(readlink "$HOME/.zshrc.dots")
-    case "$target" in
-      "$DOTFILES"/*|*/.dotfiles/*) unlink "$HOME/.zshrc.dots" ;;
-    esac
-  fi
-}
-
-migrate_legacy_zshrc
-
-# Reap any leftover absolute-path symlinks from the old bootstrap so stow
-# can recreate them as relative links without conflict. Only touches links
-# whose target is inside this repo.
-find -H "$HOME" -maxdepth 3 -type l 2>/dev/null | while IFS= read -r link; do
-  target=$(readlink "$link")
-  case "$target" in
-    "$DOTFILES"/*|*/.dotfiles/*) unlink "$link" ;;
-  esac
-done
-
 COMMON="zsh git vim shell ghostty tmux"
 MAC="osx hammerspoon"
 
+remove_blocking_parents() {
+  parent=$(dirname "$1")
+  path="$HOME"
+
+  [ "$parent" = "." ] && return
+
+  old_ifs=$IFS
+  IFS=/
+  # shellcheck disable=SC2086
+  set -- $parent
+  IFS=$old_ifs
+
+  for part do
+    path="$path/$part"
+    if [ -e "$path" ] && [ ! -d "$path" ]; then
+      rm -rf "$path"
+      return
+    fi
+  done
+}
+
+# True if any ancestor directory of $rel (under $HOME) is a symlink. Such a
+# parent is a folded stow link pointing back into the repo; descending into it
+# with rm would delete the real repo files through the link. stow --restow
+# unfolds and recreates these itself, so leave them alone.
+parent_has_symlink() {
+  parent=$(dirname "$1")
+  path="$HOME"
+
+  [ "$parent" = "." ] && return 1
+
+  old_ifs=$IFS
+  IFS=/
+  # shellcheck disable=SC2086
+  set -- $parent
+  IFS=$old_ifs
+
+  for part do
+    path="$path/$part"
+    [ -L "$path" ] && return 0
+  done
+  return 1
+}
+
+remove_target() {
+  rel=$1
+  target="$HOME/$rel"
+
+  parent_has_symlink "$rel" && return
+
+  remove_blocking_parents "$rel"
+
+  if [ -e "$target" ] || [ -L "$target" ]; then
+    rm -rf "$target"
+  fi
+}
+
+remove_package_targets() {
+  package=$1
+
+  find "$package" \( -type f -o -type l \) -print | while IFS= read -r file; do
+    case "$file" in
+      */.stow-local-ignore|zsh/.zshrc.local.example) continue ;;
+    esac
+
+    remove_target "${file#"$package"/}"
+  done
+}
+
+stow_packages() {
+  for package do
+    remove_package_targets "$package"
+  done
+
+  stow --target="$HOME" --restow "$@"
+}
+
 cd "$DOTFILES"
 # shellcheck disable=SC2086
-stow --target="$HOME" --restow $COMMON
+stow_packages $COMMON
 
 case "$(uname -s)" in
   Darwin)
     # shellcheck disable=SC2086
-    stow --target="$HOME" --restow $MAC
+    stow_packages $MAC
     ;;
 esac
+
+if [ ! -f "$HOME/.zshrc.local" ]; then
+  cp "$DOTFILES/zsh/.zshrc.local.example" "$HOME/.zshrc.local"
+  echo "Created ~/.zshrc.local from example — edit it for local overrides."
+fi
+
+if [ ! -d "$HOME/.antidote" ]; then
+  echo "Installing antidote..."
+  git clone --depth=1 https://github.com/mattmc3/antidote "$HOME/.antidote"
+fi
+
+ZSH_PATH="$(command -v zsh 2>/dev/null)"
+if [ -z "$ZSH_PATH" ]; then
+  echo "zsh not found, skipping shell change. Install it:" >&2
+  echo "  macOS: brew install zsh" >&2
+  echo "  Linux: apt/dnf/pacman install zsh" >&2
+elif [ "$(basename "$SHELL")" != "zsh" ]; then
+  echo "Changing default shell to zsh..."
+  chsh -s "$ZSH_PATH"
+fi
