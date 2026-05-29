@@ -80,7 +80,7 @@ remove_package_targets() {
 
   find "$package" \( -type f -o -type l \) -print | while IFS= read -r file; do
     case "$file" in
-      */.stow-local-ignore|zsh/.zshrc.local.example) continue ;;
+      */.stow-local-ignore|zsh/zshrc.shared|zsh/zshrc.template) continue ;;
     esac
 
     remove_target "${file#"$package"/}"
@@ -106,9 +106,20 @@ case "$(uname -s)" in
     ;;
 esac
 
-if [ ! -f "$HOME/.zshrc.local" ]; then
-  cp "$DOTFILES/zsh/.zshrc.local.example" "$HOME/.zshrc.local"
-  echo "Created ~/.zshrc.local from example — edit it for local overrides."
+# ~/.zshrc is a real, machine-local file that sources the shared config and is
+# where tools append. Migrate the old model where it symlinked into the repo.
+if [ -L "$HOME/.zshrc" ]; then
+  rm -f "$HOME/.zshrc"
+fi
+if [ ! -f "$HOME/.zshrc" ]; then
+  cp "$DOTFILES/zsh/zshrc.template" "$HOME/.zshrc"
+  if [ -f "$HOME/.zshrc.local" ]; then
+    printf '\n# --- migrated from ~/.zshrc.local ---\n' >> "$HOME/.zshrc"
+    cat "$HOME/.zshrc.local" >> "$HOME/.zshrc"
+    mv "$HOME/.zshrc.local" "$HOME/.zshrc.local.bak"
+    echo "Migrated ~/.zshrc.local into ~/.zshrc (backup: ~/.zshrc.local.bak)."
+  fi
+  echo "Created ~/.zshrc from template."
 fi
 
 if [ ! -d "$HOME/.antidote" ]; then

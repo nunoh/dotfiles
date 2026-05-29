@@ -1,0 +1,4 @@
+# Machine-local zsh config — NOT tracked by the dotfiles repo.
+# Loads the shared config first, then anything below overrides it.
+# Tools that append to ~/.zshrc (nvm, etc.) land here, never in the repo.
+source ~/.dotfiles/zsh/zshrc.shared

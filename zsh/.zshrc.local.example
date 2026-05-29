@@ -1,3 +1,0 @@
-# This file is sourced by ~/.zshrc after shared plugins, aliases, functions,
-# and shell integration load. Keep machine-specific exports, aliases, prompt
-# tweaks, and one-off path additions here.

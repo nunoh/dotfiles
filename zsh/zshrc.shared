@@ -1,17 +1,15 @@
+# Shared zsh config, sourced by the machine-local ~/.zshrc.
+# Common to all machines — keep machine-specific settings in ~/.zshrc.
+
 # Antidote — zsh plugin manager. https://github.com/mattmc3/antidote
 # Plugins listed in ~/.zsh_plugins.txt.
-# macOS: `brew install antidote`
-# Linux: `git clone --depth=1 https://github.com/mattmc3/antidote ~/.antidote`
-if [[ "$OSTYPE" == darwin* ]]; then
-  source $(brew --prefix)/share/antidote/antidote.zsh
-else
-  source $HOME/.antidote/antidote.zsh
-fi
+source $HOME/.antidote/antidote.zsh
 
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 antidote load
 
@@ -21,9 +19,6 @@ for f in ~/.dotfiles/shell/.*; do source $f; done
 setopt APPEND_HISTORY
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Host-specific zsh overrides live outside the repo.
-test -e "${HOME}/.zshrc.local" && source "${HOME}/.zshrc.local"
 
 # Show user@host in prompt when over SSH. The theme redraws PROMPT during
 # precmd, so keep this hook persistent.

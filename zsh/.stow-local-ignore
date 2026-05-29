@@ -1,1 +1,2 @@
-\.zshrc\.local\.example
+zshrc\.shared
+zshrc\.template
