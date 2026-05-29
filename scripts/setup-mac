@@ -1,0 +1,129 @@
+#!/bin/bash
+set -eu
+
+# Full workstation setup for a fresh macOS machine.
+# Usage: setup-mac
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+
+# xcode command line tools
+if ! xcode-select -p &>/dev/null; then
+  xcode-select --install
+  echo "Finish the Command Line Tools install, then re-run this script."
+  exit 0
+fi
+
+# homebrew
+if ! command -v brew &>/dev/null; then
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+# put brew on PATH for this session (Apple Silicon or Intel)
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+# formulae
+brew install \
+  antidote \
+  autoconf \
+  cloc \
+  cmake \
+  codex \
+  coreutils \
+  ffmpeg \
+  gh \
+  git \
+  htop \
+  imagemagick \
+  jq \
+  mackup \
+  mas \
+  neovim \
+  pre-commit \
+  qlmarkdown \
+  qlvideo \
+  quicklook-json \
+  sqlite \
+  stow \
+  terminal-notifier \
+  tldr \
+  tree \
+  uv \
+  vim \
+  watch \
+  wget
+
+# casks
+brew install --cask \
+  appcleaner \
+  audacity \
+  calibre \
+  dropbox \
+  firefox \
+  flux-app \
+  font-fira-code-nerd-font \
+  ghostty \
+  google-chrome \
+  google-drive \
+  hammerspoon \
+  iterm2 \
+  itsycal \
+  jordanbaird-ice \
+  monitorcontrol \
+  obsidian \
+  openinterminal-lite \
+  pearcleaner \
+  quicklook-video \
+  raycast \
+  rectangle \
+  rescuetime \
+  slack \
+  spotify \
+  sublime-text \
+  surfshark \
+  ticktick \
+  transmission \
+  visual-studio-code \
+  vlc
+
+# mac app store apps — forScore, iReal Pro, Xcode
+# (needs an App Store sign-in; left best-effort so the script doesn't abort)
+mas install 363738376 409035833 497799835 ||
+  echo "mas install failed — sign into the App Store, then retry the IDs above."
+
+# nvm
+if [ ! -d "$HOME/.nvm" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+fi
+
+# dotfiles
+if [ ! -d "$HOME/.dotfiles" ]; then
+  git clone https://github.com/nunoh/dotfiles "$HOME/.dotfiles"
+fi
+"$DOTFILES/scripts/bootstrap"
+
+# python
+uv python install --default
+
+# coding agents (codex via brew above; claude via native installer)
+if ! command -v claude &>/dev/null; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# dock: clear default items
+defaults write com.apple.dock persistent-apps -array
+defaults write com.apple.dock persistent-others -array
+killall Dock || true
+
+# done
+echo ""
+echo "Setup complete. Manual steps remaining:"
+echo "  - Authenticate GitHub CLI: gh auth login"
+echo "  - Set git identity: git config -f ~/.gitconfig.local user.name/user.email"
+echo "  - Copy ~/.ssh, .zsh_history from old machine"
+echo "  - Restore macOS/app prefs: mackup restore (review osx/.mackup.cfg first)"
+echo "  - Restore Raycast settings & data from your export"
+echo "  - Install own builds not on brew: uSwitch, Unwind"
+echo "  - Sign into Firefox / Chrome / VS Code sync"

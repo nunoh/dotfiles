@@ -1,0 +1,278 @@
+#!/bin/bash
+set -eu
+
+# Full workstation setup for a fresh Fedora or Ubuntu (GNOME) machine.
+# Detects the distro from /etc/os-release and runs the matching package/repo/app
+# steps, then a shared tail (nvm, uv, dotfiles, python, keyd, GNOME).
+# Usage: setup-linux [--vm]  skip NVIDIA drivers (for VMs)
+
+VM=false
+[ "${1:-}" = "--vm" ] && VM=true
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+
+if ! command -v curl >/dev/null 2>&1; then
+  echo "curl is required but not installed. Install it:" >&2
+  echo "  Fedora: sudo dnf install curl" >&2
+  echo "  Ubuntu: sudo apt install curl" >&2
+  exit 1
+fi
+
+# shellcheck disable=SC1091
+. /etc/os-release
+case "${ID:-}" in
+  fedora) DISTRO=fedora ;;
+  ubuntu | debian | pop | linuxmint) DISTRO=ubuntu ;;
+  *)
+    echo "Unsupported distro: ${ID:-unknown}. Supported: fedora, ubuntu." >&2
+    exit 1
+    ;;
+esac
+
+setup_fedora() {
+  # system update
+  sudo dnf upgrade --refresh -y
+
+  # rpm fusion
+  sudo dnf install -y \
+    "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+    "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+
+  # dev toolchain
+  sudo dnf group install -y development-tools
+  sudo dnf install -y gcc-c++ autoconf cmake git
+
+  # packages
+  sudo dnf install -y \
+    cloc \
+    curl \
+    htop \
+    ImageMagick \
+    jq \
+    fuse-libs \
+    neovim \
+    pre-commit \
+    sushi \
+    sqlite \
+    stow \
+    tealdeer \
+    tree \
+    unzip \
+    vim-enhanced \
+    procps-ng \
+    wget \
+    zsh
+
+  # ffmpeg
+  sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing
+
+  # github cli
+  sudo dnf install -y dnf5-plugins
+  if [ ! -f /etc/yum.repos.d/gh-cli.repo ]; then
+    sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+  fi
+  sudo dnf install -y gh
+
+  # flathub
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  # apps
+  flatpak install -y flathub \
+    com.slack.Slack \
+    com.spotify.Client \
+    md.obsidian.Obsidian \
+    org.videolan.VLC \
+    com.visualstudio.code
+
+  # sublime text (official repo — Flathub only has the outdated ST3)
+  sudo rpm --import https://download.sublimetext.com/sublimehq-rpm-pub.gpg
+  if [ ! -f /etc/yum.repos.d/sublime-text.repo ]; then
+    sudo dnf config-manager addrepo --from-repofile=https://download.sublimetext.com/rpm/stable/x86_64/sublime-text.repo
+  fi
+  sudo dnf install -y sublime-text
+
+  # ghostty
+  sudo dnf copr enable -y scottames/ghostty
+  sudo dnf install -y ghostty
+
+  # chrome
+  sudo dnf install -y fedora-workstation-repositories
+  sudo dnf config-manager setopt google-chrome.enabled=1
+  sudo dnf install -y google-chrome-stable
+
+  # nvidia (bare metal only)
+  if [ "$VM" = false ]; then
+    sudo dnf install -y akmod-nvidia
+    echo "NVIDIA: waiting for kernel module to build (this takes 2-5 min)..."
+    until modinfo -F version nvidia &>/dev/null; do sleep 10; done
+    echo "NVIDIA driver version: $(modinfo -F version nvidia)"
+  fi
+
+  # keyd
+  sudo dnf copr enable -y alternateved/keyd
+  sudo dnf install -y keyd
+}
+
+setup_ubuntu() {
+  export DEBIAN_FRONTEND=noninteractive
+
+  # system update
+  sudo apt-get update
+  sudo apt-get upgrade -y
+
+  # dev toolchain
+  sudo apt-get install -y build-essential autoconf cmake git
+
+  # packages
+  sudo apt-get install -y \
+    cloc \
+    curl \
+    ddcui \
+    ddcutil \
+    ffmpeg \
+    gnome-sushi \
+    htop \
+    i2c-tools \
+    imagemagick \
+    jq \
+    libfuse2t64 \
+    neovim \
+    pre-commit \
+    procps \
+    sqlite3 \
+    stow \
+    tealdeer \
+    tree \
+    ubuntu-drivers-common \
+    unzip \
+    vim \
+    wget \
+    zsh
+
+  # github cli
+  sudo mkdir -p -m 755 /etc/apt/keyrings
+  if [ ! -f /etc/apt/keyrings/githubcli-archive-keyring.gpg ]; then
+    wget -nv -O- https://cli.github.com/packages/githubcli-archive-keyring.gpg |
+      sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+    sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+  fi
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" |
+    sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+  sudo apt-get update
+  sudo apt-get install -y gh
+
+  # apps (snap)
+  sudo snap install code --classic
+  sudo snap install slack
+  sudo snap install spotify
+  sudo snap install vlc
+
+  # chrome
+  if [ ! -f /etc/apt/keyrings/google-chrome.gpg ]; then
+    wget -nv -O- https://dl.google.com/linux/linux_signing_key.pub |
+      sudo gpg --dearmor -o /etc/apt/keyrings/google-chrome.gpg
+  fi
+  echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" |
+    sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null
+  sudo apt-get update
+  sudo apt-get install -y google-chrome-stable
+
+  # nvidia (bare metal only)
+  if [ "$VM" = false ]; then
+    sudo ubuntu-drivers install
+  fi
+
+  # keyd (no apt package — build from source)
+  if ! command -v keyd &>/dev/null; then
+    git clone --depth=1 https://github.com/rvaiya/keyd /tmp/keyd
+    make -C /tmp/keyd
+    sudo make -C /tmp/keyd install
+    rm -rf /tmp/keyd
+  fi
+}
+
+# distro-specific: packages, repos, apps, nvidia, keyd install
+setup_"$DISTRO"
+
+# nvm
+if [ ! -d "$HOME/.nvm" ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+fi
+
+# uv
+if ! command -v uv &>/dev/null; then
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
+
+# dotfiles
+if [ ! -d "$HOME/.dotfiles" ]; then
+  git clone https://github.com/nunoh/dotfiles "$HOME/.dotfiles"
+fi
+"$DOTFILES/scripts/bootstrap"
+
+# python
+uv python install --default
+
+# coding agents
+# claude code: native installer (no node dependency)
+if ! command -v claude &>/dev/null; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+# codex: npm only — install a node LTS via the nvm set up above
+if ! command -v codex &>/dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  set +u
+  # shellcheck disable=SC1091
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  nvm install --lts
+  set -u
+  npm install -g @openai/codex
+fi
+
+# keyd config
+sudo mkdir -p /etc/keyd
+sudo tee /etc/keyd/default.conf < "$DOTFILES/keyd/default.conf" >/dev/null
+sudo systemctl enable --now keyd
+
+# monitor controls (ddcutil over i2c)
+sudo modprobe i2c-dev
+echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf >/dev/null
+getent group i2c >/dev/null || sudo groupadd --system i2c
+sudo usermod "$USER" -aG i2c
+
+# gnome
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+gsettings set org.gnome.desktop.wm.keybindings close "['<Super>w']"
+gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
+gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>Down']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Alt>Tab']"
+gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-down
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control>Right']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Super>Tab']"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
+gsettings set org.gnome.settings-daemon.plugins.media-keys logout "['<Super><Shift>q']"
+if gsettings list-schemas | grep -qx org.gnome.shell.extensions.ding; then
+  gsettings set org.gnome.shell.extensions.ding show-home false
+fi
+
+if [ -f "$DOTFILES/gnome/dash-to-dock.ini" ]; then
+  dconf load /org/gnome/shell/extensions/dash-to-dock/ < "$DOTFILES/gnome/dash-to-dock.ini"
+fi
+
+# done
+echo ""
+echo "Setup complete. Manual steps remaining:"
+echo "  - Authenticate GitHub CLI: gh auth login"
+echo "  - Set git identity: git config -f ~/.gitconfig.local user.name/user.email"
+echo "  - Copy ~/.ssh, .zsh_history from old machine"
+echo "  - Install GNOME extensions (browser-based)"
+if [ "$DISTRO" = ubuntu ]; then
+  echo "  - Install Ghostty and Obsidian (no clean apt repo — see docs)"
+fi
+echo "  - Log out and back in to pick up i2c group membership for monitor controls"
+if [ "$VM" = false ]; then
+  echo "  - Reboot to activate NVIDIA drivers"
+fi

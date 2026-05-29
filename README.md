@@ -4,18 +4,19 @@ Personal dotfiles, managed with stow.
 
 ## Install
 
-### macOS / Ubuntu (Desktop)
+### macOS / Linux (Desktop)
 
 ```sh
 git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 ~/.dotfiles/scripts/bootstrap
-cp ~/.dotfiles/zsh/.zshrc.local.example ~/.zshrc.local
 git config -f ~/.gitconfig.local user.name "Your Name"
 git config -f ~/.gitconfig.local user.email "you@example.com"
 ```
 
 - [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
 - [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)
+- [`docs/Setup New Fedora.md`](docs/Setup%20New%20Fedora.md)
+- [`docs/GNOME.md`](docs/GNOME.md) — shared GNOME config (Ubuntu + Fedora)
 
 ### Server (Debian/Ubuntu)
 
