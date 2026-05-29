@@ -33,14 +33,13 @@ alias e='$EDITOR'
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias o='open'
 else
-  alias o='nautilus'
+  o() { nohup nautilus "$@" >/dev/null 2>&1 &! }
 fi
 
 alias zshrc='vim ~/.zshrc'
 alias vimrc='vim ~/.vimrc'
 alias reload='source ~/.zshrc'
 
-alias paths='vim ~/.dotfiles/shell/.path'
 alias exports='vim ~/.dotfiles/shell/.exports'
 alias aliases='vim ~/.dotfiles/shell/.aliases'
 
@@ -52,4 +51,15 @@ alias h='history'
 alias notify='terminal-notifier -message'
 alias noti='notify'
 
-alias mkenv='python -m venv venv --upgrade-deps --prompt . && source venv/bin/activate'
+# alias mkenv='python -m venv venv --upgrade-deps --prompt . && source venv/bin/activate'
+alias mkenv='uv venv --quiet && source .venv/bin/activate'
+
+alias ard='arduino-cli'
+
+# directory shortcuts
+alias dots='cd ~/.dotfiles'
+alias desk='cd ~/Desktop'
+alias digi='cd ~/Code/digi'
+alias tmp='cd ~/Code/tmp'
+alias nh='cd ~/Code/nh'
+alias pkb='cd ~/PKB'

@@ -1,6 +1,0 @@
-alias dots='cd ~/.dotfiles'
-alias desk='cd ~/Desktop'
-alias digi='cd ~/Code/digi'
-alias tmp='cd ~/Code/tmp'
-alias nh='cd ~/Code/nh'
-alias pkb='cd ~/PKB'

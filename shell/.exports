@@ -3,3 +3,5 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
 export PYTHONBREAKPOINT='IPython.core.debugger.set_trace'
+
+export PATH="$HOME/.local/bin:$PATH"
