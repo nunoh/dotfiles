@@ -1,7 +1,6 @@
 ## Before a fresh install
 - [ ] check dotfiles repo for local changes
 - [ ] `mackup backup`
-- [ ] export Raycast settings & data
 - [ ] full Time Machine backup to an external drive
 - [ ] remember Apple / Google / Firefox passwords
 - [ ] backup `~/.ssh`
@@ -31,7 +30,6 @@ that and re-run it with the same profile.
   ```sh
   mackup restore
   ```
-- Restore Raycast settings & data from the pre-install export.
 - Install own builds not on Homebrew: [uSwitch](https://github.com/nunoh/uSwitch),
   [Unwind](https://github.com/nunoh/unwind).
 - Firefox: log in with Sync, then restore `userChrome.css` / `userContent.css`
