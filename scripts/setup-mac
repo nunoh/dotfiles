@@ -44,7 +44,6 @@ brew install \
   pre-commit \
   qlmarkdown \
   qlvideo \
-  quicklook-json \
   sqlite \
   stow \
   terminal-notifier \
@@ -60,13 +59,11 @@ brew install --cask \
   appcleaner \
   audacity \
   calibre \
-  dropbox \
   firefox \
   flux-app \
   font-fira-code-nerd-font \
   ghostty \
   google-chrome \
-  google-drive \
   hammerspoon \
   iterm2 \
   itsycal \
