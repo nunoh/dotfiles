@@ -15,3 +15,4 @@ MichaelAquilina/zsh-autoswitch-virtualenv
 jimhester/per-directory-history
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
+ocodo/ollama_zsh_completion
