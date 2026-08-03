@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "schemaVersion": 1,
+  "shortcuts": {
+    "bindings": {
+      "globalSearch": null,
+      "nextSidebarTab": "cmd+right",
+      "nextSurface": null,
+      "prevSidebarTab": "cmd+left",
+      "prevSurface": null,
+      "renameTab": null,
+      "showHideAllWindows": null
+    }
+  }
+}

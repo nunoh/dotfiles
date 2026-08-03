@@ -38,6 +38,7 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
 - `vim`: shared Vim config.
 - `shell`: shared shell aliases, exports, helper functions, and paths.
 - `ghostty`: shared Ghostty config and key bindings.
+- `cmux`: cmux-specific shortcuts.
 - `tmux`: tmux key bindings, session behavior, and color themes.
 - `osx`: macOS-specific preferences for `mackup`.
 - `hammerspoon`: Hammerspoon config for macOS automation.

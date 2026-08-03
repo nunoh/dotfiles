@@ -169,6 +169,57 @@ end)
 
 
 --------------------------------------------------------------------------------
+-- cmux background opacity toggle
+--
+-- cmux has no native opacity-toggle action and ignores Ghostty's
+-- `toggle_background_opacity` keybind, so we write a local runtime override and
+-- live-reload cmux.
+--
+-- We want Cmd+U for this, but only inside cmux (Cmd+U is "underline" elsewhere).
+-- A global hotkey would swallow it everywhere, so instead we enable/disable a
+-- Cmd+U hotkey as cmux gains/loses focus, watched via hs.application.watcher.
+--------------------------------------------------------------------------------
+
+local opacityScript = os.getenv("HOME") .. "/.local/bin/cmux-opacity-toggle"
+local opacityTask
+
+local opacityHotkey = hs.hotkey.new({"cmd"}, "u", function()
+    if opacityTask and opacityTask:isRunning() then return end
+
+    opacityTask = hs.task.new(opacityScript, function(exitCode, _stdout, stderr)
+        if exitCode ~= 0 then
+            hs.alert.show("cmux opacity toggle failed")
+            print(stderr)
+        end
+        opacityTask = nil
+    end)
+
+    if opacityTask then opacityTask:start() end
+end)
+
+local function syncOpacityHotkey()
+    local app = hs.application.frontmostApplication()
+    if app and app:bundleID() == CMUX_BUNDLE_ID then
+        opacityHotkey:enable()
+    else
+        opacityHotkey:disable()
+    end
+end
+
+cmuxFocusWatcher = hs.application.watcher.new(function(_name, event, _app)
+    -- Every focus change fires an `activated` for the app gaining focus; on that
+    -- signal we re-check the frontmost app and toggle the Cmd+U binding to match.
+    if event == hs.application.watcher.activated then
+        syncOpacityHotkey()
+    end
+end)
+cmuxFocusWatcher:start()
+
+-- Apply the correct state for whatever is focused right now (e.g. on reload).
+syncOpacityHotkey()
+
+
+--------------------------------------------------------------------------------
 -- Tickoist quick add (Firefox)
 --
 -- Ctrl + Cmd + D focuses Firefox, jumps to the pinned Tickoist tab, and presses

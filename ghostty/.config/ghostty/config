@@ -2,3 +2,4 @@
 # Shared defaults live in config.d/shared.conf.
 
 config-file = ~/.dotfiles/ghostty/.config/ghostty/config.d/shared.conf
+config-file = ?~/.local/state/ghostty/runtime.conf

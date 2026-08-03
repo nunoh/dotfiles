@@ -55,14 +55,20 @@ brew install --no-ask \
   uv \
   vim \
   watch \
-  wget
+  wget ||
+  echo "Some common formulae could not be installed; continuing." >&2
 
-brew install --no-ask --cask \
+brew tap manaflow-ai/cmux ||
+  echo "Could not add the cmux Homebrew tap; continuing." >&2
+
+brew install --no-ask --cask --adopt \
   chatgpt \
+  cmux \
   codex \
   font-fira-code-nerd-font \
   ghostty \
   google-chrome \
+  hammerspoon \
   iterm2 \
   itsycal \
   jordanbaird-ice \
@@ -72,7 +78,8 @@ brew install --no-ask --cask \
   spotify \
   sublime-text \
   visual-studio-code \
-  zed
+  zed ||
+  echo "Some common apps could not be installed or adopted; continuing." >&2
 
 # dotfiles
 if [ ! -d "$HOME/.dotfiles" ]; then
@@ -96,15 +103,15 @@ if [ "$PROFILE" = personal ]; then
     imagemagick \
     mas \
     sqlite \
-    terminal-notifier
+    terminal-notifier ||
+    echo "Some personal formulae could not be installed; continuing." >&2
 
-  brew install --no-ask --cask \
+  brew install --no-ask --cask --adopt \
     appcleaner \
     audacity \
     calibre \
     firefox \
     flux-app \
-    hammerspoon \
     obsidian \
     openinterminal-lite \
     pearcleaner \
@@ -112,7 +119,8 @@ if [ "$PROFILE" = personal ]; then
     quicklook-video \
     surfshark \
     transmission \
-    vlc
+    vlc ||
+    echo "Some personal apps could not be installed or adopted; continuing." >&2
 
   # Mac App Store apps: forScore, iReal Pro, Xcode.
   # This needs an App Store sign-in, so don't abort the rest of the setup if it fails.

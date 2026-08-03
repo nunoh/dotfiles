@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Toggle Ghostty background opacity in a local runtime override, then reload cmux.
+# cmux renders the window background itself, so Ghostty's runtime
+# `toggle_background_opacity` action does not update all of its chrome.
+set -euo pipefail
+
+CONF="${HOME}/.local/state/ghostty/runtime.conf"
+TRANSPARENT="0.85"
+OPAQUE="1.0"
+
+mkdir -p "$(dirname "$CONF")"
+current="$OPAQUE"
+if [ -f "$CONF" ]; then
+  current="$(sed -n 's/^background-opacity = //p' "$CONF" | head -1)"
+fi
+
+case "$current" in
+  1|1.0|1.00) next="$TRANSPARENT" ;;
+  *)          next="$OPAQUE" ;;
+esac
+
+printf 'background-opacity = %s\n' "$next" > "$CONF"
+
+# Hammerspoon tasks have a minimal PATH, so fall back to the app-bundled CLI.
+CMUX="$(command -v cmux 2>/dev/null || true)"
+[ -z "$CMUX" ] && CMUX="/Applications/cmux.app/Contents/Resources/bin/cmux"
+"$CMUX" reload-config >/dev/null

@@ -45,5 +45,6 @@ git config -f ~/.gitconfig.local user.email "you@example.com"
 ```
 
 - Restore `~/.ssh` and `.zsh_history`.
+- Open Hammerspoon and grant Accessibility permission.
 - Sign into the installed apps.
 - On a personal Mac, install uSwitch and LaunchKnife.
