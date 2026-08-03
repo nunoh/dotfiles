@@ -38,7 +38,7 @@ elif [ -x /usr/local/bin/brew ]; then
 fi
 
 # packages needed on both work and personal machines
-brew install \
+brew install --no-ask \
   antidote \
   autoconf \
   cloc \
@@ -57,7 +57,7 @@ brew install \
   watch \
   wget
 
-brew install --cask \
+brew install --no-ask --cask \
   chatgpt \
   codex \
   font-fira-code-nerd-font \
@@ -90,7 +90,7 @@ killall Dock || true
 
 # personal-only setup
 if [ "$PROFILE" = personal ]; then
-  brew install \
+  brew install --no-ask \
     ffmpeg \
     htop \
     imagemagick \
@@ -98,7 +98,7 @@ if [ "$PROFILE" = personal ]; then
     sqlite \
     terminal-notifier
 
-  brew install --cask \
+  brew install --no-ask --cask \
     appcleaner \
     audacity \
     calibre \
