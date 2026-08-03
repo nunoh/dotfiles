@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# brightness-auto — set external-monitor brightness/contrast by time of day.
+#
+# Triggered at desktop login by ~/.config/autostart/brightness-auto.desktop.
+# Uses the same DDC/CI path as the `brightness` / `contrast` shell functions
+# (ddcutil setvcp 0x10 / 0x12) but is self-contained, so it works outside an
+# interactive zsh (autostart is not a login shell).
+#
+# To tune behaviour, edit ONLY the table below:
+#   "START_HOUR  BRIGHTNESS  CONTRAST"   (rows in ascending hour order)
+# The block whose START_HOUR is the latest one <= the current hour wins;
+# before the day's first block, the last (night) row carries over.
+
+set -uo pipefail
+
+schedule=(
+  "9   100 100"
+  "21  0 0"
+)
+
+hour=$((10#$(date +%H)))
+
+bri="" con=""
+for row in "${schedule[@]}"; do
+  read -r start b c <<<"$row"
+  ((hour >= start)) && {
+    bri=$b
+    con=$c
+  }
+done
+# before the day's first block → carry the night values from the last row
+[[ -z $bri ]] && read -r _ bri con <<<"${schedule[-1]}"
+
+# DDC/CI over i2c can be slow to come up right after login; retry a few times.
+apply() { # apply VCP_FEATURE VALUE
+  local i
+  for i in 1 2 3 4 5; do
+    ddcutil setvcp "$1" "$2" >/dev/null 2>&1 && return 0
+    sleep 2
+  done
+  return 1
+}
+
+if apply 10 "$bri" && apply 12 "$con"; then
+  logger -t brightness-auto "hour=$hour → brightness=$bri contrast=$con"
+else
+  logger -t brightness-auto "hour=$hour → FAILED to reach monitor"
+  exit 1
+fi

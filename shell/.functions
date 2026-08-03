@@ -1,3 +1,31 @@
 function path() {
     echo $PATH | tr ":" "\n" | nl
 }
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  o() { open "$@" }
+else
+  o() { nohup nautilus "$@" >/dev/null 2>&1 &! }
+fi
+
+# External monitor controls over DDC/CI via ddcutil (Linux desktop only).
+# No arg reads the current value; a number (0-100) sets it.
+#   brightness        -> print current brightness   (VCP 0x10)
+#   brightness 50     -> set brightness to 50
+#   contrast 30       -> set contrast to 30          (VCP 0x12)
+if command -v ddcutil >/dev/null 2>&1; then
+  brightness() {
+    if [[ -z "$1" ]]; then
+      ddcutil getvcp 10 2>/dev/null | grep -oP 'current value =\s*\K[0-9]+'
+    else
+      ddcutil setvcp 10 "$1" 2>/dev/null && echo "brightness → $1"
+    fi
+  }
+  contrast() {
+    if [[ -z "$1" ]]; then
+      ddcutil getvcp 12 2>/dev/null | grep -oP 'current value =\s*\K[0-9]+'
+    else
+      ddcutil setvcp 12 "$1" 2>/dev/null && echo "contrast → $1"
+    fi
+  }
+fi

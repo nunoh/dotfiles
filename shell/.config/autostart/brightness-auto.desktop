@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Brightness by time of day
+Comment=Set external monitor brightness/contrast at login via ddcutil
+Exec=/home/nuno/.local/bin/brightness-auto
+Icon=display-brightness-symbolic
+Terminal=false
+X-GNOME-Autostart-enabled=true

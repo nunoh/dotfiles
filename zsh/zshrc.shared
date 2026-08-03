@@ -13,7 +13,9 @@ export NVM_DIR="$HOME/.nvm"
 
 antidote load
 
-for f in ~/.dotfiles/shell/.*; do source $f; done
+for f in ~/.dotfiles/shell/.*; do
+  [[ -f "$f" ]] && source "$f"
+done
 
 # don't share command history between shell sessions
 setopt APPEND_HISTORY
