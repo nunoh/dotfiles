@@ -11,9 +11,23 @@ $SUDO apt-get update
 $SUDO apt-get install -y zsh vim tmux git stow curl wget ca-certificates
 
 cd "$DOTFILES"
-stow --target="$HOME" --restow zsh vim shell tmux
+stow --target="$HOME" --restow vim tmux
 
 [ -d "$HOME/.antidote" ] || git clone --depth=1 https://github.com/mattmc3/antidote "$HOME/.antidote"
+
+# Lean, server-specific plugin set. zshrc.server's `antidote load` reads
+# ~/.zsh_plugins.txt, so point it at the server list (not the workstation one).
+ln -sf "$DOTFILES/zsh/zsh_plugins.server.txt" "$HOME/.zsh_plugins.txt"
+
+# ~/.zshrc is machine-local (where tools append); point it at the
+# self-contained server config rather than the workstation shell/.* files.
+if [ -L "$HOME/.zshrc" ]; then
+  rm -f "$HOME/.zshrc"
+fi
+if [ ! -f "$HOME/.zshrc" ]; then
+  printf 'source ~/.dotfiles/zsh/zshrc.server\n' > "$HOME/.zshrc"
+  echo "Created ~/.zshrc (server)."
+fi
 
 chsh -s "$(command -v zsh)"
 

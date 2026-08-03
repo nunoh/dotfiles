@@ -16,12 +16,12 @@ git config -f ~/.gitconfig.local user.email "you@example.com"
 - [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
 - [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)
 - [`docs/Setup New Fedora.md`](docs/Setup%20New%20Fedora.md)
-- [`docs/GNOME.md`](docs/GNOME.md) — shared GNOME config (Ubuntu + Fedora)
+- [`gnome/README.md`](gnome/README.md) — shared GNOME config (Ubuntu + Fedora)
 
 ### Server (Debian/Ubuntu)
 
-Installs base packages, stows the server subset (`zsh vim shell tmux`),
-clones antidote, and switches the login shell to zsh.
+Installs base packages, stows Vim and tmux, configures a lean server-specific
+zsh environment, clones antidote, and switches the login shell to zsh.
 
 ```sh
 sudo apt install -y git

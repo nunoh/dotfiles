@@ -1,0 +1,42 @@
+# Self-contained zsh config for servers.
+# Sourced by the machine-local ~/.zshrc that `setup-server` creates.
+# Deliberately standalone — it does NOT pull in shell/.* (those carry
+# macOS- and workstation-specific bits). Keep it minimal and portable.
+
+# Environment
+export EDITOR='vim'
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export PATH="$HOME/.local/bin:$PATH"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
+
+# Antidote — zsh plugin manager. Plugins listed in ~/.zsh_plugins.txt.
+source $HOME/.antidote/antidote.zsh
+ZSH_THEME="${ZSH_THEME:-robbyrussell}"
+antidote load
+
+# don't share command history between shell sessions
+setopt APPEND_HISTORY
+
+# ls / navigation
+alias l='ls -la --ignore=".DS_Store" --color=auto'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+
+# misc
+alias e='$EDITOR'
+alias h='history'
+alias reload='source ~/.zshrc'
+alias zshrc='vim ~/.zshrc'
+alias vimrc='vim ~/.vimrc'
+
+# Show user@host in prompt when over SSH. The theme redraws PROMPT during
+# precmd, so keep this hook persistent.
+if [[ -n "$SSH_CONNECTION" ]]; then
+  autoload -U add-zsh-hook
+  _ssh_prompt_prefix() {
+    PROMPT="%(?:%{$fg_bold[green]%}%1{➜%} :%{$fg_bold[red]%}%1{➜%} ) %{$fg_bold[yellow]%}%n@%m%{$reset_color%} %{$fg[cyan]%}%c%{$reset_color%} \$(git_prompt_info)"
+  }
+  add-zsh-hook precmd _ssh_prompt_prefix
+fi

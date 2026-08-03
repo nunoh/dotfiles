@@ -80,7 +80,7 @@ remove_package_targets() {
 
   find "$package" \( -type f -o -type l \) -print | while IFS= read -r file; do
     case "$file" in
-      */.stow-local-ignore|zsh/zshrc.shared|zsh/zshrc.template) continue ;;
+      */.stow-local-ignore|zsh/.zshrc|zsh/zshrc.shared|zsh/zshrc.template|zsh/zshrc.server|zsh/zsh_plugins.server.txt) continue ;;
     esac
 
     remove_target "${file#"$package"/}"

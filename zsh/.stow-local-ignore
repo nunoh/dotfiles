@@ -1,2 +1,5 @@
 zshrc\.shared
 zshrc\.template
+zshrc\.server
+zsh_plugins\.server\.txt
+\.zshrc
