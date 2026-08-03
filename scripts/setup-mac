@@ -2,9 +2,22 @@
 set -eu
 
 # Full workstation setup for a fresh macOS machine.
-# Usage: setup-mac
+# Usage: setup-mac <work|personal>
+
+usage() {
+  echo "Usage: $(basename "$0") <work|personal>" >&2
+  exit 2
+}
+
+[ "$#" -eq 1 ] || usage
+PROFILE=$1
 
 DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+
+case "$PROFILE" in
+  work | personal) ;;
+  *) usage ;;
+esac
 
 # xcode command line tools
 if ! xcode-select -p &>/dev/null; then
@@ -24,29 +37,19 @@ elif [ -x /usr/local/bin/brew ]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-# formulae
+# packages needed on both work and personal machines
 brew install \
   antidote \
   autoconf \
   cloc \
   cmake \
-  codex \
   coreutils \
-  ffmpeg \
   gh \
   git \
-  htop \
-  imagemagick \
   jq \
-  mackup \
-  mas \
   neovim \
   pre-commit \
-  qlmarkdown \
-  qlvideo \
-  sqlite \
   stow \
-  terminal-notifier \
   tldr \
   tree \
   uv \
@@ -54,46 +57,22 @@ brew install \
   watch \
   wget
 
-# casks
 brew install --cask \
-  appcleaner \
-  audacity \
-  calibre \
-  firefox \
-  flux-app \
+  chatgpt \
+  codex \
   font-fira-code-nerd-font \
   ghostty \
   google-chrome \
-  hammerspoon \
   iterm2 \
   itsycal \
   jordanbaird-ice \
   monitorcontrol \
-  obsidian \
-  openinterminal-lite \
-  pearcleaner \
-  quicklook-video \
-  raycast \
   rectangle \
-  rescuetime \
   slack \
   spotify \
   sublime-text \
-  surfshark \
-  ticktick \
-  transmission \
   visual-studio-code \
-  vlc
-
-# mac app store apps — forScore, iReal Pro, Xcode
-# (needs an App Store sign-in; left best-effort so the script doesn't abort)
-mas install 363738376 409035833 497799835 ||
-  echo "mas install failed — sign into the App Store, then retry the IDs above."
-
-# nvm
-if [ ! -d "$HOME/.nvm" ]; then
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
-fi
+  zed
 
 # dotfiles
 if [ ! -d "$HOME/.dotfiles" ]; then
@@ -104,23 +83,62 @@ fi
 # python
 uv python install --default
 
-# coding agents (codex via brew above; claude via native installer)
-if ! command -v claude &>/dev/null; then
-  curl -fsSL https://claude.ai/install.sh | bash
-fi
-
 # dock: clear default items
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
 killall Dock || true
 
+# personal-only setup
+if [ "$PROFILE" = personal ]; then
+  brew install \
+    ffmpeg \
+    htop \
+    imagemagick \
+    mas \
+    sqlite \
+    terminal-notifier
+
+  brew install --cask \
+    appcleaner \
+    audacity \
+    calibre \
+    firefox \
+    flux-app \
+    hammerspoon \
+    obsidian \
+    openinterminal-lite \
+    pearcleaner \
+    qlmarkdown \
+    quicklook-video \
+    surfshark \
+    transmission \
+    vlc
+
+  # Mac App Store apps: forScore, iReal Pro, Xcode.
+  # This needs an App Store sign-in, so don't abort the rest of the setup if it fails.
+  mas install 363738376 409035833 497799835 ||
+    echo "mas install failed — sign into the App Store, then retry the IDs above."
+
+  if [ ! -d "$HOME/.nvm" ]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/HEAD/install.sh | bash
+  fi
+fi
+
+# work-only setup
+if [ "$PROFILE" = work ]; then
+  # Work currently needs only the common setup above.
+  :
+fi
+
 # done
 echo ""
-echo "Setup complete. Manual steps remaining:"
+echo "Setup complete ($PROFILE). Manual steps remaining:"
 echo "  - Authenticate GitHub CLI: gh auth login"
 echo "  - Set git identity: git config -f ~/.gitconfig.local user.name/user.email"
 echo "  - Copy ~/.ssh, .zsh_history from old machine"
-echo "  - Restore macOS/app prefs: mackup restore (review osx/.mackup.cfg first)"
-echo "  - Restore Raycast settings & data from your export"
-echo "  - Install own builds not on brew: uSwitch, Unwind"
-echo "  - Sign into Firefox / Chrome / VS Code sync"
+echo "  - Sign into Codex, ChatGPT, Chrome, and other installed apps"
+if [ "$PROFILE" = personal ]; then
+  echo "  - Restore macOS/app prefs: mackup restore (review osx/.mackup.cfg first)"
+  echo "  - Install own builds not on brew: uSwitch, LaunchKnife"
+  echo "  - Sign into Firefox / Chrome / VS Code sync"
+fi

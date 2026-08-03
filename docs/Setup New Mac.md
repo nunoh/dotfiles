@@ -9,12 +9,14 @@
 
 ```sh
 git clone https://github.com/nunoh/dotfiles ~/.dotfiles
-~/.dotfiles/scripts/setup-mac
+~/.dotfiles/scripts/setup-mac personal
 ```
 
-The script installs the Command Line Tools, Homebrew, all formulae/casks, the
-Mac App Store apps, nvm, the dotfiles, Python, and clears the Dock. If it stops
-after the Command Line Tools install, finish that and re-run it.
+Use `setup-mac work` for the smaller work-machine package set. Both profiles
+install the Command Line Tools, Homebrew, their formulae/casks, the dotfiles,
+Python, and clear the Dock. The personal profile also installs the Mac App Store
+apps and NVM. If the script stops after the Command Line Tools install, finish
+that and re-run it with the same profile.
 
 ## Manual steps after
 - Set git identity in `~/.gitconfig.local`:
@@ -23,16 +25,13 @@ after the Command Line Tools install, finish that and re-run it.
   git config -f ~/.gitconfig.local user.email "you@example.com"
   ```
 - Restore `~/.ssh`, and `.zsh_history` from the old machine.
-- Sign into the coding agents: run `claude` and `codex` once to authenticate.
+- Sign into Codex, ChatGPT, and the other installed apps.
 - Restore macOS/app prefs with [mackup](https://github.com/lra/mackup) (review
   `osx/.mackup.cfg` first):
   ```sh
   mackup restore
   ```
 - Restore Raycast settings & data from the pre-install export.
-- Mac App Store apps need a one-time App Store sign-in; if `mas install` was
-  skipped, retry: `mas install 363738376 409035833 497799835` (forScore, iReal
-  Pro, Xcode).
 - Install own builds not on Homebrew: [uSwitch](https://github.com/nunoh/uSwitch),
   [Unwind](https://github.com/nunoh/unwind).
 - Firefox: log in with Sync, then restore `userChrome.css` / `userContent.css`
