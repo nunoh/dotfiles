@@ -1,0 +1,33 @@
+#!/bin/bash
+set -eu
+
+# Dump the GNOME dconf paths listed in gnome/manifest into grouped gnome/<group>.ini
+# files. Group headers are rewritten to absolute paths so each file can be restored
+# with a single `dconf load /` (see scripts/gnome-load).
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+DIR="$DOTFILES/gnome"
+MANIFEST="$DIR/manifest"
+
+group=""
+while IFS= read -r line || [ -n "$line" ]; do
+  case "$line" in
+    '' | \#*) continue ;;
+    \[*\])
+      group="${line#[}"
+      group="${group%]}"
+      : >"$DIR/$group.ini" # truncate on first sight of the group
+      continue
+      ;;
+  esac
+
+  prefix="${line#/}"
+  prefix="${prefix%/}"
+  dconf dump "$line" | awk -v p="$prefix" '
+    /^\[\/\]$/ { print "[" p "]"; next }       # root keys: [/] -> [full/path]
+    /^\[/      { sub(/^\[/, "[" p "/"); print; next }  # subgroup: [x] -> [full/path/x]
+               { print }
+  ' >>"$DIR/$group.ini"
+done <"$MANIFEST"
+
+echo "dumped GNOME settings to $DIR/*.ini"

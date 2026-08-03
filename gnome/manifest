@@ -1,0 +1,25 @@
+# GNOME settings tracked in this repo, grouped into <group>.ini files.
+#   scripts/gnome-dump  reads this and writes gnome/<group>.ini
+#   scripts/gnome-load  restores every gnome/*.ini
+# Add a dconf path under a group (or add a new [group]) to start tracking it.
+# Find candidates with:  dconf dump / | grep '^\['
+
+[input]
+/org/gnome/desktop/peripherals/keyboard/
+/org/gnome/desktop/peripherals/mouse/
+/org/gnome/desktop/peripherals/touchpad/
+
+[bindings]
+/org/gnome/desktop/wm/keybindings/
+/org/gnome/shell/keybindings/
+/org/gnome/settings-daemon/plugins/media-keys/
+
+[interface]
+/org/gnome/desktop/interface/
+/org/gnome/desktop/wm/preferences/
+
+[extensions]
+/org/gnome/shell/extensions/dash-to-dock/
+/org/gnome/shell/extensions/just-perfection/
+/org/gnome/shell/extensions/lilypad/
+/org/gnome/shell/extensions/ding/

@@ -16,7 +16,7 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
   ```
 - Restore `~/.ssh`, and `.zsh_history` from the old machine.
 - Sign into the coding agents: run `claude` and `codex` once to authenticate.
-- Install GNOME extensions (browser-based) — see [`GNOME.md`](GNOME.md).
+- Install GNOME extensions (browser-based) — see [`gnome/README.md`](../gnome/README.md).
 - Install apps with no clean apt repo:
   - [Ghostty](https://ghostty.org/docs/install/binary#linux)
   - [Obsidian](https://obsidian.md/download)
@@ -28,5 +28,5 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
   ddcutil setvcp 10 60     # set brightness
   ```
   Use `ddcui` for a standalone GUI, or the ddcutil GNOME extension for top-bar
-  sliders (see [`GNOME.md`](GNOME.md)).
+  sliders (see [`gnome/README.md`](../gnome/README.md)).
 - Bare metal only: reboot to activate NVIDIA drivers (`nvidia-smi` to verify).

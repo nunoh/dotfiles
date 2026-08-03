@@ -240,27 +240,8 @@ echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf >/dev/null
 getent group i2c >/dev/null || sudo groupadd --system i2c
 sudo usermod "$USER" -aG i2c
 
-# gnome
-gsettings set org.gnome.desktop.peripherals.keyboard delay 200
-gsettings set org.gnome.desktop.wm.keybindings close "['<Super>w']"
-gsettings set org.gnome.desktop.wm.keybindings maximize "['<Super>Up']"
-gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Super>Down']"
-gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Alt>Tab']"
-gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Alt>Tab']"
-gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-down
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control>Left']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control>Right']"
-gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Super>Tab']"
-gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Shift><Super>Tab']"
-gsettings set org.gnome.shell.keybindings toggle-message-tray "[]"
-gsettings set org.gnome.settings-daemon.plugins.media-keys logout "['<Super><Shift>q']"
-if gsettings list-schemas | grep -qx org.gnome.shell.extensions.ding; then
-  gsettings set org.gnome.shell.extensions.ding show-home false
-fi
-
-if [ -f "$DOTFILES/gnome/dash-to-dock.ini" ]; then
-  dconf load /org/gnome/shell/extensions/dash-to-dock/ < "$DOTFILES/gnome/dash-to-dock.ini"
-fi
+# gnome (settings captured per section in gnome/*.ini — see gnome/README.md)
+"$DOTFILES/scripts/gnome-load"
 
 # done
 echo ""

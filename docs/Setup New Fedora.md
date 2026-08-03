@@ -16,6 +16,6 @@ git clone https://github.com/nunoh/dotfiles ~/.dotfiles
   ```
 - Restore `~/.ssh`, and `.zsh_history` from the old machine.
 - Sign into the coding agents: run `claude` and `codex` once to authenticate.
-- Install GNOME extensions (browser-based) — see [`GNOME.md`](GNOME.md).
+- Install GNOME extensions (browser-based) — see [`gnome/README.md`](../gnome/README.md).
 - Bare metal only: reboot to activate NVIDIA drivers, and log out/in to pick up
   `i2c` group membership for monitor controls.

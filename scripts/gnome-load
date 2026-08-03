@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+
+# Restore every gnome/*.ini produced by scripts/gnome-dump. Each file uses absolute
+# group headers, so loading at / applies it regardless of which subtrees it spans.
+# Settings for things not present on this machine (missing extensions, etc.) are
+# simply ignored by GNOME.
+
+DOTFILES="$(cd "$(dirname "$0")/.." && pwd)"
+DIR="$DOTFILES/gnome"
+
+for f in "$DIR"/*.ini; do
+  [ -s "$f" ] || continue
+  dconf load / <"$f"
+  echo "loaded $(basename "$f")"
+done
