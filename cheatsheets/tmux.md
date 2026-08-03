@@ -1,6 +1,6 @@
 # My tmux cheat sheet
 
-prefix is `C-a` (not the default `C-b`).
+prefix is `C-b` (the default).
 
 when in vim editing `.tmux.conf` hit `K` to jump to the help for that command.
 
@@ -86,7 +86,7 @@ inside copy mode (vi keys):
 
 ### Nested sessions
 
-	C-b                 forwards prefix to inner tmux (custom)
+	prefix C-b          forwards prefix to inner tmux (custom)
 
 
 ### Plugins (TPM)
