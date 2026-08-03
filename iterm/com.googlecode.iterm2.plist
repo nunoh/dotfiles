@@ -19,9 +19,9 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AiMaxTokens</key>
-	<integer>400000</integer>
+	<integer>1050000</integer>
 	<key>AiModel</key>
-	<string>gpt-5.2</string>
+	<string>gpt-5.5</string>
 	<key>AiResponseMaxTokens</key>
 	<integer>128000</integer>
 	<key>AitermURL</key>
@@ -1120,7 +1120,7 @@
 	<key>LeftOption</key>
 	<integer>2</integer>
 	<key>LeftTabBarWidth</key>
-	<real>114</real>
+	<real>153</real>
 	<key>MaxVertically</key>
 	<false/>
 	<key>NeverWarnAboutShortLivedSessions_337BF916-1358-4356-9E56-6FBE4FFA2D62</key>
@@ -1401,7 +1401,7 @@
 			<key>Minimum Contrast</key>
 			<real>0.0</real>
 			<key>Mouse Reporting</key>
-			<false/>
+			<true/>
 			<key>Name</key>
 			<string>default</string>
 			<key>Non Ascii Font</key>
@@ -1462,6 +1462,8 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Mark Indicators</key>
+			<false/>
+			<key>Show Offscreen Command line</key>
 			<false/>
 			<key>Silence Bell</key>
 			<false/>
@@ -2094,7 +2096,7 @@
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
-	<false/>
+	<true/>
 	<key>OpenNoWindowsAtStartup</key>
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
@@ -2199,7 +2201,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TabViewType</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>TabsHaveCloseButton</key>
 	<false/>
 	<key>ThreeFingerEmulates</key>
