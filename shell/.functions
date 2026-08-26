@@ -29,3 +29,29 @@ if command -v ddcutil >/dev/null 2>&1; then
     fi
   }
 fi
+
+# tmux session per project directory. `tm` (no args) attaches to or creates a
+# session named after the current dir. `tm name` overrides the name.
+# Works inside tmux (switch-client) or outside it (attach).
+tm() {
+  command -v tmux >/dev/null 2>&1 || { echo "tmux not installed"; return 1; }
+  local name="${1:-$(basename "$PWD")}"
+  name="${name//./-}"; name="${name//:/-}"     # tmux forbids '.' and ':'
+  if [ -n "$TMUX" ]; then
+    tmux has-session -t "$name" 2>/dev/null || tmux new-session -d -s "$name" -c "$PWD"
+    tmux switch-client -t "$name"
+  else
+    tmux attach -t "$name" 2>/dev/null || tmux new -s "$name" -c "$PWD"
+  fi
+}
+
+# Auto-attach on an interactive SSH login that lands inside a project, so a
+# Termius profile per project drops straight into that project's session.
+# Guards: SSH_CONNECTION so local shells are untouched; interactivity so
+# scp/rsync/scripted ssh keep working; and $PWD != $HOME so a plain
+# `ssh host` stays a plain shell instead of making a junk session.
+if command -v tmux >/dev/null 2>&1 \
+   && [ -z "$TMUX" ] && [ -n "$SSH_CONNECTION" ] && [[ $- == *i* ]] \
+   && [[ "$PWD" != "$HOME" ]]; then
+  tm
+fi
