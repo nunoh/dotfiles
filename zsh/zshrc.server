@@ -40,3 +40,8 @@ if [[ -n "$SSH_CONNECTION" ]]; then
   }
   add-zsh-hook precmd _ssh_prompt_prefix
 fi
+
+# Deliberate exception to the "no shell/.*" rule above: shell/.functions is
+# fully OS-guarded and portable, and it carries `tm` — the tmux-session-per-
+# project function plus the SSH auto-attach that Termius profiles rely on.
+source "$HOME/.dotfiles/shell/.functions"
