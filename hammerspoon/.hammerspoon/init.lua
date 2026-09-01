@@ -65,6 +65,33 @@ end)
 
 
 --------------------------------------------------------------------------------
+-- ChatGPT hotkey window
+--
+-- Cmd + § shows/hides ChatGPT, the same way Cmd + Escape does for cmux below.
+--
+-- macOS reports the key left of "1" on ISO keyboards as kVK_ISO_Section. Its
+-- name in hs.keycodes.map depends on the active layout, so we fall back to the
+-- raw keycode.
+--------------------------------------------------------------------------------
+
+local CHATGPT_BUNDLE_ID = "com.openai.codex" -- the ChatGPT app kept its old ID
+local SECTION_KEY       = hs.keycodes.map["§"] or 10
+
+hs.hotkey.bind({"cmd"}, SECTION_KEY, function()
+    local chatgpt = hs.application.get(CHATGPT_BUNDLE_ID)
+    if not chatgpt then
+        hs.application.launchOrFocusByBundleID(CHATGPT_BUNDLE_ID)
+        return
+    end
+    if chatgpt:isFrontmost() then
+        chatgpt:hide()
+    else
+        chatgpt:activate()
+    end
+end)
+
+
+--------------------------------------------------------------------------------
 -- App launcher: Escape as a leader key
 --
 -- Caps Lock is remapped to Escape in macOS keyboard settings, so it reaches
