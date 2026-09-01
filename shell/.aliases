@@ -17,6 +17,10 @@ alias j='z'
 
 alias ts='tailscale'
 
+if command -v cmux >/dev/null 2>&1; then
+	alias co='cmux open'
+fi
+
 # this is aliasing for a fancy git log I don't need, but need the coreutils ls version, prefixed with g
 unalias gls >/dev/null 2>/dev/null
 unalias gs >/dev/null 2>/dev/null # don't want git stash
