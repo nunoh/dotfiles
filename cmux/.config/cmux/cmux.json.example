@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "automation": {
+    "socketControlMode": "password"
+  },
+  "schemaVersion": 1,
+  "shortcuts": {
+    "bindings": {
+      "globalSearch": {
+        "first": {
+          "command": false,
+          "control": false,
+          "key": "",
+          "option": false,
+          "shift": false
+        }
+      },
+      "nextSidebarTab": {
+        "first": {
+          "command": true,
+          "control": false,
+          "key": "\uf703",
+          "keyCode": 124,
+          "option": false,
+          "shift": false
+        }
+      },
+      "nextSurface": {
+        "first": {
+          "command": false,
+          "control": false,
+          "key": "",
+          "option": false,
+          "shift": false
+        }
+      },
+      "prevSidebarTab": {
+        "first": {
+          "command": true,
+          "control": false,
+          "key": "\uf702",
+          "keyCode": 123,
+          "option": false,
+          "shift": false
+        }
+      },
+      "prevSurface": {
+        "first": {
+          "command": false,
+          "control": false,
+          "key": "",
+          "option": false,
+          "shift": false
+        }
+      },
+      "renameTab": {
+        "first": {
+          "command": false,
+          "control": false,
+          "key": "",
+          "option": false,
+          "shift": false
+        }
+      },
+      "showHideAllWindows": {
+        "first": {
+          "command": false,
+          "control": false,
+          "key": "",
+          "option": false,
+          "shift": false
+        }
+      },
+      "moveWorkspaceUp": "cmd+shift+up",
+      "moveWorkspaceDown": "cmd+shift+down",
+      "focusHistoryBack": "cmd+shift+1"
+    }
+  },
+  "sidebar": {
+    "branchLayout": "inline",
+    "showBranchDirectory": true,
+    "showWorkspaceDescription": false,
+    "showNotificationMessage": false,
+    "showPullRequests": false,
+    "showSSH": false,
+    "showPorts": false,
+    "showLog": false,
+    "showProgress": false,
+    "showCustomMetadata": false
+  },
+  "sidebarAppearance": {
+    "matchTerminalBackground": true
+  }
+}

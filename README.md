@@ -66,3 +66,16 @@ stow -D hammerspoon             # uninstall (remove its symlinks)
 stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
+
+### Configs that an app writes back
+
+`cmux` writes to `~/.config/cmux/cmux.json` when you save its Settings window,
+including its automation socket password. The file is stowed, so there is only
+ever one copy and it cannot drift, but it is git-ignored so the password stays
+off GitHub. `cmux.json.example` tracks the settings themselves; refresh it with
+`cp cmux/.config/cmux/cmux.json cmux/.config/cmux/cmux.json.example` and remove
+`automation.socketPassword` before committing.
+
+If an app replaces a stowed symlink with a real file, `scripts/bootstrap`
+reports it and saves a `*.pre-stow.bak` copy before restowing, so the outside
+changes can be merged back.

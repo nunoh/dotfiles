@@ -1,0 +1,9 @@
+# cmux writes its automation socket password into this file, so it stays local.
+# cmux.json.example tracks every other setting.
+cmux/.config/cmux/cmux.json
+
+# Obsidian's per-machine UI state for the notes in docs/.
+.obsidian/
+
+# Machine-local: bootstrap creates ~/.zshrc from zsh/zshrc.template instead.
+zsh/.zshrc
