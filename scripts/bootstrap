@@ -64,11 +64,22 @@ parent_has_symlink() {
 
 remove_target() {
   rel=$1
+  src=$2
   target="$HOME/$rel"
 
   parent_has_symlink "$rel" && return
 
   remove_blocking_parents "$rel"
+
+  # A real file where a symlink belongs means something replaced the link and
+  # wrote its own settings there (cmux does this when you save its Settings
+  # window). Keep a copy before stow deletes it, so the out-of-repo changes can
+  # be merged back instead of disappearing.
+  if [ -f "$target" ] && [ ! -L "$target" ] && ! cmp -s "$target" "$src"; then
+    cp "$target" "$target.pre-stow.bak"
+    echo "Drift: $target was a real file and differed from $src." >&2
+    echo "       Saved a copy at $target.pre-stow.bak before restowing." >&2
+  fi
 
   if [ -e "$target" ] || [ -L "$target" ]; then
     rm -rf "$target"
@@ -83,7 +94,7 @@ remove_package_targets() {
       */.stow-local-ignore|zsh/.zshrc|zsh/zshrc.shared|zsh/zshrc.template|zsh/zshrc.server|zsh/zsh_plugins.server.txt) continue ;;
     esac
 
-    remove_target "${file#"$package"/}"
+    remove_target "${file#"$package"/}" "$file"
   done
 }
 
