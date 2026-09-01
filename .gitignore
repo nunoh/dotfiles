@@ -7,3 +7,6 @@ cmux/.config/cmux/cmux.json
 
 # Machine-local: bootstrap creates ~/.zshrc from zsh/zshrc.template instead.
 zsh/.zshrc
+
+# Personal notes kept in this folder but never published with the dotfiles.
+docs/Ubuntu Network Benchmark.md
