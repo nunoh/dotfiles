@@ -11,7 +11,8 @@ OPAQUE="1.0"
 mkdir -p "$(dirname "$CONF")"
 current="$OPAQUE"
 if [ -f "$CONF" ]; then
-  current="$(sed -n 's/^background-opacity = //p' "$CONF" | head -1)"
+  # Stop at the first match; a `| head -1` here can SIGPIPE sed under pipefail.
+  current="$(sed -n '/^background-opacity = /{s///p;q;}' "$CONF")"
 fi
 
 case "$current" in
@@ -20,6 +21,18 @@ case "$current" in
 esac
 
 printf 'background-opacity = %s\n' "$next" > "$CONF"
+
+# cmux only accepts control-socket connections whose responsible process is cmux
+# itself. Hammerspoon spawns us, so we are rejected unless we authenticate with
+# the automation password, with `automation.socketControlMode` set to "password".
+#
+# cmux-socket-password keeps the password in ~/.local/state and writes it back
+# into cmux.json whenever a cmux migration strips it, so this keeps working
+# across updates.
+password="$("${HOME}/.local/bin/cmux-socket-password" 2>/dev/null || true)"
+if [ -n "$password" ]; then
+  export CMUX_SOCKET_PASSWORD="$password"
+fi
 
 # Hammerspoon tasks have a minimal PATH, so fall back to the app-bundled CLI.
 CMUX="$(command -v cmux 2>/dev/null || true)"
