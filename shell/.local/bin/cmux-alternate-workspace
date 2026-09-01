@@ -1,0 +1,108 @@
+#!/usr/bin/env python3
+"""Jump to the cmux workspace you were on before this one.
+
+Pressing it again comes straight back, so it alternates between a pair the way
+tmux's `last-window` does. cmux has no last-workspace action, and
+`shortcuts.bindings` only accepts its own built-in action ids, so the key is
+bound in Hammerspoon and the state lives here. Each run jumps to the remembered
+workspace and remembers the one it left, which is what makes repeated presses
+ping-pong.
+
+This talks to cmux's control socket directly instead of shelling out to the
+`cmux` CLI. The CLI costs about 160 ms per call for process startup and a fresh
+auth handshake, and this needs two calls; over the socket both are under a
+millisecond.
+
+Workspaces are tracked by UUID, not by `workspace:N` refs, because refs shift
+when workspaces are reordered or closed.
+"""
+
+import os
+import socket
+import subprocess
+import sys
+from pathlib import Path
+
+STATE_DIR = Path.home() / ".local/state/cmux"
+STATE = STATE_DIR / "alternate-workspace"
+PASSWORD_FILE = STATE_DIR / "socket-password"
+HELPER = Path.home() / ".local/bin/cmux-socket-password"
+
+
+def socket_path():
+    """cmux names its socket after the uid; glob as a fallback if that changes."""
+    override = os.environ.get("CMUX_SOCKET_PATH")
+    if override:
+        return Path(override)
+    default = STATE_DIR / f"cmux-{os.getuid()}.sock"
+    if default.exists():
+        return default
+    return next(iter(sorted(STATE_DIR.glob("cmux-*.sock"))), default)
+
+
+def password():
+    """The socket password, healing cmux.json if a migration stripped it."""
+    try:
+        return PASSWORD_FILE.read_text().strip()
+    except OSError:
+        pass
+    try:
+        return subprocess.run(
+            [str(HELPER)], capture_output=True, text=True, timeout=10
+        ).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return ""
+
+
+class Cmux:
+    def __init__(self, connection):
+        self.stream = connection.makefile("rwb")
+
+    def __call__(self, command):
+        self.stream.write(f"{command}\n".encode())
+        self.stream.flush()
+        return self.stream.readline().decode().strip()
+
+
+def main():
+    sock = socket_path()
+    if not sock.exists():
+        return 0  # cmux is not running
+
+    connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    connection.settimeout(5)
+    connection.connect(str(sock))
+    cmux = Cmux(connection)
+
+    if not cmux(f"auth {password()}").startswith("OK"):
+        print("cmux-alternate-workspace: socket auth failed.", file=sys.stderr)
+        return 1
+
+    current = cmux("current_workspace")
+    if current.startswith("ERROR"):
+        print(f"cmux-alternate-workspace: {current}", file=sys.stderr)
+        return 1
+
+    try:
+        previous = STATE.read_text().strip()
+    except OSError:
+        previous = ""
+
+    STATE_DIR.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(f"{current}\n")
+
+    # First run, or we never left: nothing to go back to yet.
+    if not previous or previous == current:
+        return 0
+
+    # The remembered workspace may have been closed since. Keeping the current
+    # one recorded means the next press starts a fresh pair rather than looping
+    # on a dead id.
+    if cmux(f"select_workspace {previous}").startswith("ERROR"):
+        print("cmux-alternate-workspace: previous workspace is gone.", file=sys.stderr)
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

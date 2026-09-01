@@ -196,54 +196,69 @@ end)
 
 
 --------------------------------------------------------------------------------
--- cmux background opacity toggle
+-- cmux keys: opacity toggle (Cmd+U) and alternate workspace (Cmd+Shift+1)
 --
 -- cmux has no native opacity-toggle action and ignores Ghostty's
 -- `toggle_background_opacity` keybind, so we write a local runtime override and
--- live-reload cmux.
+-- live-reload cmux. It also has no last-workspace action, and its
+-- `shortcuts.bindings` only accepts its own built-in action ids, so the
+-- alternate-workspace pair is tracked by a script here instead.
 --
--- We want Cmd+U for this, but only inside cmux (Cmd+U is "underline" elsewhere).
--- A global hotkey would swallow it everywhere, so instead we enable/disable a
--- Cmd+U hotkey as cmux gains/loses focus, watched via hs.application.watcher.
+-- We want these keys only inside cmux (Cmd+U is "underline" elsewhere).
+-- A global hotkey would swallow it everywhere, so we watch key events and decide
+-- per keypress, checking the frontmost app only at the moment Cmd+U is pressed.
+--
+-- An earlier version enabled/disabled a real hotkey from hs.application.watcher
+-- instead. That desynced: apps that activate transiently disable the hotkey, and
+-- cmux emits no further `activated` because it never actually lost focus, so
+-- Cmd+U stayed dead until you switched away and back.
 --------------------------------------------------------------------------------
 
-local opacityScript = os.getenv("HOME") .. "/.local/bin/cmux-opacity-toggle"
-local opacityTask
+local opacityScript   = os.getenv("HOME") .. "/.local/bin/cmux-opacity-toggle"
+local alternateScript = os.getenv("HOME") .. "/.local/bin/cmux-alternate-workspace"
+local U_KEYCODE       = hs.keycodes.map["u"]
+local ONE_KEYCODE     = hs.keycodes.map["1"]
+local cmuxTasks       = {}
 
-local opacityHotkey = hs.hotkey.new({"cmd"}, "u", function()
-    if opacityTask and opacityTask:isRunning() then return end
+local function runCmuxScript(script, label)
+    if cmuxTasks[script] and cmuxTasks[script]:isRunning() then return end
 
-    opacityTask = hs.task.new(opacityScript, function(exitCode, _stdout, stderr)
+    cmuxTasks[script] = hs.task.new(script, function(exitCode, _stdout, stderr)
         if exitCode ~= 0 then
-            hs.alert.show("cmux opacity toggle failed")
+            hs.alert.show(label .. " failed")
             print(stderr)
         end
-        opacityTask = nil
+        cmuxTasks[script] = nil
     end)
 
-    if opacityTask then opacityTask:start() end
-end)
-
-local function syncOpacityHotkey()
-    local app = hs.application.frontmostApplication()
-    if app and app:bundleID() == CMUX_BUNDLE_ID then
-        opacityHotkey:enable()
-    else
-        opacityHotkey:disable()
-    end
+    if cmuxTasks[script] then cmuxTasks[script]:start() end
 end
 
-cmuxFocusWatcher = hs.application.watcher.new(function(_name, event, _app)
-    -- Every focus change fires an `activated` for the app gaining focus; on that
-    -- signal we re-check the frontmost app and toggle the Cmd+U binding to match.
-    if event == hs.application.watcher.activated then
-        syncOpacityHotkey()
-    end
-end)
-cmuxFocusWatcher:start()
+cmuxKeyTap = hs.eventtap.new(
+    { hs.eventtap.event.types.keyDown },
+    function(event)
+        local code = event:getKeyCode()
+        if code ~= U_KEYCODE and code ~= ONE_KEYCODE then return false end
 
--- Apply the correct state for whatever is focused right now (e.g. on reload).
-syncOpacityHotkey()
+        local flags = event:getFlags()
+        local isOpacity   = code == U_KEYCODE and flags:containExactly({"cmd"})
+        local isAlternate = code == ONE_KEYCODE and flags:containExactly({"cmd", "shift"})
+        if not isOpacity and not isAlternate then return false end
+
+        -- Only now is it worth asking who is frontmost.
+        local app = hs.application.frontmostApplication()
+        if not app or app:bundleID() ~= CMUX_BUNDLE_ID then return false end
+
+        if isOpacity then
+            runCmuxScript(opacityScript, "cmux opacity toggle")
+        else
+            runCmuxScript(alternateScript, "cmux alternate workspace")
+        end
+
+        return true -- cmux binds neither key itself, so swallow it
+    end
+)
+cmuxKeyTap:start()
 
 
 --------------------------------------------------------------------------------
