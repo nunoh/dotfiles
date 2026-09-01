@@ -76,6 +76,7 @@ brew install --no-ask --cask --adopt \
   rectangle \
   slack \
   spotify \
+  stats \
   sublime-text \
   visual-studio-code \
   zed ||
@@ -93,6 +94,7 @@ uv python install --default
 # dock: clear default items
 defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock persistent-others -array
+# TODO: Missing common osx settings (could live in a specific .osx file)
 killall Dock || true
 
 # personal-only setup
@@ -144,9 +146,7 @@ echo "Setup complete ($PROFILE). Manual steps remaining:"
 echo "  - Authenticate GitHub CLI: gh auth login"
 echo "  - Set git identity: git config -f ~/.gitconfig.local user.name/user.email"
 echo "  - Copy ~/.ssh, .zsh_history from old machine"
-echo "  - Sign into Codex, ChatGPT, Chrome, and other installed apps"
+echo "  - Sign into installed apps"
 if [ "$PROFILE" = personal ]; then
-  echo "  - Restore macOS/app prefs: mackup restore (review osx/.mackup.cfg first)"
   echo "  - Install own builds not on brew: uSwitch, LaunchKnife"
-  echo "  - Sign into Firefox / Chrome / VS Code sync"
 fi
