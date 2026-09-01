@@ -72,8 +72,7 @@
         }
       },
       "moveWorkspaceUp": "cmd+shift+up",
-      "moveWorkspaceDown": "cmd+shift+down",
-      "focusHistoryBack": "cmd+shift+1"
+      "moveWorkspaceDown": "cmd+shift+down"
     }
   },
   "sidebar": {
