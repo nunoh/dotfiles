@@ -1,0 +1,97 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "search": {
+    "include_ignored": false
+  },
+  "auto_update": false,
+  "icon_theme": "Material Icon Theme",
+  "use_system_window_tabs": false,
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false
+  },
+  "preview_tabs": {
+    "enable_preview_from_project_panel": true,
+    "enabled": true
+  },
+  "cli_default_open_behavior": "existing_window",
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "git_panel": {
+    "dock": "left",
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "terminal": {
+    "env": {
+      "FIG_NEW_SESSION": "\"1\"",
+    },
+  },
+  "project_panel": {
+    "hide_gitignore": true,
+    "dock": "left",
+    "git_status": false,
+    "auto_fold_dirs": false,
+  },
+  "outline_panel": {
+    "dock": "left",
+    "git_status": false,
+  },
+  "tabs": {
+    "file_icons": false,
+    "git_status": false,
+  },
+  "multi_cursor_modifier": "cmd_or_ctrl",
+  "sticky_scroll": {
+    "enabled": false,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "buffer_font_family": "Monaco",
+  "file_types": {
+    "php": [
+      "*.module",
+      "*.module"
+    ],
+  },
+  "show_whitespaces": "none",
+  "show_edit_predictions": true,
+  "ensure_final_newline_on_save": true,
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "base_keymap": "SublimeText",
+  "ui_font_size": 16,
+  "buffer_font_size": 13.0,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "title_bar": {
+    "show_branch_status_icon": false, // Show git status on branch icon
+    "show_branch_name": true, // Show/hide branch name
+    "show_project_items": true, // Show/hide project host and name
+    "show_onboarding_banner": true, // Show/hide onboarding banners
+    "show_user_picture": true, // Show/hide user avatar
+    "show_user_menu": true, // Show/hide app user button
+    "show_sign_in": false, // Show/hide sign-in button
+    "show_menus": false, // Show/hide menus
+  },
+}

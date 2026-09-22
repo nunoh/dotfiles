@@ -1,0 +1,50 @@
+// Zed keymap — migrated from VSCode keybindings.json
+//
+// Docs: https://zed.dev/docs/key-bindings
+[
+  // Tab / editor navigation
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem"
+    }
+  },
+  // Pane / group navigation (covers editor groups and split terminals)
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "cmd-shift-g": "git_panel::ToggleFocus",
+      "cmd-escape": "terminal_panel::ToggleFocus"
+    }
+  },
+  // Terminal
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-k": "terminal::Clear",
+      "cmd-r": "terminal::Clear",
+      "cmd-d": "pane::SplitRight",
+      "ctrl-shift-q": "workspace::ToggleZoom",
+      "cmd-shift-escape": "terminal_panel::ToggleFocus"
+    }
+  },
+  // Editor
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-cmd-g": "editor::SelectAllMatches",
+      "cmd-shift-c": "editor::ToggleComments",
+      "cmd-enter": "editor::ToggleCodeActions"
+    }
+  },
+  // Accept inline edit prediction only while one is showing
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "ctrl-f": "editor::AcceptEditPrediction"
+    }
+  }
+]
