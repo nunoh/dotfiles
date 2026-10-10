@@ -77,6 +77,23 @@ Python remains managed by uv.
 
 Global npm packages belong to each Node installation.
 
+### Shell completions
+
+Tickoist and litenv completions are cached in
+`${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions/`. Shell startup reads those
+files without launching either CLI; a missing cache is skipped.
+
+After installing or updating either CLI, or editing its completion source, run
+this from a shell where the commands are available:
+
+```sh
+refresh-completions            # refresh both
+refresh-completions tickoist   # refresh just Tickoist
+```
+
+The helper validates each generated script with `zsh -n` before replacing its
+cache. Failed generation leaves the previous cache available.
+
 ### Configs that an app writes back
 
 `cmux` writes to `~/.config/cmux/cmux.json` when you save its Settings window,
