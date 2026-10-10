@@ -7,9 +7,14 @@ source $HOME/.antidote/antidote.zsh
 
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+if command -v fnm >/dev/null 2>&1; then
+  # Nested shells must not fall back to an inherited NVM installation.
+  path=(${path:#${HOME}/.nvm/versions/node/*/bin})
+  unset NVM_BIN NVM_INC
+  # Use explicit version files; engines.node is a compatibility range.
+  eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive --resolve-engines=false)"
+  fnm use --silent-if-unchanged
+fi
 
 antidote load
 

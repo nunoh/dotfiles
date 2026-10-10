@@ -68,6 +68,15 @@ stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
 
+### Node versions
+
+The shared zsh config uses fnm when installed.
+fnm follows `.node-version` and `.nvmrc` in the current directory or its parents;
+it does not select versions from `package.json` compatibility ranges.
+Python remains managed by uv.
+
+Global npm packages belong to each Node installation.
+
 ### Configs that an app writes back
 
 `cmux` writes to `~/.config/cmux/cmux.json` when you save its Settings window,
