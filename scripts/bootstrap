@@ -91,7 +91,7 @@ remove_package_targets() {
 
   find "$package" \( -type f -o -type l \) -print | while IFS= read -r file; do
     case "$file" in
-      */.stow-local-ignore|zsh/.zshrc|zsh/zshrc.shared|zsh/zshrc.template|zsh/zshrc.server|zsh/zsh_plugins.server.txt) continue ;;
+      */.stow-local-ignore|zsh/.zshrc|zsh/zshrc.shared|zsh/zshrc.template|zsh/zshrc.server|zsh/zsh_plugins.server.txt|zsh/zprofile.shared|zsh/zprofile.template) continue ;;
     esac
 
     remove_target "${file#"$package"/}" "$file"
@@ -131,6 +131,15 @@ if [ ! -f "$HOME/.zshrc" ]; then
     echo "Migrated ~/.zshrc.local into ~/.zshrc (backup: ~/.zshrc.local.bak)."
   fi
   echo "Created ~/.zshrc from template."
+fi
+
+# ~/.zprofile follows the same model: a machine-local file that sources the
+# shared login config (PATH and environment).
+if [ ! -f "$HOME/.zprofile" ]; then
+  cp "$DOTFILES/zsh/zprofile.template" "$HOME/.zprofile"
+  echo "Created ~/.zprofile from template."
+elif ! grep -q 'zprofile.shared' "$HOME/.zprofile"; then
+  echo "Note: ~/.zprofile does not source ~/.dotfiles/zsh/zprofile.shared; see zsh/zprofile.template."
 fi
 
 if [ ! -d "$HOME/.antidote" ]; then

@@ -68,6 +68,18 @@ stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
 
+### Shell startup files
+
+`~/.zprofile` and `~/.zshrc` are machine-local files that source the shared
+config in `zsh/`. New machines get them from `zprofile.template` and
+`zshrc.template`.
+
+- `zprofile.shared` runs once per login shell, before `.zshrc`. It holds `PATH`
+  and environment setup, so non-interactive login shells (`zsh -lc cmd`, as
+  editors and agents use) also find Homebrew, Node, and `~/.local/bin`.
+- `zshrc.shared` runs in interactive shells. It holds the prompt, plugins,
+  completions, and aliases.
+
 ### Node versions
 
 The shared zsh config uses fnm when installed.

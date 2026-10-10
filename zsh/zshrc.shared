@@ -7,11 +7,9 @@ source $HOME/.antidote/antidote.zsh
 
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
-if command -v fnm >/dev/null 2>&1; then
-  # Nested shells must not fall back to an inherited NVM installation.
-  path=(${path:#${HOME}/.nvm/versions/node/*/bin})
-  unset NVM_BIN NVM_INC
-  # Use explicit version files; engines.node is a compatibility range.
+# Login shells set up fnm in zprofile.shared. Non-login shells (a nested
+# `zsh`) need their own setup, so `fnm use` does not change the parent shell.
+if (( $+commands[fnm] )) && [[ -z $_fnm_shell ]]; then
   eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive --resolve-engines=false)"
   fnm use --silent-if-unchanged
 fi

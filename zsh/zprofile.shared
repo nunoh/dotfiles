@@ -1,0 +1,30 @@
+# Shared zsh login config, sourced by the machine-local ~/.zprofile.
+#
+# zsh reads ~/.zprofile once per login shell, before ~/.zshrc. Non-interactive
+# login shells (`zsh -lc cmd`, as editors and agents run) read it but skip
+# ~/.zshrc. So PATH and environment setup goes here; prompt, plugins,
+# completions, and aliases go in zshrc.shared.
+
+typeset -U path fpath
+
+# Homebrew. Static form of `brew shellenv`, which costs ~20 ms per shell.
+# Re-check against `brew shellenv zsh` if Homebrew changes its setup.
+if [[ -d /opt/homebrew ]]; then
+  export HOMEBREW_PREFIX=/opt/homebrew
+  export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+  export HOMEBREW_REPOSITORY=/opt/homebrew
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+  path=(/opt/homebrew/bin /opt/homebrew/sbin $path)
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+fi
+
+path=($HOME/.local/bin $path)
+
+# Node via fnm. Uses explicit version files only; engines.node is a
+# compatibility range. _fnm_shell is not exported, so zshrc.shared can tell
+# whether this shell already ran the setup.
+if (( $+commands[fnm] )); then
+  eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive --resolve-engines=false)"
+  fnm use --silent-if-unchanged
+  _fnm_shell=1
+fi

@@ -1,0 +1,3 @@
+# Machine-local zsh login config — NOT tracked by the dotfiles repo.
+# Loads the shared login config first; machine-specific PATH entries go below.
+source ~/.dotfiles/zsh/zprofile.shared
