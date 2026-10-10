@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Regenerate cached zsh completions after updating a CLI or its local source.
+set -u
+umask 077
+
+if [[ $# -eq 0 ]]; then
+  set -- tickoist litenv
+fi
+
+for tool in "$@"; do
+  case "$tool" in
+    tickoist|litenv) ;;
+    -h|--help)
+      echo "Usage: refresh-completions [tickoist|litenv ...]"
+      exit 0
+      ;;
+    *)
+      echo "Unsupported completion: $tool (choose tickoist or litenv)" >&2
+      exit 2
+      ;;
+  esac
+done
+
+cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions"
+mkdir -p "$cache_dir" || exit 1
+tmp_file=''
+trap '[[ -z "$tmp_file" ]] || rm -f -- "$tmp_file"' EXIT
+result=0
+
+for tool in "$@"; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    echo "$tool is not on PATH; keeping its existing completion cache." >&2
+    result=1
+    continue
+  fi
+
+  tmp_file=$(mktemp "$cache_dir/.$tool.XXXXXX") || exit 1
+  if "$tool" completion zsh > "$tmp_file" &&
+     [[ -s "$tmp_file" ]] &&
+     zsh -fn "$tmp_file" &&
+     mv -f -- "$tmp_file" "$cache_dir/$tool.zsh"; then
+    echo "Refreshed $tool completion."
+  else
+    echo "Could not refresh $tool; keeping its existing completion cache." >&2
+    result=1
+    rm -f -- "$tmp_file"
+  fi
+  tmp_file=''
+done
+
+exit "$result"

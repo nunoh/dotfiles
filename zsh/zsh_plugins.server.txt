@@ -1,6 +1,6 @@
 # Lean plugin set for servers — symlinked to ~/.zsh_plugins.txt by setup-server
 # and loaded by zshrc.server's `antidote load`. Drops the workstation desktop
-# bits (brew, composer, docker, autoswitch-virtualenv); the full list lives in
+# bits (brew, composer, autoswitch-virtualenv); the full list lives in
 # .zsh_plugins.txt.
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:lib

@@ -7,10 +7,20 @@ source $HOME/.antidote/antidote.zsh
 
 ZSH_THEME="${ZSH_THEME:-robbyrussell}"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+# use-omz otherwise runs `antidote path` in a zsh subprocess (~25 ms) to find it.
+export ZSH="${ZSH:-$HOME/Library/Caches/antidote/github.com/ohmyzsh/ohmyzsh}"
 
+# Login shells set up fnm in zprofile.shared. Non-login shells (a nested
+# `zsh`) need their own setup, so `fnm use` does not change the parent shell.
+if (( $+commands[fnm] )) && [[ -z $_fnm_shell ]]; then
+  eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive --resolve-engines=false)"
+  fnm use --silent-if-unchanged
+fi
+
+# antidote load runs `antidote home` in a zsh subprocess (~20 ms) to check that
+# its cache still exists. Do that check here, and skip the subprocess.
+[[ -e $HOME/Library/Caches/antidote/.antidote.load ]] &&
+  zstyle ':antidote:load:checkfile' disabled yes
 antidote load
 
 for f in ~/.dotfiles/shell/.*; do
@@ -19,8 +29,6 @@ done
 
 # don't share command history between shell sessions
 setopt APPEND_HISTORY
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Show user@host in prompt when over SSH. The theme redraws PROMPT during
 # precmd, so keep this hook persistent.

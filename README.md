@@ -68,6 +68,44 @@ stow -R zsh                     # restow (refresh symlinks)
 stow -n -v zsh                  # dry-run, show what would happen
 ```
 
+### Shell startup files
+
+`~/.zprofile` and `~/.zshrc` are machine-local files that source the shared
+config in `zsh/`. New machines get them from `zprofile.template` and
+`zshrc.template`.
+
+- `zprofile.shared` runs once per login shell, before `.zshrc`. It holds `PATH`
+  and environment setup, so non-interactive login shells (`zsh -lc cmd`, as
+  editors and agents use) also find Homebrew, Node, and `~/.local/bin`.
+- `zshrc.shared` runs in interactive shells. It holds the prompt, plugins,
+  completions, and aliases.
+
+### Node versions
+
+The shared zsh config uses fnm when installed.
+fnm follows `.node-version` and `.nvmrc` in the current directory or its parents;
+it does not select versions from `package.json` compatibility ranges.
+Python remains managed by uv.
+
+Global npm packages belong to each Node installation.
+
+### Shell completions
+
+Tickoist and litenv completions are cached in
+`${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions/`. Shell startup reads those
+files without launching either CLI; a missing cache is skipped.
+
+After installing or updating either CLI, or editing its completion source, run
+this from a shell where the commands are available:
+
+```sh
+refresh-completions            # refresh both
+refresh-completions tickoist   # refresh just Tickoist
+```
+
+The helper validates each generated script with `zsh -n` before replacing its
+cache. Failed generation leaves the previous cache available.
+
 ### Configs that an app writes back
 
 `cmux` writes to `~/.config/cmux/cmux.json` when you save its Settings window,
