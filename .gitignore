@@ -1,6 +1,9 @@
 # cmux writes its automation socket password into this file, so it stays local.
 # cmux.json.example tracks every other setting.
 cmux/.config/cmux/cmux.json
+# cmux backups copy the password too.
+cmux/.config/cmux/cmux.json*.bak*
+cmux/.config/cmux/cmux.*.bak
 
 # Obsidian's per-machine UI state for the notes in docs/.
 .obsidian/
