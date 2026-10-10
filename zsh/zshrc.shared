@@ -23,8 +23,6 @@ done
 # don't share command history between shell sessions
 setopt APPEND_HISTORY
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
 # Show user@host in prompt when over SSH. The theme redraws PROMPT during
 # precmd, so keep this hook persistent.
 if [[ -n "$SSH_CONNECTION" ]]; then
