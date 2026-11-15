@@ -47,7 +47,6 @@ paths=(
   "$HOME/.lmstudio"
 
   # Synced by a cloud service, or browser and Electron app data
-  "$HOME/Library/CloudStorage"
   "$HOME/Library/Mobile Documents"
   "$HOME/.dropbox"
   "$HOME/Library/Application Support/Dropbox"
@@ -60,7 +59,16 @@ paths=(
   "$HOME/Library/Application Support/Zed"
 )
 
+# Paths that must be backed up: undo an exclusion from an older version.
+# ~/Library/CloudStorage holds Dropbox, with ~/Dropbox/Trunk (146 MB).
+include=(
+  "$HOME/Library/CloudStorage"
+)
+
 sudo -v
+for p in "${include[@]}"; do
+  sudo tmutil removeexclusion -p "$p" 2>/dev/null || true
+done
 added=0
 missing=0
 for p in "${paths[@]}"; do

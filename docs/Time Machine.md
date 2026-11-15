@@ -16,8 +16,9 @@ The data volume (home folder, `/Library`, `/opt/homebrew/etc`,
   system volume.
 - **[`scripts/tm-exclude`](../scripts/tm-exclude):** apps, Homebrew packages,
   toolchains, package stores, model downloads, cloud-synced folders
-  (Dropbox, iCloud Drive), MacPorts (`/opt/local`) and large browser and
-  Electron app data.
+  (iCloud Drive), MacPorts (`/opt/local`) and large browser and Electron
+  app data. Dropbox (`~/Library/CloudStorage`) stays in, so `~/Dropbox/Trunk`
+  is backed up; only the Dropbox app data is excluded. `~/PKB` is in too.
 - **[asimov](https://github.com/AsimovMac/asimov):** dependency folders next
   to their project file, such as `node_modules` (`package.json`), `target`
   (`Cargo.toml`) and `Pods` (`Podfile`).
