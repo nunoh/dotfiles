@@ -4,7 +4,7 @@
 
 - Commit and push dotfile changes.
 - Back up `~/.ssh` and `.zsh_history`.
-- Make a Time Machine backup.
+- Make a Time Machine backup ([Time Machine.md](Time%20Machine.md)).
 
 ## Work
 
@@ -48,3 +48,6 @@ git config -f ~/.gitconfig.local user.email "you@example.com"
 - Open Hammerspoon and grant Accessibility permission.
 - Sign into the installed apps.
 - On a personal Mac, install uSwitch and LaunchKnife.
+- On a personal Mac, set up Time Machine to bee: run `brew services start asimov`
+  and `~/.dotfiles/scripts/tm-exclude`, then add the destination
+  ([Time Machine.md](Time%20Machine.md)).

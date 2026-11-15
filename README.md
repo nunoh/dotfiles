@@ -14,6 +14,7 @@ git config -f ~/.gitconfig.local user.email "you@example.com"
 ```
 
 - [`docs/Setup New Mac.md`](docs/Setup%20New%20Mac.md)
+- [`docs/Time Machine.md`](docs/Time%20Machine.md) — weekly backup to bee, with exclusions
 - [`docs/Setup New Ubuntu.md`](docs/Setup%20New%20Ubuntu.md)
 - [`docs/Setup New Fedora.md`](docs/Setup%20New%20Fedora.md)
 - [`gnome/README.md`](gnome/README.md) — shared GNOME config (Ubuntu + Fedora)

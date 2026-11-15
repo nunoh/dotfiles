@@ -1,0 +1,77 @@
+#!/bin/bash
+set -eu
+
+# Excludes rebuildable and cloud-synced folders from Time Machine.
+# Fixed-path exclusions (tmutil -p) live in the system settings, not in the
+# backup, so run this again on a new Mac. Safe to run again.
+# Build folders in ~/Code (node_modules, target, Pods, ...) are left to asimov.
+# Usage: tm-exclude [--list]
+# Docs: docs/Time Machine.md
+
+if [ "${1:-}" = "--list" ]; then
+  defaults read /Library/Preferences/com.apple.TimeMachine SkipPaths 2>/dev/null ||
+    echo "No fixed-path exclusions."
+  exit 0
+fi
+
+paths=(
+  # Reinstalled by setup-mac
+  /Applications
+  "$HOME/Applications"
+  /opt/homebrew/Cellar
+  /opt/homebrew/Caskroom
+  /Library/Developer
+
+  # Toolchains and package stores
+  "$HOME/Library/Developer"
+  "$HOME/Library/pnpm"
+  "$HOME/.cache"
+  "$HOME/.npm"
+  "$HOME/.cargo"
+  "$HOME/.rustup"
+  "$HOME/.cocoapods"
+  "$HOME/.expo"
+  "$HOME/.tldrc"
+  "$HOME/.local/share/fnm"
+  "$HOME/.local/share/uv"
+  "$HOME/.local/share/mise"
+  "$HOME/.local/share/claude"
+  "$HOME/.local/share/cursor-agent"
+  "$HOME/.codex/.tmp"
+  "$HOME/.codex/cache"
+  "$HOME/.codex/plugins"
+  "$HOME/.pm2/logs"
+
+  # Large downloads
+  "$HOME/.lmstudio"
+
+  # Synced by a cloud service, or browser and Electron app data
+  "$HOME/Library/CloudStorage"
+  "$HOME/Library/Mobile Documents"
+  "$HOME/.dropbox"
+  "$HOME/Library/Application Support/Dropbox"
+  "$HOME/Library/Application Support/Google"
+  "$HOME/Library/Application Support/Firefox"
+  "$HOME/Library/Application Support/Notion"
+  "$HOME/Library/Application Support/Slack"
+  "$HOME/Library/Application Support/Claude"
+  "$HOME/Library/Application Support/Cursor"
+  "$HOME/Library/Application Support/Zed"
+)
+
+sudo -v
+added=0
+missing=0
+for p in "${paths[@]}"; do
+  if [ -e "$p" ]; then
+    sudo tmutil addexclusion -p "$p"
+    added=$((added + 1))
+  else
+    missing=$((missing + 1))
+  fi
+done
+echo "Excluded $added paths ($missing not on this Mac). Check: $(basename "$0") --list"
+
+if ! command -v asimov >/dev/null 2>&1; then
+  echo "asimov is not installed: brew install asimov && brew services start asimov" >&2
+fi
