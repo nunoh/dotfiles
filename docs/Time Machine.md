@@ -35,7 +35,7 @@ Estimate (2026-11-15): ~38 GB of a 177 GB data volume.
    ```
 
 2. Destination: System Settings → General → Time Machine → Add Backup Disk
-   → `TimeMachine on storage`. Sign in as `nuno` with the Samba password.
+   → `TimeMachine on BEE`. Sign in as `nuno` with the Samba password.
    If it does not show, connect once in Finder to
    `smb://storage.local/TimeMachine`.
 3. Options: **Back up frequency → Automatically Every Week**. Optionally
