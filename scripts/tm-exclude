@@ -20,6 +20,7 @@ paths=(
   "$HOME/Applications"
   /opt/homebrew/Cellar
   /opt/homebrew/Caskroom
+  /opt/local                 # MacPorts
   /Library/Developer
 
   # Toolchains and package stores
